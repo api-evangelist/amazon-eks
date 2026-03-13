@@ -1,0 +1,97 @@
+{
+  "@context": {
+    "@vocab": "https://amazon-eks.apis.io/vocab#",
+    "schema": "https://schema.org/",
+    "aws": "https://aws.amazon.com/ns#",
+    "eks": "https://amazon-eks.apis.io/ns#",
+    "k8s": "https://kubernetes.io/ns#",
+
+    "Cluster": {
+      "@id": "eks:Cluster",
+      "@context": {
+        "name": "schema:name",
+        "arn": "aws:arn",
+        "version": "schema:softwareVersion",
+        "endpoint": "schema:url",
+        "roleArn": "aws:iamRoleArn",
+        "status": "schema:status",
+        "platformVersion": "eks:platformVersion",
+        "createdAt": "schema:dateCreated",
+        "tags": "aws:tags",
+        "certificateAuthority": "eks:certificateAuthority",
+        "resourcesVpcConfig": "eks:vpcConfig",
+        "kubernetesNetworkConfig": "eks:networkConfig",
+        "logging": "eks:logging"
+      }
+    },
+
+    "Nodegroup": {
+      "@id": "eks:Nodegroup",
+      "@context": {
+        "nodegroupName": "schema:name",
+        "nodegroupArn": "aws:arn",
+        "clusterName": "eks:clusterName",
+        "version": "schema:softwareVersion",
+        "releaseVersion": "eks:releaseVersion",
+        "status": "schema:status",
+        "capacityType": "eks:capacityType",
+        "scalingConfig": "eks:scalingConfig",
+        "instanceTypes": "aws:instanceTypes",
+        "subnets": "aws:subnetIds",
+        "amiType": "eks:amiType",
+        "nodeRole": "aws:iamRoleArn",
+        "labels": "k8s:labels",
+        "tags": "aws:tags",
+        "createdAt": "schema:dateCreated",
+        "modifiedAt": "schema:dateModified"
+      }
+    },
+
+    "FargateProfile": {
+      "@id": "eks:FargateProfile",
+      "@context": {
+        "fargateProfileName": "schema:name",
+        "fargateProfileArn": "aws:arn",
+        "clusterName": "eks:clusterName",
+        "status": "schema:status",
+        "podExecutionRoleArn": "aws:iamRoleArn",
+        "subnets": "aws:subnetIds",
+        "selectors": "eks:fargateSelectors",
+        "tags": "aws:tags",
+        "createdAt": "schema:dateCreated"
+      }
+    },
+
+    "Addon": {
+      "@id": "eks:Addon",
+      "@context": {
+        "addonName": "schema:name",
+        "addonVersion": "schema:softwareVersion",
+        "addonArn": "aws:arn",
+        "clusterName": "eks:clusterName",
+        "status": "schema:status",
+        "serviceAccountRoleArn": "aws:iamRoleArn",
+        "tags": "aws:tags",
+        "createdAt": "schema:dateCreated",
+        "modifiedAt": "schema:dateModified"
+      }
+    },
+
+    "FargateProfileSelector": {
+      "@id": "eks:FargateProfileSelector",
+      "@context": {
+        "namespace": "k8s:namespace",
+        "labels": "k8s:labels"
+      }
+    },
+
+    "ScalingConfig": {
+      "@id": "eks:ScalingConfig",
+      "@context": {
+        "minSize": "eks:minSize",
+        "maxSize": "eks:maxSize",
+        "desiredSize": "eks:desiredSize"
+      }
+    }
+  }
+}

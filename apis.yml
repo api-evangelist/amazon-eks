@@ -1,0 +1,126 @@
+name: Amazon EKS API
+description: >-
+  Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service
+  that makes it easy to run Kubernetes on AWS without needing to install, operate,
+  and maintain your own Kubernetes control plane or nodes. Amazon EKS runs
+  upstream Kubernetes and is certified Kubernetes conformant, so you can use
+  existing tools and plugins from partners and the Kubernetes community. Amazon
+  EKS automatically manages the availability and scalability of the Kubernetes
+  control plane nodes responsible for scheduling containers, managing application
+  availability, storing cluster data, and other key tasks.
+url: https://aws.amazon.com/eks/
+baseURL: https://eks.amazonaws.com
+humanURL: https://aws.amazon.com/eks/
+tags:
+  - Kubernetes
+  - Containers
+  - EKS
+  - Container Orchestration
+  - AWS
+
+properties:
+
+  # Documentation
+  - type: Documentation
+    url: https://docs.aws.amazon.com/eks/latest/APIReference/
+
+  # OpenAPI
+  - type: OpenAPI
+    url: openapi/amazon-eks-openapi.yml
+  - type: OpenAPI
+    url: https://api.apis.guru/v2/specs/amazonaws.com/eks/2017-11-01/openapi.yaml
+
+  # JSON Schema
+  - type: JSONSchema
+    url: json-schema/amazon-eks-cluster-schema.json
+
+  # JSON-LD
+  - type: JSONLD
+    url: json-ld/amazon-eks-context.jsonld
+
+  # Pricing
+  - type: Pricing
+    url: https://aws.amazon.com/eks/pricing/
+
+  # Getting Started
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html
+
+  # FAQ
+  - type: FAQ
+    url: https://aws.amazon.com/eks/faqs/
+
+  # User Guide
+  - type: UserGuide
+    url: https://docs.aws.amazon.com/eks/latest/userguide/
+
+  # API Reference
+  - type: APIReference
+    url: https://docs.aws.amazon.com/eks/latest/APIReference/
+
+  # CLI Reference
+  - type: CLIReference
+    url: https://docs.aws.amazon.com/cli/latest/reference/eks/
+
+  # Security
+  - type: Security
+    url: https://docs.aws.amazon.com/eks/latest/userguide/security.html
+
+common:
+
+  - type: Portal
+    url: https://aws.amazon.com/
+
+  - type: Website
+    url: https://aws.amazon.com/eks/
+
+  - type: Docs
+    url: https://docs.aws.amazon.com/
+
+  - type: Terms
+    url: https://aws.amazon.com/service-terms/
+
+  - type: Privacy
+    url: https://aws.amazon.com/privacy/
+
+  - type: Support
+    url: https://aws.amazon.com/support/
+
+  - type: Blog
+    url: https://aws.amazon.com/blogs/containers/
+
+  - type: GitHub
+    url: https://github.com/aws
+
+  - type: Console
+    url: https://console.aws.amazon.com/eks/
+
+  - type: SignUp
+    url: https://portal.aws.amazon.com/billing/signup
+
+  - type: Login
+    url: https://signin.aws.amazon.com/
+
+  - type: Status
+    url: https://health.aws.amazon.com/health/status
+
+  - type: KnowledgeCenter
+    url: https://repost.aws/knowledge-center
+
+  - type: YouTube
+    url: https://www.youtube.com/user/AmazonWebServices
+
+  - type: StackOverflow
+    url: https://stackoverflow.com/questions/tagged/amazon-eks
+
+  - type: Contact
+    url: https://aws.amazon.com/contact-us/
+
+  - type: Security
+    url: https://aws.amazon.com/security/
+
+  - type: Compliance
+    url: https://aws.amazon.com/compliance/
+
+maintainer:
+  name: Kin Lane
