@@ -1156,11 +1156,11 @@ components:
           $ref: '#/components/schemas/Addon'
 
 tags:
-  - name: Clusters
-    description: Operations for managing EKS clusters
-  - name: Node Groups
-    description: Operations for managing EKS managed node groups
-  - name: Fargate Profiles
-    description: Operations for managing EKS Fargate profiles
   - name: Addons
     description: Operations for managing EKS add-ons
+  - name: Clusters
+    description: Operations for managing EKS clusters
+  - name: Fargate Profiles
+    description: Operations for managing EKS Fargate profiles
+  - name: Node Groups
+    description: Operations for managing EKS managed node groups
