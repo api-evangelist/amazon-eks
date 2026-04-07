@@ -22,7 +22,7 @@ paths:
   /clusters:
     post:
       operationId: CreateCluster
-      summary: Create a new EKS cluster
+      summary: Amazon EKS Create a new EKS cluster
       description: >-
         Creates an Amazon EKS control plane. The Amazon EKS control plane
         consists of control plane instances that run the Kubernetes software,
@@ -54,7 +54,7 @@ paths:
           description: Internal server error
     get:
       operationId: ListClusters
-      summary: List EKS clusters
+      summary: Amazon EKS List EKS clusters
       description: Lists the Amazon EKS clusters in your AWS account in the specified Region.
       tags:
         - Clusters
@@ -88,7 +88,7 @@ paths:
   /clusters/{name}:
     get:
       operationId: DescribeCluster
-      summary: Describe an EKS cluster
+      summary: Amazon EKS Describe an EKS cluster
       description: >-
         Returns descriptive information about an Amazon EKS cluster.
       tags:
@@ -118,7 +118,7 @@ paths:
           description: Internal server error
     delete:
       operationId: DeleteCluster
-      summary: Delete an EKS cluster
+      summary: Amazon EKS Delete an EKS cluster
       description: >-
         Deletes the Amazon EKS cluster control plane. You must delete all
         node groups and Fargate profiles before deleting a cluster.
@@ -153,7 +153,7 @@ paths:
   /clusters/{name}/node-groups:
     post:
       operationId: CreateNodegroup
-      summary: Create a managed node group
+      summary: Amazon EKS Create a managed node group
       description: >-
         Creates a managed node group for an Amazon EKS cluster. You can only
         create a node group for your cluster that is equal to the current
@@ -193,7 +193,7 @@ paths:
           description: Internal server error
     get:
       operationId: ListNodegroups
-      summary: List managed node groups
+      summary: Amazon EKS List managed node groups
       description: Lists the managed node groups associated with the specified cluster.
       tags:
         - Node Groups
@@ -234,7 +234,7 @@ paths:
   /clusters/{name}/node-groups/{nodegroupName}:
     get:
       operationId: DescribeNodegroup
-      summary: Describe a managed node group
+      summary: Amazon EKS Describe a managed node group
       description: Returns descriptive information about a managed node group.
       tags:
         - Node Groups
@@ -268,7 +268,7 @@ paths:
           description: Internal server error
     delete:
       operationId: DeleteNodegroup
-      summary: Delete a managed node group
+      summary: Amazon EKS Delete a managed node group
       description: Deletes an Amazon EKS managed node group for a cluster.
       tags:
         - Node Groups
@@ -306,7 +306,7 @@ paths:
   /clusters/{name}/fargate-profiles:
     post:
       operationId: CreateFargateProfile
-      summary: Create a Fargate profile
+      summary: Amazon EKS Create a Fargate profile
       description: >-
         Creates an AWS Fargate profile for your Amazon EKS cluster. You must
         have at least one Fargate profile in a cluster to be able to run pods
@@ -346,7 +346,7 @@ paths:
           description: Internal server error
     get:
       operationId: ListFargateProfiles
-      summary: List Fargate profiles
+      summary: Amazon EKS List Fargate profiles
       description: Lists the AWS Fargate profiles associated with the specified cluster.
       tags:
         - Fargate Profiles
@@ -387,7 +387,7 @@ paths:
   /clusters/{name}/fargate-profiles/{fargateProfileName}:
     get:
       operationId: DescribeFargateProfile
-      summary: Describe a Fargate profile
+      summary: Amazon EKS Describe a Fargate profile
       description: Returns descriptive information about an AWS Fargate profile.
       tags:
         - Fargate Profiles
@@ -421,7 +421,7 @@ paths:
           description: Internal server error
     delete:
       operationId: DeleteFargateProfile
-      summary: Delete a Fargate profile
+      summary: Amazon EKS Delete a Fargate profile
       description: Deletes an AWS Fargate profile.
       tags:
         - Fargate Profiles
@@ -459,7 +459,7 @@ paths:
   /clusters/{name}/addons:
     post:
       operationId: CreateAddon
-      summary: Create an EKS add-on
+      summary: Amazon EKS Create an EKS add-on
       description: >-
         Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the
         provisioning and lifecycle management of common operational software
@@ -499,7 +499,7 @@ paths:
           description: Internal server error
     get:
       operationId: ListAddons
-      summary: List EKS add-ons
+      summary: Amazon EKS List EKS add-ons
       description: Lists the available add-ons for an Amazon EKS cluster.
       tags:
         - Addons
@@ -540,7 +540,7 @@ paths:
   /clusters/{name}/addons/{addonName}:
     get:
       operationId: DescribeAddon
-      summary: Describe an EKS add-on
+      summary: Amazon EKS Describe an EKS add-on
       description: Describes an Amazon EKS add-on.
       tags:
         - Addons
@@ -574,7 +574,7 @@ paths:
           description: Internal server error
     delete:
       operationId: DeleteAddon
-      summary: Delete an EKS add-on
+      summary: Amazon EKS Delete an EKS add-on
       description: Deletes an Amazon EKS add-on.
       tags:
         - Addons

@@ -1,13 +1,10 @@
 name: Amazon EKS
 description: >-
-  Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service
-  that makes it easy to run Kubernetes on AWS without needing to install, operate,
-  and maintain your own Kubernetes control plane or nodes. Amazon EKS runs
-  upstream Kubernetes and is certified Kubernetes conformant, so you can use
-  existing tools and plugins from partners and the Kubernetes community. Amazon
-  EKS automatically manages the availability and scalability of the Kubernetes
-  control plane nodes responsible for scheduling containers, managing application
-  availability, storing cluster data, and other key tasks.
+  Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that
+  makes it easy to run Kubernetes on AWS without needing to install, operate, and
+  maintain your own Kubernetes control plane or nodes. Amazon EKS runs upstream Kubernetes
+  and is certified Kubernetes conformant, so you can use existing tools and plugins
+  from partners and the Kubernetes community.
 url: https://aws.amazon.com/eks/
 baseURL: https://eks.amazonaws.com
 humanURL: https://aws.amazon.com/eks/
@@ -28,7 +25,8 @@ properties:
   - type: OpenAPI
     url: openapi/amazon-eks-openapi.yml
   - type: OpenAPI
-    url: https://api.apis.guru/v2/specs/amazonaws.com/eks/2017-11-01/openapi.yaml
+    url: 
+      https://api.apis.guru/v2/specs/amazonaws.com/eks/2017-11-01/openapi.yaml
 
   # JSON Schema
   - type: JSONSchema
