@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-fargate-profile-selector-schema.json",
+  "title": "FargateProfileSelector",
+  "description": "FargateProfileSelector schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "description": "The Kubernetes namespace that the selector should match."
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The Kubernetes labels that the selector should match."
+    }
+  }
+}

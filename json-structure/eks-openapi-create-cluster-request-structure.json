@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-create-cluster-request-structure.json",
+  "name": "CreateClusterRequest",
+  "description": "CreateClusterRequest schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique name to give to your cluster."
+    },
+    "version": {
+      "type": "string",
+      "description": "The desired Kubernetes version for your cluster."
+    },
+    "roleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role."
+    },
+    "resourcesVpcConfig": {
+      "type": "object",
+      "properties": {
+        "subnetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "securityGroupIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "endpointPublicAccess": {
+          "type": "boolean"
+        },
+        "endpointPrivateAccess": {
+          "type": "boolean"
+        }
+      }
+    },
+    "kubernetesNetworkConfig": {
+      "type": "object",
+      "properties": {
+        "serviceIpv4Cidr": {
+          "type": "string"
+        },
+        "ipFamily": {
+          "type": "string",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ]
+        }
+      }
+    },
+    "logging": {
+      "$ref": "#/components/schemas/Logging"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "roleArn",
+    "resourcesVpcConfig"
+  ]
+}

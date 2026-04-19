@@ -1,0 +1,9 @@
+{
+  "subnetIds": [
+    "example-id-1677"
+  ],
+  "securityGroupIds": [
+    "cluster-abc123"
+  ],
+  "clusterSecurityGroupId": "cluster-abc123"
+}

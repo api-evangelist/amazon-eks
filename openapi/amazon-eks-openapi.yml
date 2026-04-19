@@ -14,27 +14,44 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0
 
 servers:
-  - url: https://eks.amazonaws.com
-    description: Amazon EKS API
+- url: https://eks.amazonaws.com
+  description: Amazon EKS API
 
 paths:
 
   /clusters:
     post:
       operationId: CreateCluster
-      summary: Amazon EKS Create a new EKS cluster
+      summary: Amazon EKS Create a New EKS Cluster
       description: >-
         Creates an Amazon EKS control plane. The Amazon EKS control plane
         consists of control plane instances that run the Kubernetes software,
         such as etcd and the API server.
       tags:
-        - Clusters
+      - Clusters
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateClusterRequest'
+            examples:
+              CreateClusterRequestExample:
+                summary: Default CreateCluster request
+                x-microcks-default: true
+                value:
+                  name: example-resource-name
+                  version: 5.0.0
+                  roleArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  resourcesVpcConfig:
+                    subnetIds:
+                    - example-id-1234
+                    securityGroupIds:
+                    - example-cluster-01
+                    endpointPublicAccess: true
+                  kubernetesNetworkConfig:
+                    serviceIpv4Cidr: example-id-1234
+                    ipFamily: ipv4
       responses:
         '200':
           description: Successful response
@@ -42,6 +59,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateClusterResponse'
+              examples:
+                CreateCluster200Example:
+                  summary: Default CreateCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -52,23 +75,28 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: ListClusters
-      summary: Amazon EKS List EKS clusters
+      summary: Amazon EKS List EKS Clusters
       description: Lists the Amazon EKS clusters in your AWS account in the specified Region.
       tags:
-        - Clusters
+      - Clusters
       parameters:
-        - name: maxResults
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-        - name: nextToken
-          in: query
-          schema:
-            type: string
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
       responses:
         '200':
           description: Successful response
@@ -76,6 +104,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListClustersResponse'
+              examples:
+                ListClusters200Example:
+                  summary: Default ListClusters 200 response
+                  x-microcks-default: true
+                  value:
+                    clusters:
+                    - example-cluster-01
+                    nextToken: example-string
         '400':
           description: Bad request
         '403':
@@ -85,20 +121,24 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}:
     get:
       operationId: DescribeCluster
-      summary: Amazon EKS Describe an EKS cluster
+      summary: Amazon EKS Describe an EKS Cluster
       description: >-
         Returns descriptive information about an Amazon EKS cluster.
       tags:
-        - Clusters
+      - Clusters
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -106,6 +146,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeClusterResponse'
+              examples:
+                DescribeCluster200Example:
+                  summary: Default DescribeCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -116,20 +162,24 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: DeleteCluster
-      summary: Amazon EKS Delete an EKS cluster
+      summary: Amazon EKS Delete an EKS Cluster
       description: >-
         Deletes the Amazon EKS cluster control plane. You must delete all
         node groups and Fargate profiles before deleting a cluster.
       tags:
-        - Clusters
+      - Clusters
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -137,6 +187,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteClusterResponse'
+              examples:
+                DeleteCluster200Example:
+                  summary: Default DeleteCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -150,28 +206,44 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/node-groups:
     post:
       operationId: CreateNodegroup
-      summary: Amazon EKS Create a managed node group
+      summary: Amazon EKS Create a Managed Node Group
       description: >-
         Creates a managed node group for an Amazon EKS cluster. You can only
         create a node group for your cluster that is equal to the current
         Kubernetes version for the cluster.
       tags:
-        - Node Groups
+      - Node Groups
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateNodegroupRequest'
+            examples:
+              CreateNodegroupRequestExample:
+                summary: Default CreateNodegroup request
+                x-microcks-default: true
+                value:
+                  nodegroupName: example-cluster-01
+                  nodeRole: example-string
+                  subnets:
+                  - example-string
+                  scalingConfig: example-string
+                  instanceTypes:
+                  - i-0abc123def456789
       responses:
         '200':
           description: Successful response
@@ -179,6 +251,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateNodegroupResponse'
+              examples:
+                CreateNodegroup200Example:
+                  summary: Default CreateNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -191,28 +269,34 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: ListNodegroups
-      summary: Amazon EKS List managed node groups
+      summary: Amazon EKS List Managed Node Groups
       description: Lists the managed node groups associated with the specified cluster.
       tags:
-        - Node Groups
+      - Node Groups
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: maxResults
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-        - name: nextToken
-          in: query
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
       responses:
         '200':
           description: Successful response
@@ -220,6 +304,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListNodegroupsResponse'
+              examples:
+                ListNodegroups200Example:
+                  summary: Default ListNodegroups 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroups:
+                    - example-cluster-01
+                    nextToken: example-string
         '400':
           description: Bad request
         '403':
@@ -231,24 +323,29 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/node-groups/{nodegroupName}:
     get:
       operationId: DescribeNodegroup
-      summary: Amazon EKS Describe a managed node group
+      summary: Amazon EKS Describe a Managed Node Group
       description: Returns descriptive information about a managed node group.
       tags:
-        - Node Groups
+      - Node Groups
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: nodegroupName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: nodegroupName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-cluster-01
       responses:
         '200':
           description: Successful response
@@ -256,6 +353,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeNodegroupResponse'
+              examples:
+                DescribeNodegroup200Example:
+                  summary: Default DescribeNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -266,23 +369,28 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: DeleteNodegroup
-      summary: Amazon EKS Delete a managed node group
+      summary: Amazon EKS Delete a Managed Node Group
       description: Deletes an Amazon EKS managed node group for a cluster.
       tags:
-        - Node Groups
+      - Node Groups
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: nodegroupName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: nodegroupName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-cluster-01
       responses:
         '200':
           description: Successful response
@@ -290,6 +398,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteNodegroupResponse'
+              examples:
+                DeleteNodegroup200Example:
+                  summary: Default DeleteNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
         '400':
           description: Bad request
         '403':
@@ -303,28 +417,44 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/fargate-profiles:
     post:
       operationId: CreateFargateProfile
-      summary: Amazon EKS Create a Fargate profile
+      summary: Amazon EKS Create a Fargate Profile
       description: >-
         Creates an AWS Fargate profile for your Amazon EKS cluster. You must
         have at least one Fargate profile in a cluster to be able to run pods
         on Fargate.
       tags:
-        - Fargate Profiles
+      - Fargate Profiles
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateFargateProfileRequest'
+            examples:
+              CreateFargateProfileRequestExample:
+                summary: Default CreateFargateProfile request
+                x-microcks-default: true
+                value:
+                  fargateProfileName: example-resource-name
+                  podExecutionRoleArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  subnets:
+                  - example-string
+                  selectors:
+                  - example-string
+                  tags: {}
       responses:
         '200':
           description: Successful response
@@ -332,6 +462,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFargateProfileResponse'
+              examples:
+                CreateFargateProfile200Example:
+                  summary: Default CreateFargateProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    fargateProfile: example-string
         '400':
           description: Bad request
         '403':
@@ -344,28 +480,34 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: ListFargateProfiles
-      summary: Amazon EKS List Fargate profiles
+      summary: Amazon EKS List Fargate Profiles
       description: Lists the AWS Fargate profiles associated with the specified cluster.
       tags:
-        - Fargate Profiles
+      - Fargate Profiles
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: maxResults
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-        - name: nextToken
-          in: query
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
       responses:
         '200':
           description: Successful response
@@ -373,6 +515,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFargateProfilesResponse'
+              examples:
+                ListFargateProfiles200Example:
+                  summary: Default ListFargateProfiles 200 response
+                  x-microcks-default: true
+                  value:
+                    fargateProfileNames:
+                    - example-resource-name
+                    nextToken: example-string
         '400':
           description: Bad request
         '403':
@@ -384,24 +534,29 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/fargate-profiles/{fargateProfileName}:
     get:
       operationId: DescribeFargateProfile
-      summary: Amazon EKS Describe a Fargate profile
+      summary: Amazon EKS Describe a Fargate Profile
       description: Returns descriptive information about an AWS Fargate profile.
       tags:
-        - Fargate Profiles
+      - Fargate Profiles
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: fargateProfileName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: fargateProfileName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -409,6 +564,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeFargateProfileResponse'
+              examples:
+                DescribeFargateProfile200Example:
+                  summary: Default DescribeFargateProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    fargateProfile: example-string
         '400':
           description: Bad request
         '403':
@@ -419,23 +580,28 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: DeleteFargateProfile
-      summary: Amazon EKS Delete a Fargate profile
+      summary: Amazon EKS Delete a Fargate Profile
       description: Deletes an AWS Fargate profile.
       tags:
-        - Fargate Profiles
+      - Fargate Profiles
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: fargateProfileName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: fargateProfileName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -443,6 +609,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteFargateProfileResponse'
+              examples:
+                DeleteFargateProfile200Example:
+                  summary: Default DeleteFargateProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    fargateProfile: example-string
         '400':
           description: Bad request
         '403':
@@ -456,28 +628,42 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/addons:
     post:
       operationId: CreateAddon
-      summary: Amazon EKS Create an EKS add-on
+      summary: Amazon EKS Create an EKS Add-on
       description: >-
         Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the
         provisioning and lifecycle management of common operational software
         for Amazon EKS clusters.
       tags:
-        - Addons
+      - Addons
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateAddonRequest'
+            examples:
+              CreateAddonRequestExample:
+                summary: Default CreateAddon request
+                x-microcks-default: true
+                value:
+                  addonName: example-resource-name
+                  addonVersion: 5.0.0
+                  serviceAccountRoleArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  resolveConflicts: OVERWRITE
+                  tags: {}
       responses:
         '200':
           description: Successful response
@@ -485,6 +671,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAddonResponse'
+              examples:
+                CreateAddon200Example:
+                  summary: Default CreateAddon 200 response
+                  x-microcks-default: true
+                  value:
+                    addon: example-string
         '400':
           description: Bad request
         '403':
@@ -497,28 +689,34 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: ListAddons
-      summary: Amazon EKS List EKS add-ons
+      summary: Amazon EKS List EKS Add-ons
       description: Lists the available add-ons for an Amazon EKS cluster.
       tags:
-        - Addons
+      - Addons
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: maxResults
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-        - name: nextToken
-          in: query
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
       responses:
         '200':
           description: Successful response
@@ -526,6 +724,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAddonsResponse'
+              examples:
+                ListAddons200Example:
+                  summary: Default ListAddons 200 response
+                  x-microcks-default: true
+                  value:
+                    addons:
+                    - example-string
+                    nextToken: example-string
         '400':
           description: Bad request
         '403':
@@ -537,24 +743,29 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /clusters/{name}/addons/{addonName}:
     get:
       operationId: DescribeAddon
-      summary: Amazon EKS Describe an EKS add-on
+      summary: Amazon EKS Describe an EKS Add-on
       description: Describes an Amazon EKS add-on.
       tags:
-        - Addons
+      - Addons
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: addonName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: addonName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -562,6 +773,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAddonResponse'
+              examples:
+                DescribeAddon200Example:
+                  summary: Default DescribeAddon 200 response
+                  x-microcks-default: true
+                  value:
+                    addon: example-string
         '400':
           description: Bad request
         '403':
@@ -572,23 +789,28 @@ paths:
           description: Too many requests
         '500':
           description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: DeleteAddon
-      summary: Amazon EKS Delete an EKS add-on
+      summary: Amazon EKS Delete an EKS Add-on
       description: Deletes an Amazon EKS add-on.
       tags:
-        - Addons
+      - Addons
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: addonName
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: addonName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
       responses:
         '200':
           description: Successful response
@@ -596,6 +818,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAddonResponse'
+              examples:
+                DeleteAddon200Example:
+                  summary: Default DeleteAddon 200 response
+                  x-microcks-default: true
+                  value:
+                    addon: example-string
         '400':
           description: Bad request
         '403':
@@ -609,6 +837,9 @@ paths:
         '500':
           description: Internal server error
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
 
@@ -618,22 +849,28 @@ components:
         name:
           type: string
           description: The name of the cluster.
+          example: example-resource-name
         arn:
           type: string
           description: The Amazon Resource Name (ARN) of the cluster.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         createdAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp at object creation.
+          example: '2025-03-15T14:30:00Z'
         version:
           type: string
           description: The Kubernetes server version for the cluster.
+          example: 5.0.0
         endpoint:
           type: string
           description: The endpoint for your Kubernetes API server.
+          example: example-string
         roleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         resourcesVpcConfig:
           $ref: '#/components/schemas/VpcConfigResponse'
         kubernetesNetworkConfig:
@@ -643,63 +880,75 @@ components:
         status:
           type: string
           enum:
-            - CREATING
-            - ACTIVE
-            - DELETING
-            - FAILED
-            - UPDATING
-            - PENDING
+          - CREATING
+          - ACTIVE
+          - DELETING
+          - FAILED
+          - UPDATING
+          - PENDING
           description: The current status of the cluster.
+          example: CREATING
         certificateAuthority:
           type: object
           properties:
             data:
               type: string
               description: The Base64-encoded certificate data.
+          example:
+            data: example-string
         platformVersion:
           type: string
           description: The platform version of your Amazon EKS cluster.
+          example: 5.0.0
         tags:
           type: object
           additionalProperties:
             type: string
           description: Metadata that assists with categorization and organization.
 
+          example: {}
     Nodegroup:
       type: object
       properties:
         nodegroupName:
           type: string
           description: The name of the managed node group.
+          example: example-cluster-01
         nodegroupArn:
           type: string
           description: The Amazon Resource Name (ARN) of the managed node group.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         clusterName:
           type: string
           description: The name of the cluster the node group is associated with.
+          example: example-cluster-01
         version:
           type: string
           description: The Kubernetes version of the managed node group.
+          example: 5.0.0
         releaseVersion:
           type: string
           description: The AMI version of the managed node group.
+          example: 5.0.0
         status:
           type: string
           enum:
-            - CREATING
-            - ACTIVE
-            - UPDATING
-            - DELETING
-            - CREATE_FAILED
-            - DELETE_FAILED
-            - DEGRADED
+          - CREATING
+          - ACTIVE
+          - UPDATING
+          - DELETING
+          - CREATE_FAILED
+          - DELETE_FAILED
+          - DEGRADED
           description: The current status of the managed node group.
+          example: CREATING
         capacityType:
           type: string
           enum:
-            - ON_DEMAND
-            - SPOT
+          - ON_DEMAND
+          - SPOT
           description: The capacity type of the managed node group.
+          example: ON_DEMAND
         scalingConfig:
           $ref: '#/components/schemas/NodegroupScalingConfig'
         instanceTypes:
@@ -707,129 +956,159 @@ components:
           items:
             type: string
           description: The instance types associated with the managed node group.
+          example:
+          - i-0abc123def456789
         subnets:
           type: array
           items:
             type: string
           description: The subnets that were specified for the Auto Scaling group.
+          example:
+          - example-string
         amiType:
           type: string
           enum:
-            - AL2_x86_64
-            - AL2_x86_64_GPU
-            - AL2_ARM_64
-            - BOTTLEROCKET_ARM_64
-            - BOTTLEROCKET_x86_64
+          - AL2_x86_64
+          - AL2_x86_64_GPU
+          - AL2_ARM_64
+          - BOTTLEROCKET_ARM_64
+          - BOTTLEROCKET_x86_64
           description: The AMI type associated with the managed node group.
+          example: AL2_x86_64
         nodeRole:
           type: string
           description: The IAM role associated with the managed node group.
+          example: example-string
         labels:
           type: object
           additionalProperties:
             type: string
           description: The Kubernetes labels applied to the nodes in the node group.
+          example: {}
         tags:
           type: object
           additionalProperties:
             type: string
           description: Metadata that assists with categorization and organization.
+          example: {}
         createdAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp at object creation.
+          example: '2025-03-15T14:30:00Z'
         modifiedAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp for the last modification.
 
+          example: '2025-03-15T14:30:00Z'
     FargateProfile:
       type: object
       properties:
         fargateProfileName:
           type: string
           description: The name of the Fargate profile.
+          example: example-resource-name
         fargateProfileArn:
           type: string
           description: The full Amazon Resource Name (ARN) of the Fargate profile.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         clusterName:
           type: string
           description: The name of the cluster the Fargate profile is associated with.
+          example: example-cluster-01
         status:
           type: string
           enum:
-            - CREATING
-            - ACTIVE
-            - DELETING
-            - CREATE_FAILED
-            - DELETE_FAILED
+          - CREATING
+          - ACTIVE
+          - DELETING
+          - CREATE_FAILED
+          - DELETE_FAILED
           description: The current status of the Fargate profile.
+          example: CREATING
         podExecutionRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the pod execution role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         subnets:
           type: array
           items:
             type: string
           description: The IDs of subnets to launch pods into.
+          example:
+          - example-string
         selectors:
           type: array
           items:
             $ref: '#/components/schemas/FargateProfileSelector'
           description: The selectors to match for pods to use this Fargate profile.
+          example:
+          - example-string
         tags:
           type: object
           additionalProperties:
             type: string
           description: Metadata that assists with categorization and organization.
+          example: {}
         createdAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp at object creation.
 
+          example: '2025-03-15T14:30:00Z'
     Addon:
       type: object
       properties:
         addonName:
           type: string
           description: The name of the add-on.
+          example: example-resource-name
         addonVersion:
           type: string
           description: The version of the add-on.
+          example: 5.0.0
         addonArn:
           type: string
           description: The Amazon Resource Name (ARN) of the add-on.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         clusterName:
           type: string
           description: The name of the cluster.
+          example: example-cluster-01
         status:
           type: string
           enum:
-            - CREATING
-            - ACTIVE
-            - CREATE_FAILED
-            - UPDATING
-            - DELETING
-            - DELETE_FAILED
-            - DEGRADED
+          - CREATING
+          - ACTIVE
+          - CREATE_FAILED
+          - UPDATING
+          - DELETING
+          - DELETE_FAILED
+          - DEGRADED
           description: The status of the add-on.
+          example: CREATING
         serviceAccountRoleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         tags:
           type: object
           additionalProperties:
             type: string
           description: Metadata that assists with categorization and organization.
+          example: {}
         createdAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp at object creation.
+          example: '2025-03-15T14:30:00Z'
         modifiedAt:
           type: string
           format: date-time
           description: The Unix epoch timestamp for the last modification.
 
+          example: '2025-03-15T14:30:00Z'
     VpcConfigResponse:
       type: object
       properties:
@@ -837,36 +1116,49 @@ components:
           type: array
           items:
             type: string
+          example:
+          - example-id-1234
         securityGroupIds:
           type: array
           items:
             type: string
+          example:
+          - example-cluster-01
         clusterSecurityGroupId:
           type: string
+          example: example-cluster-01
         vpcId:
           type: string
+          example: example-id-1234
         endpointPublicAccess:
           type: boolean
+          example: true
         endpointPrivateAccess:
           type: boolean
+          example: true
         publicAccessCidrs:
           type: array
           items:
             type: string
 
+          example:
+          - example-id-1234
     KubernetesNetworkConfigResponse:
       type: object
       properties:
         serviceIpv4Cidr:
           type: string
+          example: example-id-1234
         serviceIpv6Cidr:
           type: string
+          example: example-id-1234
         ipFamily:
           type: string
           enum:
-            - ipv4
-            - ipv6
+          - ipv4
+          - ipv6
 
+          example: ipv4
     Logging:
       type: object
       properties:
@@ -880,55 +1172,67 @@ components:
                 items:
                   type: string
                   enum:
-                    - api
-                    - audit
-                    - authenticator
-                    - controllerManager
-                    - scheduler
+                  - api
+                  - audit
+                  - authenticator
+                  - controllerManager
+                  - scheduler
               enabled:
                 type: boolean
 
+          example:
+          - types:
+            - example
+            enabled: true
     NodegroupScalingConfig:
       type: object
       properties:
         minSize:
           type: integer
           description: The minimum number of nodes.
+          example: 1
         maxSize:
           type: integer
           description: The maximum number of nodes.
+          example: 1
         desiredSize:
           type: integer
           description: The current number of nodes.
 
+          example: 1
     FargateProfileSelector:
       type: object
       properties:
         namespace:
           type: string
           description: The Kubernetes namespace that the selector should match.
+          example: example-resource-name
         labels:
           type: object
           additionalProperties:
             type: string
           description: The Kubernetes labels that the selector should match.
 
+          example: {}
     CreateClusterRequest:
       type: object
       required:
-        - name
-        - roleArn
-        - resourcesVpcConfig
+      - name
+      - roleArn
+      - resourcesVpcConfig
       properties:
         name:
           type: string
           description: The unique name to give to your cluster.
+          example: example-resource-name
         version:
           type: string
           description: The desired Kubernetes version for your cluster.
+          example: 5.0.0
         roleArn:
           type: string
           description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         resourcesVpcConfig:
           type: object
           properties:
@@ -944,6 +1248,12 @@ components:
               type: boolean
             endpointPrivateAccess:
               type: boolean
+          example:
+            subnetIds:
+            - example-id-1234
+            securityGroupIds:
+            - example-cluster-01
+            endpointPublicAccess: true
         kubernetesNetworkConfig:
           type: object
           properties:
@@ -952,8 +1262,11 @@ components:
             ipFamily:
               type: string
               enum:
-                - ipv4
-                - ipv6
+              - ipv4
+              - ipv6
+          example:
+            serviceIpv4Cidr: example-id-1234
+            ipFamily: ipv4
         logging:
           $ref: '#/components/schemas/Logging'
         tags:
@@ -961,6 +1274,7 @@ components:
           additionalProperties:
             type: string
 
+          example: {}
     CreateClusterResponse:
       type: object
       properties:
@@ -974,9 +1288,12 @@ components:
           type: array
           items:
             type: string
+          example:
+          - example-cluster-01
         nextToken:
           type: string
 
+          example: example-string
     DescribeClusterResponse:
       type: object
       properties:
@@ -992,40 +1309,50 @@ components:
     CreateNodegroupRequest:
       type: object
       required:
-        - nodegroupName
-        - nodeRole
-        - subnets
+      - nodegroupName
+      - nodeRole
+      - subnets
       properties:
         nodegroupName:
           type: string
+          example: example-cluster-01
         nodeRole:
           type: string
+          example: example-string
         subnets:
           type: array
           items:
             type: string
+          example:
+          - example-string
         scalingConfig:
           $ref: '#/components/schemas/NodegroupScalingConfig'
         instanceTypes:
           type: array
           items:
             type: string
+          example:
+          - i-0abc123def456789
         amiType:
           type: string
+          example: ami-0abc123def456789
         capacityType:
           type: string
           enum:
-            - ON_DEMAND
-            - SPOT
+          - ON_DEMAND
+          - SPOT
+          example: ON_DEMAND
         labels:
           type: object
           additionalProperties:
             type: string
+          example: {}
         tags:
           type: object
           additionalProperties:
             type: string
 
+          example: {}
     CreateNodegroupResponse:
       type: object
       properties:
@@ -1039,9 +1366,12 @@ components:
           type: array
           items:
             type: string
+          example:
+          - example-cluster-01
         nextToken:
           type: string
 
+          example: example-string
     DescribeNodegroupResponse:
       type: object
       properties:
@@ -1057,27 +1387,34 @@ components:
     CreateFargateProfileRequest:
       type: object
       required:
-        - fargateProfileName
-        - podExecutionRoleArn
-        - selectors
+      - fargateProfileName
+      - podExecutionRoleArn
+      - selectors
       properties:
         fargateProfileName:
           type: string
+          example: example-resource-name
         podExecutionRoleArn:
           type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         subnets:
           type: array
           items:
             type: string
+          example:
+          - example-string
         selectors:
           type: array
           items:
             $ref: '#/components/schemas/FargateProfileSelector'
+          example:
+          - example-string
         tags:
           type: object
           additionalProperties:
             type: string
 
+          example: {}
     CreateFargateProfileResponse:
       type: object
       properties:
@@ -1091,9 +1428,12 @@ components:
           type: array
           items:
             type: string
+          example:
+          - example-resource-name
         nextToken:
           type: string
 
+          example: example-string
     DescribeFargateProfileResponse:
       type: object
       properties:
@@ -1109,24 +1449,29 @@ components:
     CreateAddonRequest:
       type: object
       required:
-        - addonName
+      - addonName
       properties:
         addonName:
           type: string
+          example: example-resource-name
         addonVersion:
           type: string
+          example: 5.0.0
         serviceAccountRoleArn:
           type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
         resolveConflicts:
           type: string
           enum:
-            - OVERWRITE
-            - NONE
+          - OVERWRITE
+          - NONE
+          example: OVERWRITE
         tags:
           type: object
           additionalProperties:
             type: string
 
+          example: {}
     CreateAddonResponse:
       type: object
       properties:
@@ -1140,9 +1485,12 @@ components:
           type: array
           items:
             type: string
+          example:
+          - example-string
         nextToken:
           type: string
 
+          example: example-string
     DescribeAddonResponse:
       type: object
       properties:
@@ -1156,11 +1504,11 @@ components:
           $ref: '#/components/schemas/Addon'
 
 tags:
-  - name: Addons
-    description: Operations for managing EKS add-ons
-  - name: Clusters
-    description: Operations for managing EKS clusters
-  - name: Fargate Profiles
-    description: Operations for managing EKS Fargate profiles
-  - name: Node Groups
-    description: Operations for managing EKS managed node groups
+- name: Addons
+  description: Operations for managing EKS add-ons
+- name: Clusters
+  description: Operations for managing EKS clusters
+- name: Fargate Profiles
+  description: Operations for managing EKS Fargate profiles
+- name: Node Groups
+  description: Operations for managing EKS managed node groups

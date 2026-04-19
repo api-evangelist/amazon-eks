@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-logging-structure.json",
+  "name": "Logging",
+  "description": "Logging schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "clusterLogging": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "api",
+                "audit",
+                "authenticator",
+                "controllerManager",
+                "scheduler"
+              ]
+            }
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

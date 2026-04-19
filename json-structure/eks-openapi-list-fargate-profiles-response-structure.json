@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-list-fargate-profiles-response-structure.json",
+  "name": "ListFargateProfilesResponse",
+  "description": "ListFargateProfilesResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "fargateProfileNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}

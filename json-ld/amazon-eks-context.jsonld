@@ -1,97 +1,296 @@
 {
   "@context": {
-    "@vocab": "https://amazon-eks.apis.io/vocab#",
+    "@version": 1.1,
+    "aws": "https://aws.amazon.com/schema/",
     "schema": "https://schema.org/",
-    "aws": "https://aws.amazon.com/ns#",
-    "eks": "https://amazon-eks.apis.io/ns#",
-    "k8s": "https://kubernetes.io/ns#",
-
-    "Cluster": {
-      "@id": "eks:Cluster",
-      "@context": {
-        "name": "schema:name",
-        "arn": "aws:arn",
-        "version": "schema:softwareVersion",
-        "endpoint": "schema:url",
-        "roleArn": "aws:iamRoleArn",
-        "status": "schema:status",
-        "platformVersion": "eks:platformVersion",
-        "createdAt": "schema:dateCreated",
-        "tags": "aws:tags",
-        "certificateAuthority": "eks:certificateAuthority",
-        "resourcesVpcConfig": "eks:vpcConfig",
-        "kubernetesNetworkConfig": "eks:networkConfig",
-        "logging": "eks:logging"
-      }
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "pan": "https://aws.amazon.com/schema/",
+    "Addon": "aws:Addon",
+    "Amazon EKS Cluster": "aws:Amazon EKS Cluster",
+    "Cluster": "aws:Cluster",
+    "CreateAddonRequest": "aws:CreateAddonRequest",
+    "CreateAddonResponse": "aws:CreateAddonResponse",
+    "CreateClusterRequest": "aws:CreateClusterRequest",
+    "CreateClusterResponse": "aws:CreateClusterResponse",
+    "CreateFargateProfileRequest": "aws:CreateFargateProfileRequest",
+    "CreateFargateProfileResponse": "aws:CreateFargateProfileResponse",
+    "CreateNodegroupRequest": "aws:CreateNodegroupRequest",
+    "CreateNodegroupResponse": "aws:CreateNodegroupResponse",
+    "DeleteAddonResponse": "aws:DeleteAddonResponse",
+    "DeleteClusterResponse": "aws:DeleteClusterResponse",
+    "DeleteFargateProfileResponse": "aws:DeleteFargateProfileResponse",
+    "DeleteNodegroupResponse": "aws:DeleteNodegroupResponse",
+    "DescribeAddonResponse": "aws:DescribeAddonResponse",
+    "DescribeClusterResponse": "aws:DescribeClusterResponse",
+    "DescribeFargateProfileResponse": "aws:DescribeFargateProfileResponse",
+    "DescribeNodegroupResponse": "aws:DescribeNodegroupResponse",
+    "FargateProfile": "aws:FargateProfile",
+    "FargateProfileSelector": "aws:FargateProfileSelector",
+    "KubernetesNetworkConfigResponse": "aws:KubernetesNetworkConfigResponse",
+    "ListAddonsResponse": "aws:ListAddonsResponse",
+    "ListClustersResponse": "aws:ListClustersResponse",
+    "ListFargateProfilesResponse": "aws:ListFargateProfilesResponse",
+    "ListNodegroupsResponse": "aws:ListNodegroupsResponse",
+    "Logging": "aws:Logging",
+    "Nodegroup": "aws:Nodegroup",
+    "NodegroupScalingConfig": "aws:NodegroupScalingConfig",
+    "VpcConfigResponse": "aws:VpcConfigResponse",
+    "fargateProfile": {
+      "@id": "pan:fargateProfile",
+      "@type": "xsd:string"
     },
-
-    "Nodegroup": {
-      "@id": "eks:Nodegroup",
-      "@context": {
-        "nodegroupName": "schema:name",
-        "nodegroupArn": "aws:arn",
-        "clusterName": "eks:clusterName",
-        "version": "schema:softwareVersion",
-        "releaseVersion": "eks:releaseVersion",
-        "status": "schema:status",
-        "capacityType": "eks:capacityType",
-        "scalingConfig": "eks:scalingConfig",
-        "instanceTypes": "aws:instanceTypes",
-        "subnets": "aws:subnetIds",
-        "amiType": "eks:amiType",
-        "nodeRole": "aws:iamRoleArn",
-        "labels": "k8s:labels",
-        "tags": "aws:tags",
-        "createdAt": "schema:dateCreated",
-        "modifiedAt": "schema:dateModified"
-      }
+    "clusters": {
+      "@id": "pan:clusters",
+      "@container": "@set",
+      "@type": "xsd:string"
     },
-
-    "FargateProfile": {
-      "@id": "eks:FargateProfile",
-      "@context": {
-        "fargateProfileName": "schema:name",
-        "fargateProfileArn": "aws:arn",
-        "clusterName": "eks:clusterName",
-        "status": "schema:status",
-        "podExecutionRoleArn": "aws:iamRoleArn",
-        "subnets": "aws:subnetIds",
-        "selectors": "eks:fargateSelectors",
-        "tags": "aws:tags",
-        "createdAt": "schema:dateCreated"
-      }
+    "nextToken": {
+      "@id": "pan:nextToken",
+      "@type": "xsd:string"
     },
-
-    "Addon": {
-      "@id": "eks:Addon",
-      "@context": {
-        "addonName": "schema:name",
-        "addonVersion": "schema:softwareVersion",
-        "addonArn": "aws:arn",
-        "clusterName": "eks:clusterName",
-        "status": "schema:status",
-        "serviceAccountRoleArn": "aws:iamRoleArn",
-        "tags": "aws:tags",
-        "createdAt": "schema:dateCreated",
-        "modifiedAt": "schema:dateModified"
-      }
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
     },
-
-    "FargateProfileSelector": {
-      "@id": "eks:FargateProfileSelector",
-      "@context": {
-        "namespace": "k8s:namespace",
-        "labels": "k8s:labels"
-      }
+    "arn": {
+      "@id": "pan:arn",
+      "@type": "xsd:string"
     },
-
-    "ScalingConfig": {
-      "@id": "eks:ScalingConfig",
-      "@context": {
-        "minSize": "eks:minSize",
-        "maxSize": "eks:maxSize",
-        "desiredSize": "eks:desiredSize"
-      }
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "endpoint": {
+      "@id": "pan:endpoint",
+      "@type": "@id"
+    },
+    "roleArn": {
+      "@id": "pan:roleArn",
+      "@type": "xsd:string"
+    },
+    "resourcesVpcConfig": {
+      "@id": "pan:resourcesVpcConfig",
+      "@type": "@id"
+    },
+    "subnetIds": {
+      "@id": "pan:subnetIds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "securityGroupIds": {
+      "@id": "pan:securityGroupIds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "clusterSecurityGroupId": {
+      "@id": "pan:clusterSecurityGroupId",
+      "@type": "xsd:string"
+    },
+    "vpcId": {
+      "@id": "pan:vpcId",
+      "@type": "xsd:string"
+    },
+    "endpointPublicAccess": {
+      "@id": "pan:endpointPublicAccess",
+      "@type": "xsd:boolean"
+    },
+    "endpointPrivateAccess": {
+      "@id": "pan:endpointPrivateAccess",
+      "@type": "xsd:boolean"
+    },
+    "publicAccessCidrs": {
+      "@id": "pan:publicAccessCidrs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "kubernetesNetworkConfig": {
+      "@id": "pan:kubernetesNetworkConfig",
+      "@type": "@id"
+    },
+    "serviceIpv4Cidr": {
+      "@id": "pan:serviceIpv4Cidr",
+      "@type": "xsd:string"
+    },
+    "serviceIpv6Cidr": {
+      "@id": "pan:serviceIpv6Cidr",
+      "@type": "xsd:string"
+    },
+    "ipFamily": {
+      "@id": "pan:ipFamily",
+      "@type": "xsd:string"
+    },
+    "logging": {
+      "@id": "pan:logging",
+      "@type": "@id"
+    },
+    "clusterLogging": {
+      "@id": "pan:clusterLogging",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "types": {
+      "@id": "pan:types",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "enabled": {
+      "@id": "pan:enabled",
+      "@type": "xsd:boolean"
+    },
+    "status": {
+      "@id": "pan:status",
+      "@type": "xsd:string"
+    },
+    "certificateAuthority": {
+      "@id": "pan:certificateAuthority",
+      "@type": "@id"
+    },
+    "data": {
+      "@id": "pan:data",
+      "@type": "xsd:string"
+    },
+    "platformVersion": {
+      "@id": "pan:platformVersion",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "pan:tags",
+      "@type": "@id"
+    },
+    "createdAt": {
+      "@id": "pan:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "cluster": {
+      "@id": "pan:cluster",
+      "@type": "xsd:string"
+    },
+    "fargateProfileNames": {
+      "@id": "pan:fargateProfileNames",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "addon": {
+      "@id": "pan:addon",
+      "@type": "xsd:string"
+    },
+    "nodegroup": {
+      "@id": "pan:nodegroup",
+      "@type": "xsd:string"
+    },
+    "addons": {
+      "@id": "pan:addons",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "minSize": {
+      "@id": "pan:minSize",
+      "@type": "xsd:integer"
+    },
+    "maxSize": {
+      "@id": "pan:maxSize",
+      "@type": "xsd:integer"
+    },
+    "desiredSize": {
+      "@id": "pan:desiredSize",
+      "@type": "xsd:integer"
+    },
+    "addonName": {
+      "@id": "pan:addonName",
+      "@type": "xsd:string"
+    },
+    "addonVersion": {
+      "@id": "pan:addonVersion",
+      "@type": "xsd:string"
+    },
+    "addonArn": {
+      "@id": "pan:addonArn",
+      "@type": "xsd:string"
+    },
+    "clusterName": {
+      "@id": "pan:clusterName",
+      "@type": "xsd:string"
+    },
+    "serviceAccountRoleArn": {
+      "@id": "pan:serviceAccountRoleArn",
+      "@type": "xsd:string"
+    },
+    "modifiedAt": {
+      "@id": "pan:modifiedAt",
+      "@type": "xsd:dateTime"
+    },
+    "fargateProfileName": {
+      "@id": "pan:fargateProfileName",
+      "@type": "xsd:string"
+    },
+    "fargateProfileArn": {
+      "@id": "pan:fargateProfileArn",
+      "@type": "xsd:string"
+    },
+    "podExecutionRoleArn": {
+      "@id": "pan:podExecutionRoleArn",
+      "@type": "xsd:string"
+    },
+    "subnets": {
+      "@id": "pan:subnets",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "selectors": {
+      "@id": "pan:selectors",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "namespace": {
+      "@id": "pan:namespace",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "pan:labels",
+      "@type": "@id"
+    },
+    "nodegroupName": {
+      "@id": "pan:nodegroupName",
+      "@type": "xsd:string"
+    },
+    "nodeRole": {
+      "@id": "pan:nodeRole",
+      "@type": "xsd:string"
+    },
+    "scalingConfig": {
+      "@id": "pan:scalingConfig",
+      "@type": "xsd:string"
+    },
+    "instanceTypes": {
+      "@id": "pan:instanceTypes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "amiType": {
+      "@id": "pan:amiType",
+      "@type": "xsd:string"
+    },
+    "capacityType": {
+      "@id": "pan:capacityType",
+      "@type": "xsd:string"
+    },
+    "nodegroups": {
+      "@id": "pan:nodegroups",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "nodegroupArn": {
+      "@id": "pan:nodegroupArn",
+      "@type": "xsd:string"
+    },
+    "releaseVersion": {
+      "@id": "pan:releaseVersion",
+      "@type": "xsd:string"
+    },
+    "resolveConflicts": {
+      "@id": "pan:resolveConflicts",
+      "@type": "xsd:string"
     }
   }
 }

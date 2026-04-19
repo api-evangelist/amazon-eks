@@ -1,0 +1,5 @@
+{
+  "serviceIpv4Cidr": "example-id-3333",
+  "serviceIpv6Cidr": "example-id-5507",
+  "ipFamily": "ipv6"
+}

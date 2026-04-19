@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-create-addon-response-schema.json",
+  "title": "CreateAddonResponse",
+  "description": "CreateAddonResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "addon": {
+      "$ref": "#/components/schemas/Addon"
+    }
+  }
+}

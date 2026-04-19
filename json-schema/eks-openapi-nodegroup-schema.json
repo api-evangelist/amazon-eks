@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-nodegroup-schema.json",
+  "title": "Nodegroup",
+  "description": "Nodegroup schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "nodegroupName": {
+      "type": "string",
+      "description": "The name of the managed node group."
+    },
+    "nodegroupArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the managed node group."
+    },
+    "clusterName": {
+      "type": "string",
+      "description": "The name of the cluster the node group is associated with."
+    },
+    "version": {
+      "type": "string",
+      "description": "The Kubernetes version of the managed node group."
+    },
+    "releaseVersion": {
+      "type": "string",
+      "description": "The AMI version of the managed node group."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATING",
+        "ACTIVE",
+        "UPDATING",
+        "DELETING",
+        "CREATE_FAILED",
+        "DELETE_FAILED",
+        "DEGRADED"
+      ],
+      "description": "The current status of the managed node group."
+    },
+    "capacityType": {
+      "type": "string",
+      "enum": [
+        "ON_DEMAND",
+        "SPOT"
+      ],
+      "description": "The capacity type of the managed node group."
+    },
+    "scalingConfig": {
+      "$ref": "#/components/schemas/NodegroupScalingConfig"
+    },
+    "instanceTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The instance types associated with the managed node group."
+    },
+    "subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The subnets that were specified for the Auto Scaling group."
+    },
+    "amiType": {
+      "type": "string",
+      "enum": [
+        "AL2_x86_64",
+        "AL2_x86_64_GPU",
+        "AL2_ARM_64",
+        "BOTTLEROCKET_ARM_64",
+        "BOTTLEROCKET_x86_64"
+      ],
+      "description": "The AMI type associated with the managed node group."
+    },
+    "nodeRole": {
+      "type": "string",
+      "description": "The IAM role associated with the managed node group."
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The Kubernetes labels applied to the nodes in the node group."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Metadata that assists with categorization and organization."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The Unix epoch timestamp at object creation."
+    },
+    "modifiedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The Unix epoch timestamp for the last modification."
+    }
+  }
+}

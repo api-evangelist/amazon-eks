@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-cluster-schema.json",
+  "title": "Cluster",
+  "description": "Cluster schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the cluster."
+    },
+    "arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the cluster."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The Unix epoch timestamp at object creation."
+    },
+    "version": {
+      "type": "string",
+      "description": "The Kubernetes server version for the cluster."
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "The endpoint for your Kubernetes API server."
+    },
+    "roleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role."
+    },
+    "resourcesVpcConfig": {
+      "$ref": "#/components/schemas/VpcConfigResponse"
+    },
+    "kubernetesNetworkConfig": {
+      "$ref": "#/components/schemas/KubernetesNetworkConfigResponse"
+    },
+    "logging": {
+      "$ref": "#/components/schemas/Logging"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATING",
+        "ACTIVE",
+        "DELETING",
+        "FAILED",
+        "UPDATING",
+        "PENDING"
+      ],
+      "description": "The current status of the cluster."
+    },
+    "certificateAuthority": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "The Base64-encoded certificate data."
+        }
+      }
+    },
+    "platformVersion": {
+      "type": "string",
+      "description": "The platform version of your Amazon EKS cluster."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Metadata that assists with categorization and organization."
+    }
+  }
+}

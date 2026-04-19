@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-create-nodegroup-request-schema.json",
+  "title": "CreateNodegroupRequest",
+  "description": "CreateNodegroupRequest schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "nodegroupName": {
+      "type": "string"
+    },
+    "nodeRole": {
+      "type": "string"
+    },
+    "subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scalingConfig": {
+      "$ref": "#/components/schemas/NodegroupScalingConfig"
+    },
+    "instanceTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "amiType": {
+      "type": "string"
+    },
+    "capacityType": {
+      "type": "string",
+      "enum": [
+        "ON_DEMAND",
+        "SPOT"
+      ]
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "nodegroupName",
+    "nodeRole",
+    "subnets"
+  ]
+}

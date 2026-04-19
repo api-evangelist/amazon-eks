@@ -1,0 +1,6 @@
+{
+  "fargateProfileNames": [
+    "example-resource-name"
+  ],
+  "nextToken": "example-string-value"
+}

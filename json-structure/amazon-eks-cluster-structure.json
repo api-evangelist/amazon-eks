@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/amazon-eks-cluster-structure.json",
+  "name": "Amazon EKS Cluster",
+  "description": "Schema representing an Amazon Elastic Kubernetes Service (EKS) cluster resource.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique name of the EKS cluster.",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^[a-zA-Z][a-zA-Z0-9\\-_]*$"
+    },
+    "arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the cluster.",
+      "pattern": "^arn:aws[a-zA-Z-]*:eks:[a-z0-9-]+:\\d{12}:cluster/[a-zA-Z][a-zA-Z0-9\\-_]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "The Kubernetes server version for the cluster.",
+      "examples": [
+        "1.28",
+        "1.27",
+        "1.26"
+      ]
+    },
+    "endpoint": {
+      "type": "uri",
+      "description": "The endpoint URL for the Kubernetes API server."
+    },
+    "roleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane.",
+      "pattern": "^arn:aws[a-zA-Z-]*:iam::\\d{12}:role/.+$"
+    },
+    "resourcesVpcConfig": {
+      "type": "object",
+      "description": "The VPC configuration used by the cluster control plane.",
+      "required": [
+        "subnetIds"
+      ],
+      "properties": {
+        "subnetIds": {
+          "type": "array",
+          "description": "The subnets associated with the cluster.",
+          "items": {
+            "type": "string",
+            "pattern": "^subnet-[a-f0-9]+$"
+          },
+          "minItems": 1
+        },
+        "securityGroupIds": {
+          "type": "array",
+          "description": "The security groups associated with the cross-account elastic network interfaces.",
+          "items": {
+            "type": "string",
+            "pattern": "^sg-[a-f0-9]+$"
+          }
+        },
+        "clusterSecurityGroupId": {
+          "type": "string",
+          "description": "The cluster security group that was created by Amazon EKS for the cluster.",
+          "pattern": "^sg-[a-f0-9]+$"
+        },
+        "vpcId": {
+          "type": "string",
+          "description": "The VPC associated with your cluster.",
+          "pattern": "^vpc-[a-f0-9]+$"
+        },
+        "endpointPublicAccess": {
+          "type": "boolean",
+          "description": "Whether the public API server endpoint is enabled.",
+          "default": true
+        },
+        "endpointPrivateAccess": {
+          "type": "boolean",
+          "description": "Whether the private API server endpoint is enabled.",
+          "default": false
+        },
+        "publicAccessCidrs": {
+          "type": "array",
+          "description": "The CIDR blocks that are allowed access to the public API server endpoint.",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "0.0.0.0/0"
+          ]
+        }
+      }
+    },
+    "kubernetesNetworkConfig": {
+      "type": "object",
+      "description": "The Kubernetes network configuration for the cluster.",
+      "properties": {
+        "serviceIpv4Cidr": {
+          "type": "string",
+          "description": "The CIDR block assigned to Kubernetes service IP addresses."
+        },
+        "serviceIpv6Cidr": {
+          "type": "string",
+          "description": "The CIDR block assigned to Kubernetes pod and service IPv6 addresses."
+        },
+        "ipFamily": {
+          "type": "string",
+          "description": "The IP family used to assign Kubernetes pod and service addresses.",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ],
+          "default": "ipv4"
+        }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "description": "The logging configuration for the cluster.",
+      "properties": {
+        "clusterLogging": {
+          "type": "array",
+          "description": "The cluster control plane logging configuration.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "api",
+                    "audit",
+                    "authenticator",
+                    "controllerManager",
+                    "scheduler"
+                  ]
+                }
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether the log types are enabled."
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "The current status of the cluster.",
+      "enum": [
+        "CREATING",
+        "ACTIVE",
+        "DELETING",
+        "FAILED",
+        "UPDATING",
+        "PENDING"
+      ]
+    },
+    "certificateAuthority": {
+      "type": "object",
+      "description": "The certificate-authority-data for the cluster.",
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "The Base64-encoded certificate data required to communicate with the cluster."
+        }
+      }
+    },
+    "platformVersion": {
+      "type": "string",
+      "description": "The platform version of your Amazon EKS cluster.",
+      "examples": [
+        "eks.1",
+        "eks.2"
+      ]
+    },
+    "tags": {
+      "type": "object",
+      "description": "Metadata tags associated with the cluster.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "createdAt": {
+      "type": "datetime",
+      "description": "The timestamp when the cluster was created."
+    }
+  },
+  "required": [
+    "name",
+    "roleArn",
+    "resourcesVpcConfig"
+  ],
+  "additionalProperties": false
+}

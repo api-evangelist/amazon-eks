@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-fargate-profile-structure.json",
+  "name": "FargateProfile",
+  "description": "FargateProfile schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "fargateProfileName": {
+      "type": "string",
+      "description": "The name of the Fargate profile."
+    },
+    "fargateProfileArn": {
+      "type": "string",
+      "description": "The full Amazon Resource Name (ARN) of the Fargate profile."
+    },
+    "clusterName": {
+      "type": "string",
+      "description": "The name of the cluster the Fargate profile is associated with."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATING",
+        "ACTIVE",
+        "DELETING",
+        "CREATE_FAILED",
+        "DELETE_FAILED"
+      ],
+      "description": "The current status of the Fargate profile."
+    },
+    "podExecutionRoleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the pod execution role."
+    },
+    "subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The IDs of subnets to launch pods into."
+    },
+    "selectors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FargateProfileSelector"
+      },
+      "description": "The selectors to match for pods to use this Fargate profile."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Metadata that assists with categorization and organization."
+    },
+    "createdAt": {
+      "type": "datetime",
+      "description": "The Unix epoch timestamp at object creation."
+    }
+  }
+}

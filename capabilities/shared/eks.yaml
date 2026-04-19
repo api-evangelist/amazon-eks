@@ -1,0 +1,346 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon EKS"
+  description: "Amazon EKS managed Kubernetes service."
+  tags:
+    - Amazon EKS
+    - AWS
+    - Kubernetes
+    - Container Orchestration
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: eks
+      baseUri: https://eks.us-east-1.amazonaws.com
+      description: "Amazon EKS managed Kubernetes service."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "AWS4-HMAC-SHA256 Credential={{env.AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: clusters
+          path: /clusters
+          description: "Operations for clusters resources."
+          operations:
+            - name: ListClusters
+              method: GET
+              description: "Amazon EKS List EKS Clusters"
+              inputParameters:
+                - name: maxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maxResults parameter"
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "The nextToken parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: CreateCluster
+              method: POST
+              description: "Amazon EKS Create a New EKS Cluster"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}
+          description: "Operations for clusters resources."
+          operations:
+            - name: DescribeCluster
+              method: GET
+              description: "Amazon EKS Describe an EKS Cluster"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: DeleteCluster
+              method: DELETE
+              description: "Amazon EKS Delete an EKS Cluster"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/node-groups
+          description: "Operations for clusters resources."
+          operations:
+            - name: ListNodegroups
+              method: GET
+              description: "Amazon EKS List Managed Node Groups"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: maxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maxResults parameter"
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "The nextToken parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: CreateNodegroup
+              method: POST
+              description: "Amazon EKS Create a Managed Node Group"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/node-groups/{nodegroupName}
+          description: "Operations for clusters resources."
+          operations:
+            - name: DescribeNodegroup
+              method: GET
+              description: "Amazon EKS Describe a Managed Node Group"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: nodegroupName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The nodegroupName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: DeleteNodegroup
+              method: DELETE
+              description: "Amazon EKS Delete a Managed Node Group"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: nodegroupName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The nodegroupName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/fargate-profiles
+          description: "Operations for clusters resources."
+          operations:
+            - name: ListFargateProfiles
+              method: GET
+              description: "Amazon EKS List Fargate Profiles"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: maxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maxResults parameter"
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "The nextToken parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: CreateFargateProfile
+              method: POST
+              description: "Amazon EKS Create a Fargate Profile"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/fargate-profiles/{fargateProfileName}
+          description: "Operations for clusters resources."
+          operations:
+            - name: DescribeFargateProfile
+              method: GET
+              description: "Amazon EKS Describe a Fargate Profile"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: fargateProfileName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The fargateProfileName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: DeleteFargateProfile
+              method: DELETE
+              description: "Amazon EKS Delete a Fargate Profile"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: fargateProfileName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The fargateProfileName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/addons
+          description: "Operations for clusters resources."
+          operations:
+            - name: ListAddons
+              method: GET
+              description: "Amazon EKS List EKS Add-ons"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: maxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maxResults parameter"
+                - name: nextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "The nextToken parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: CreateAddon
+              method: POST
+              description: "Amazon EKS Create an EKS Add-on"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: clusters
+          path: /clusters/{name}/addons/{addonName}
+          description: "Operations for clusters resources."
+          operations:
+            - name: DescribeAddon
+              method: GET
+              description: "Amazon EKS Describe an EKS Add-on"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: addonName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The addonName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: DeleteAddon
+              method: DELETE
+              description: "Amazon EKS Delete an EKS Add-on"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "The name parameter"
+                - name: addonName
+                  in: path
+                  type: string
+                  required: true
+                  description: "The addonName parameter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

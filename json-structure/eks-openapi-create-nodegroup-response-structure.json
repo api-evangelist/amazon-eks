@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-create-nodegroup-response-structure.json",
+  "name": "CreateNodegroupResponse",
+  "description": "CreateNodegroupResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "nodegroup": {
+      "$ref": "#/components/schemas/Nodegroup"
+    }
+  }
+}

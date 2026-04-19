@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-create-fargate-profile-request-structure.json",
+  "name": "CreateFargateProfileRequest",
+  "description": "CreateFargateProfileRequest schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "fargateProfileName": {
+      "type": "string"
+    },
+    "podExecutionRoleArn": {
+      "type": "string"
+    },
+    "subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "selectors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FargateProfileSelector"
+      }
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "fargateProfileName",
+    "podExecutionRoleArn",
+    "selectors"
+  ]
+}

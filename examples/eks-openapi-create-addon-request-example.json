@@ -1,0 +1,5 @@
+{
+  "addonName": "example-resource-name",
+  "addonVersion": "1.0.0",
+  "serviceAccountRoleArn": "arn:aws:service:us-east-1:123456789012:resource/example"
+}

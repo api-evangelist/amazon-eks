@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-vpc-config-response-structure.json",
+  "name": "VpcConfigResponse",
+  "description": "VpcConfigResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "subnetIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "securityGroupIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "clusterSecurityGroupId": {
+      "type": "string"
+    },
+    "vpcId": {
+      "type": "string"
+    },
+    "endpointPublicAccess": {
+      "type": "boolean"
+    },
+    "endpointPrivateAccess": {
+      "type": "boolean"
+    },
+    "publicAccessCidrs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

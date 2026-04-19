@@ -1,0 +1,14 @@
+{
+  "name": "example-resource-name",
+  "roleArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "resourcesVpcConfig": {
+    "subnetIds": [
+      "example-id-5266",
+      "example-id-1080"
+    ],
+    "securityGroupIds": [
+      "cluster-abc123"
+    ],
+    "clusterSecurityGroupId": "cluster-abc123"
+  }
+}

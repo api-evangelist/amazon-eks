@@ -1,0 +1,16 @@
+{
+  "clusterLogging": [
+    {
+      "types": [
+        "audit"
+      ],
+      "enabled": true
+    },
+    {
+      "types": [
+        "audit"
+      ],
+      "enabled": false
+    }
+  ]
+}

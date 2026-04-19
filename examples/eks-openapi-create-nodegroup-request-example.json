@@ -1,0 +1,7 @@
+{
+  "nodegroupName": "example-resource-name",
+  "nodeRole": "arn:aws:iam::123456789012:role/ExampleRole",
+  "subnets": [
+    "example-string-value"
+  ]
+}

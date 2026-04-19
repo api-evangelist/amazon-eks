@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-addon-structure.json",
+  "name": "Addon",
+  "description": "Addon schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "addonName": {
+      "type": "string",
+      "description": "The name of the add-on."
+    },
+    "addonVersion": {
+      "type": "string",
+      "description": "The version of the add-on."
+    },
+    "addonArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the add-on."
+    },
+    "clusterName": {
+      "type": "string",
+      "description": "The name of the cluster."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATING",
+        "ACTIVE",
+        "CREATE_FAILED",
+        "UPDATING",
+        "DELETING",
+        "DELETE_FAILED",
+        "DEGRADED"
+      ],
+      "description": "The status of the add-on."
+    },
+    "serviceAccountRoleArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the IAM role."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Metadata that assists with categorization and organization."
+    },
+    "createdAt": {
+      "type": "datetime",
+      "description": "The Unix epoch timestamp at object creation."
+    },
+    "modifiedAt": {
+      "type": "datetime",
+      "description": "The Unix epoch timestamp for the last modification."
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "fargateProfileName": "example-resource-name",
+  "fargateProfileArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "clusterName": "example-resource-name"
+}

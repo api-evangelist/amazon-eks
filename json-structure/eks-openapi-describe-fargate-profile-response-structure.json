@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-describe-fargate-profile-response-structure.json",
+  "name": "DescribeFargateProfileResponse",
+  "description": "DescribeFargateProfileResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "fargateProfile": {
+      "$ref": "#/components/schemas/FargateProfile"
+    }
+  }
+}

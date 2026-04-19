@@ -1,0 +1,14 @@
+{
+  "name": "example-resource-name",
+  "roleArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "resourcesVpcConfig": {
+    "subnetIds": [
+      "example-id-3223",
+      "example-id-6839"
+    ],
+    "securityGroupIds": [
+      "cluster-abc123"
+    ],
+    "endpointPublicAccess": false
+  }
+}

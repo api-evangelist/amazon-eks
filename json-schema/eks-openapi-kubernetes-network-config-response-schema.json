@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-kubernetes-network-config-response-schema.json",
+  "title": "KubernetesNetworkConfigResponse",
+  "description": "KubernetesNetworkConfigResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "serviceIpv4Cidr": {
+      "type": "string"
+    },
+    "serviceIpv6Cidr": {
+      "type": "string"
+    },
+    "ipFamily": {
+      "type": "string",
+      "enum": [
+        "ipv4",
+        "ipv6"
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-schema/eks-openapi-list-nodegroups-response-schema.json",
+  "title": "ListNodegroupsResponse",
+  "description": "ListNodegroupsResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "nodegroups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}

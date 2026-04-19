@@ -1,0 +1,237 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon EKS Kubernetes Cluster Management"
+  description: "Unified capability for managing EKS clusters, node groups, Fargate profiles, and add-ons for platform engineers."
+  tags:
+    - Amazon EKS
+    - AWS
+    - Kubernetes
+    - Container Orchestration
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+capability:
+  consumes:
+    - import: eks
+      location: ./shared/eks.yaml
+
+  exposes:
+    - type: rest
+      port: 8086
+      namespace: eks-api
+      description: "Unified REST API for Kubernetes Cluster Management."
+      resources:
+        - path: /v1/clusters
+          name: ListClusters
+          description: "Amazon EKS List EKS Clusters"
+          operations:
+            - method: GET
+              name: ListClusters
+              description: "Amazon EKS List EKS Clusters"
+              call: "eks.ListClusters"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters
+          name: CreateCluster
+          description: "Amazon EKS Create a New EKS Cluster"
+          operations:
+            - method: POST
+              name: CreateCluster
+              description: "Amazon EKS Create a New EKS Cluster"
+              call: "eks.CreateCluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters
+          name: DescribeCluster
+          description: "Amazon EKS Describe an EKS Cluster"
+          operations:
+            - method: GET
+              name: DescribeCluster
+              description: "Amazon EKS Describe an EKS Cluster"
+              call: "eks.DescribeCluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters
+          name: DeleteCluster
+          description: "Amazon EKS Delete an EKS Cluster"
+          operations:
+            - method: DELETE
+              name: DeleteCluster
+              description: "Amazon EKS Delete an EKS Cluster"
+              call: "eks.DeleteCluster"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/node-groups
+          name: ListNodegroups
+          description: "Amazon EKS List Managed Node Groups"
+          operations:
+            - method: GET
+              name: ListNodegroups
+              description: "Amazon EKS List Managed Node Groups"
+              call: "eks.ListNodegroups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/node-groups
+          name: CreateNodegroup
+          description: "Amazon EKS Create a Managed Node Group"
+          operations:
+            - method: POST
+              name: CreateNodegroup
+              description: "Amazon EKS Create a Managed Node Group"
+              call: "eks.CreateNodegroup"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/node-groups
+          name: DescribeNodegroup
+          description: "Amazon EKS Describe a Managed Node Group"
+          operations:
+            - method: GET
+              name: DescribeNodegroup
+              description: "Amazon EKS Describe a Managed Node Group"
+              call: "eks.DescribeNodegroup"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/node-groups
+          name: DeleteNodegroup
+          description: "Amazon EKS Delete a Managed Node Group"
+          operations:
+            - method: DELETE
+              name: DeleteNodegroup
+              description: "Amazon EKS Delete a Managed Node Group"
+              call: "eks.DeleteNodegroup"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/fargate-profiles
+          name: ListFargateProfiles
+          description: "Amazon EKS List Fargate Profiles"
+          operations:
+            - method: GET
+              name: ListFargateProfiles
+              description: "Amazon EKS List Fargate Profiles"
+              call: "eks.ListFargateProfiles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/clusters/fargate-profiles
+          name: CreateFargateProfile
+          description: "Amazon EKS Create a Fargate Profile"
+          operations:
+            - method: POST
+              name: CreateFargateProfile
+              description: "Amazon EKS Create a Fargate Profile"
+              call: "eks.CreateFargateProfile"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9096
+      namespace: eks-mcp
+      transport: http
+      description: "MCP server for AI-assisted Kubernetes Cluster Management."
+      tools:
+        - name: list-clusters
+          description: "Amazon EKS List EKS Clusters"
+          hints:
+            readOnly: true
+            destructive: false
+          call: "eks.ListClusters"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-cluster
+          description: "Amazon EKS Create a New EKS Cluster"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "eks.CreateCluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-cluster
+          description: "Amazon EKS Describe an EKS Cluster"
+          hints:
+            readOnly: true
+            destructive: false
+          call: "eks.DescribeCluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-cluster
+          description: "Amazon EKS Delete an EKS Cluster"
+          hints:
+            readOnly: false
+            destructive: true
+          call: "eks.DeleteCluster"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-nodegroups
+          description: "Amazon EKS List Managed Node Groups"
+          hints:
+            readOnly: true
+            destructive: false
+          call: "eks.ListNodegroups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-nodegroup
+          description: "Amazon EKS Create a Managed Node Group"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "eks.CreateNodegroup"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-nodegroup
+          description: "Amazon EKS Describe a Managed Node Group"
+          hints:
+            readOnly: true
+            destructive: false
+          call: "eks.DescribeNodegroup"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-nodegroup
+          description: "Amazon EKS Delete a Managed Node Group"
+          hints:
+            readOnly: false
+            destructive: true
+          call: "eks.DeleteNodegroup"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-fargate-profiles
+          description: "Amazon EKS List Fargate Profiles"
+          hints:
+            readOnly: true
+            destructive: false
+          call: "eks.ListFargateProfiles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-fargate-profile
+          description: "Amazon EKS Create a Fargate Profile"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "eks.CreateFargateProfile"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-nodegroup-scaling-config-structure.json",
+  "name": "NodegroupScalingConfig",
+  "description": "NodegroupScalingConfig schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "minSize": {
+      "type": "int32",
+      "description": "The minimum number of nodes."
+    },
+    "maxSize": {
+      "type": "int32",
+      "description": "The maximum number of nodes."
+    },
+    "desiredSize": {
+      "type": "int32",
+      "description": "The current number of nodes."
+    }
+  }
+}

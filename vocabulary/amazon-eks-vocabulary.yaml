@@ -1,0 +1,82 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon EKS
+  description: Unified vocabulary and taxonomy for Amazon EKS APIs covering operational and capability dimensions.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon EKS API
+    namespace: eks
+    version: '2024'
+    status: active
+  resources:
+  - name: clusters
+    description: clusters resources
+  actions: []
+  schemas:
+    core:
+    - name: Cluster
+      description: Cluster schema
+    - name: Nodegroup
+      description: Nodegroup schema
+    - name: FargateProfile
+      description: FargateProfile schema
+    - name: Addon
+      description: Addon schema
+    - name: VpcConfigResponse
+      description: VpcConfigResponse schema
+    - name: KubernetesNetworkConfigResponse
+      description: KubernetesNetworkConfigResponse schema
+    - name: Logging
+      description: Logging schema
+    - name: NodegroupScalingConfig
+      description: NodegroupScalingConfig schema
+    - name: FargateProfileSelector
+      description: FargateProfileSelector schema
+    - name: CreateClusterRequest
+      description: CreateClusterRequest schema
+    - name: CreateClusterResponse
+      description: CreateClusterResponse schema
+    - name: ListClustersResponse
+      description: ListClustersResponse schema
+    - name: DescribeClusterResponse
+      description: DescribeClusterResponse schema
+    - name: DeleteClusterResponse
+      description: DeleteClusterResponse schema
+    - name: CreateNodegroupRequest
+      description: CreateNodegroupRequest schema
+    - name: CreateNodegroupResponse
+      description: CreateNodegroupResponse schema
+    - name: ListNodegroupsResponse
+      description: ListNodegroupsResponse schema
+    - name: DescribeNodegroupResponse
+      description: DescribeNodegroupResponse schema
+    - name: DeleteNodegroupResponse
+      description: DeleteNodegroupResponse schema
+    - name: CreateFargateProfileRequest
+      description: CreateFargateProfileRequest schema
+  authentication:
+    schemes:
+    - AWS Signature Version 4
+    description: All API requests use AWS Signature Version 4 for authentication.
+capability:
+  workflows:
+  - name: Kubernetes Platform Management
+    file: capabilities/eks-management.yaml
+    description: Workflow capability for Kubernetes Platform Management.
+  personas:
+  - id: cloud-engineer
+    name: Cloud Engineer
+    description: Engineers managing Amazon EKS resources on AWS.
+    workflows:
+    - Kubernetes Platform Management
+  domains:
+  - name: Kubernetes Platform Management
+    description: Kubernetes Platform Management business domain for Amazon EKS.
+crossReference:
+- resource: clusters
+  workflows:
+  - Kubernetes Platform Management
+  personas:
+  - Cloud Engineer

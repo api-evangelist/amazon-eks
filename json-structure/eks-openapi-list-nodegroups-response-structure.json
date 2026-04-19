@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-list-nodegroups-response-structure.json",
+  "name": "ListNodegroupsResponse",
+  "description": "ListNodegroupsResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "nodegroups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextToken": {
+      "type": "string"
+    }
+  }
+}

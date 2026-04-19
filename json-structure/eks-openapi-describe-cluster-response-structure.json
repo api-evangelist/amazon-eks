@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-eks/refs/heads/main/json-structure/eks-openapi-describe-cluster-response-structure.json",
+  "name": "DescribeClusterResponse",
+  "description": "DescribeClusterResponse schema from Amazon EKS API",
+  "type": "object",
+  "properties": {
+    "cluster": {
+      "$ref": "#/components/schemas/Cluster"
+    }
+  }
+}
