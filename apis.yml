@@ -70,7 +70,7 @@ common:
 - type: DeveloperPortal
   url: https://aws.amazon.com/eks/
 
-- type: Docs
+- type: Documentation
   url: https://docs.aws.amazon.com/
 
 - type: Terms
