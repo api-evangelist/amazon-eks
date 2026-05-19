@@ -1,0 +1,214 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EKS API — Fargate Profiles
+  description: 'Amazon EKS API — Fargate Profiles. 4 operations. Lead operation: Amazon EKS Create a Fargate Profile. Self-contained
+    Naftiko capability covering one Amazon Eks business surface.'
+  tags:
+  - Amazon Eks
+  - Fargate Profiles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EKS_API_KEY: AMAZON_EKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-eks-fargate-profiles
+    baseUri: https://eks.amazonaws.com
+    description: Amazon EKS API — Fargate Profiles business capability. Self-contained, no shared references.
+    resources:
+    - name: clusters-name-fargate-profiles
+      path: /clusters/{name}/fargate-profiles
+      operations:
+      - name: createfargateprofile
+        method: POST
+        description: Amazon EKS Create a Fargate Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listfargateprofiles
+        method: GET
+        description: Amazon EKS List Fargate Profiles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+        - name: nextToken
+          in: query
+          type: string
+    - name: clusters-name-fargate-profiles-fargateProfileName
+      path: /clusters/{name}/fargate-profiles/{fargateProfileName}
+      operations:
+      - name: describefargateprofile
+        method: GET
+        description: Amazon EKS Describe a Fargate Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: fargateProfileName
+          in: path
+          type: string
+          required: true
+      - name: deletefargateprofile
+        method: DELETE
+        description: Amazon EKS Delete a Fargate Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: fargateProfileName
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: amazon-eks-fargate-profiles-rest
+    port: 8080
+    description: REST adapter for Amazon EKS API — Fargate Profiles. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/clusters/{name}/fargate-profiles
+      name: clusters-name-fargate-profiles
+      description: REST surface for clusters-name-fargate-profiles.
+      operations:
+      - method: POST
+        name: createfargateprofile
+        description: Amazon EKS Create a Fargate Profile
+        call: amazon-eks-fargate-profiles.createfargateprofile
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listfargateprofiles
+        description: Amazon EKS List Fargate Profiles
+        call: amazon-eks-fargate-profiles.listfargateprofiles
+        with:
+          name: rest.name
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/clusters/{name}/fargate-profiles/{fargateprofilename}
+      name: clusters-name-fargate-profiles-fargateprofilename
+      description: REST surface for clusters-name-fargate-profiles-fargateProfileName.
+      operations:
+      - method: GET
+        name: describefargateprofile
+        description: Amazon EKS Describe a Fargate Profile
+        call: amazon-eks-fargate-profiles.describefargateprofile
+        with:
+          name: rest.name
+          fargateProfileName: rest.fargateProfileName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefargateprofile
+        description: Amazon EKS Delete a Fargate Profile
+        call: amazon-eks-fargate-profiles.deletefargateprofile
+        with:
+          name: rest.name
+          fargateProfileName: rest.fargateProfileName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-eks-fargate-profiles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EKS API — Fargate Profiles. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: amazon-eks-create-fargate-profile
+      description: Amazon EKS Create a Fargate Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eks-fargate-profiles.createfargateprofile
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-list-fargate-profiles
+      description: Amazon EKS List Fargate Profiles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-eks-fargate-profiles.listfargateprofiles
+      with:
+        name: tools.name
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-describe-fargate-profile
+      description: Amazon EKS Describe a Fargate Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-eks-fargate-profiles.describefargateprofile
+      with:
+        name: tools.name
+        fargateProfileName: tools.fargateProfileName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-delete-fargate-profile
+      description: Amazon EKS Delete a Fargate Profile
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-eks-fargate-profiles.deletefargateprofile
+      with:
+        name: tools.name
+        fargateProfileName: tools.fargateProfileName
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,190 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EKS API — Clusters
+  description: 'Amazon EKS API — Clusters. 4 operations. Lead operation: Amazon EKS Create a New EKS Cluster. Self-contained
+    Naftiko capability covering one Amazon Eks business surface.'
+  tags:
+  - Amazon Eks
+  - Clusters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EKS_API_KEY: AMAZON_EKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-eks-clusters
+    baseUri: https://eks.amazonaws.com
+    description: Amazon EKS API — Clusters business capability. Self-contained, no shared references.
+    resources:
+    - name: clusters
+      path: /clusters
+      operations:
+      - name: createcluster
+        method: POST
+        description: Amazon EKS Create a New EKS Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listclusters
+        method: GET
+        description: Amazon EKS List EKS Clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+        - name: nextToken
+          in: query
+          type: string
+    - name: clusters-name
+      path: /clusters/{name}
+      operations:
+      - name: describecluster
+        method: GET
+        description: Amazon EKS Describe an EKS Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: deletecluster
+        method: DELETE
+        description: Amazon EKS Delete an EKS Cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: amazon-eks-clusters-rest
+    port: 8080
+    description: REST adapter for Amazon EKS API — Clusters. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/clusters
+      name: clusters
+      description: REST surface for clusters.
+      operations:
+      - method: POST
+        name: createcluster
+        description: Amazon EKS Create a New EKS Cluster
+        call: amazon-eks-clusters.createcluster
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listclusters
+        description: Amazon EKS List EKS Clusters
+        call: amazon-eks-clusters.listclusters
+        with:
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/clusters/{name}
+      name: clusters-name
+      description: REST surface for clusters-name.
+      operations:
+      - method: GET
+        name: describecluster
+        description: Amazon EKS Describe an EKS Cluster
+        call: amazon-eks-clusters.describecluster
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecluster
+        description: Amazon EKS Delete an EKS Cluster
+        call: amazon-eks-clusters.deletecluster
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-eks-clusters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EKS API — Clusters. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: amazon-eks-create-new-eks
+      description: Amazon EKS Create a New EKS Cluster
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-eks-clusters.createcluster
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-list-eks-clusters
+      description: Amazon EKS List EKS Clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-eks-clusters.listclusters
+      with:
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-describe-eks-cluster
+      description: Amazon EKS Describe an EKS Cluster
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-eks-clusters.describecluster
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-eks-delete-eks-cluster
+      description: Amazon EKS Delete an EKS Cluster
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-eks-clusters.deletecluster
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
