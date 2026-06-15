@@ -1,0 +1,404 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EKS API",
+    "version": "2017-11-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List EKS Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the Amazon EKS clusters in your AWS account in the specified Region."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create a New EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon EKS control plane. The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as etcd and the API server."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe an EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns descriptive information about an Amazon EKS cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete an EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the Amazon EKS cluster control plane. You must delete all node groups and Fargate profiles before deleting a cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Node Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List Managed Node Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the managed node groups associated with the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups/:nodegroupName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "nodegroupName",
+                "value": "example-cluster-01",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns descriptive information about a managed node group."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups/:nodegroupName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "nodegroupName",
+                "value": "example-cluster-01",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an Amazon EKS managed node group for a cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fargate Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List Fargate Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/fargate-profiles",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the AWS Fargate profiles associated with the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create a Fargate Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters/:name/fargate-profiles",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe a Fargate Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/fargate-profiles/:fargateProfileName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "fargateProfileName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns descriptive information about an AWS Fargate profile."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete a Fargate Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name/fargate-profiles/:fargateProfileName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "fargateProfileName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an AWS Fargate profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Addons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List EKS Add-ons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the available add-ons for an Amazon EKS cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the provisioning and lifecycle management of common operational software for Amazon EKS clusters."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons/:addonName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "addonName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Describes an Amazon EKS add-on."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons/:addonName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "addonName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an Amazon EKS add-on."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
