@@ -38,6 +38,12 @@ properties:
 - type: Security
   url: https://docs.aws.amazon.com/eks/latest/userguide/security.html
 common:
+- type: TrustCenter
+  url: security/amazon-eks-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-eks-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-eks-domain-security.yml
 - type: Portal
   url: https://aws.amazon.com/
 - type: DeveloperPortal
