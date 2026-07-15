@@ -38,6 +38,8 @@ properties:
 - type: Security
   url: https://docs.aws.amazon.com/eks/latest/userguide/security.html
 common:
+- type: AgenticAccess
+  url: agentic-access/amazon-eks-agentic-access.yml
 - type: TrustCenter
   url: security/amazon-eks-trust-center.yml
 - type: VulnerabilityDisclosure
