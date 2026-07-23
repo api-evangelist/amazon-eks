@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  title: Amazon EKS Addons Clusters API
+  description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
+  version: '2017-11-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eks/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://eks.amazonaws.com
+  description: Amazon EKS API
+tags:
+- name: Clusters
+  description: Operations for managing EKS clusters
+paths:
+  /clusters:
+    post:
+      operationId: CreateCluster
+      summary: Amazon EKS Create a New EKS Cluster
+      description: Creates an Amazon EKS control plane. The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as etcd and the API server.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClusterRequest'
+            examples:
+              CreateClusterRequestExample:
+                summary: Default CreateCluster request
+                x-microcks-default: true
+                value:
+                  name: example-resource-name
+                  version: 5.0.0
+                  roleArn: arn:aws:service:us-east-1:123456789012:resource/example
+                  resourcesVpcConfig:
+                    subnetIds:
+                    - example-id-1234
+                    securityGroupIds:
+                    - example-cluster-01
+                    endpointPublicAccess: true
+                  kubernetesNetworkConfig:
+                    serviceIpv4Cidr: example-id-1234
+                    ipFamily: ipv4
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+              examples:
+                CreateCluster200Example:
+                  summary: Default CreateCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: ListClusters
+      summary: Amazon EKS List EKS Clusters
+      description: Lists the Amazon EKS clusters in your AWS account in the specified Region.
+      tags:
+      - Clusters
+      parameters:
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListClustersResponse'
+              examples:
+                ListClusters200Example:
+                  summary: Default ListClusters 200 response
+                  x-microcks-default: true
+                  value:
+                    clusters:
+                    - example-cluster-01
+                    nextToken: example-string
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /clusters/{name}:
+    get:
+      operationId: DescribeCluster
+      summary: Amazon EKS Describe an EKS Cluster
+      description: Returns descriptive information about an Amazon EKS cluster.
+      tags:
+      - Clusters
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeClusterResponse'
+              examples:
+                DescribeCluster200Example:
+                  summary: Default DescribeCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: DeleteCluster
+      summary: Amazon EKS Delete an EKS Cluster
+      description: Deletes the Amazon EKS cluster control plane. You must delete all node groups and Fargate profiles before deleting a cluster.
+      tags:
+      - Clusters
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteClusterResponse'
+              examples:
+                DeleteCluster200Example:
+                  summary: Default DeleteCluster 200 response
+                  x-microcks-default: true
+                  value:
+                    cluster: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DeleteClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    Logging:
+      type: object
+      properties:
+        clusterLogging:
+          type: array
+          items:
+            type: object
+            properties:
+              types:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - api
+                  - audit
+                  - authenticator
+                  - controllerManager
+                  - scheduler
+              enabled:
+                type: boolean
+          example:
+          - types:
+            - example
+            enabled: true
+    ListClustersResponse:
+      type: object
+      properties:
+        clusters:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
+    DescribeClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    KubernetesNetworkConfigResponse:
+      type: object
+      properties:
+        serviceIpv4Cidr:
+          type: string
+          example: example-id-1234
+        serviceIpv6Cidr:
+          type: string
+          example: example-id-1234
+        ipFamily:
+          type: string
+          enum:
+          - ipv4
+          - ipv6
+          example: ipv4
+    CreateClusterRequest:
+      type: object
+      required:
+      - name
+      - roleArn
+      - resourcesVpcConfig
+      properties:
+        name:
+          type: string
+          description: The unique name to give to your cluster.
+          example: example-resource-name
+        version:
+          type: string
+          description: The desired Kubernetes version for your cluster.
+          example: 5.0.0
+        roleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resourcesVpcConfig:
+          type: object
+          properties:
+            subnetIds:
+              type: array
+              items:
+                type: string
+            securityGroupIds:
+              type: array
+              items:
+                type: string
+            endpointPublicAccess:
+              type: boolean
+            endpointPrivateAccess:
+              type: boolean
+          example:
+            subnetIds:
+            - example-id-1234
+            securityGroupIds:
+            - example-cluster-01
+            endpointPublicAccess: true
+        kubernetesNetworkConfig:
+          type: object
+          properties:
+            serviceIpv4Cidr:
+              type: string
+            ipFamily:
+              type: string
+              enum:
+              - ipv4
+              - ipv6
+          example:
+            serviceIpv4Cidr: example-id-1234
+            ipFamily: ipv4
+        logging:
+          $ref: '#/components/schemas/Logging'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    Cluster:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the cluster.
+          example: example-resource-name
+        arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the cluster.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        createdAt:
+          type: string
+          format: date-time
+          description: The Unix epoch timestamp at object creation.
+          example: '2025-03-15T14:30:00Z'
+        version:
+          type: string
+          description: The Kubernetes server version for the cluster.
+          example: 5.0.0
+        endpoint:
+          type: string
+          description: The endpoint for your Kubernetes API server.
+          example: example-string
+        roleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resourcesVpcConfig:
+          $ref: '#/components/schemas/VpcConfigResponse'
+        kubernetesNetworkConfig:
+          $ref: '#/components/schemas/KubernetesNetworkConfigResponse'
+        logging:
+          $ref: '#/components/schemas/Logging'
+        status:
+          type: string
+          enum:
+          - CREATING
+          - ACTIVE
+          - DELETING
+          - FAILED
+          - UPDATING
+          - PENDING
+          description: The current status of the cluster.
+          example: CREATING
+        certificateAuthority:
+          type: object
+          properties:
+            data:
+              type: string
+              description: The Base64-encoded certificate data.
+          example:
+            data: example-string
+        platformVersion:
+          type: string
+          description: The platform version of your Amazon EKS cluster.
+          example: 5.0.0
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Metadata that assists with categorization and organization.
+          example: {}
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    VpcConfigResponse:
+      type: object
+      properties:
+        subnetIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234
+        securityGroupIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        clusterSecurityGroupId:
+          type: string
+          example: example-cluster-01
+        vpcId:
+          type: string
+          example: example-id-1234
+        endpointPublicAccess:
+          type: boolean
+          example: true
+        endpointPrivateAccess:
+          type: boolean
+          example: true
+        publicAccessCidrs:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234

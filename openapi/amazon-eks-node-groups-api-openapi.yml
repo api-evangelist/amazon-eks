@@ -1,0 +1,408 @@
+openapi: 3.1.0
+info:
+  title: Amazon EKS Addons Node Groups API
+  description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
+  version: '2017-11-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/eks/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://eks.amazonaws.com
+  description: Amazon EKS API
+tags:
+- name: Node Groups
+  description: Operations for managing EKS managed node groups
+paths:
+  /clusters/{name}/node-groups:
+    post:
+      operationId: CreateNodegroup
+      summary: Amazon EKS Create a Managed Node Group
+      description: Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster.
+      tags:
+      - Node Groups
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNodegroupRequest'
+            examples:
+              CreateNodegroupRequestExample:
+                summary: Default CreateNodegroup request
+                x-microcks-default: true
+                value:
+                  nodegroupName: example-cluster-01
+                  nodeRole: example-string
+                  subnets:
+                  - example-string
+                  scalingConfig: example-string
+                  instanceTypes:
+                  - i-0abc123def456789
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNodegroupResponse'
+              examples:
+                CreateNodegroup200Example:
+                  summary: Default CreateNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: ListNodegroups
+      summary: Amazon EKS List Managed Node Groups
+      description: Lists the managed node groups associated with the specified cluster.
+      tags:
+      - Node Groups
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+        example: 1
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        example: example-string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNodegroupsResponse'
+              examples:
+                ListNodegroups200Example:
+                  summary: Default ListNodegroups 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroups:
+                    - example-cluster-01
+                    nextToken: example-string
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /clusters/{name}/node-groups/{nodegroupName}:
+    get:
+      operationId: DescribeNodegroup
+      summary: Amazon EKS Describe a Managed Node Group
+      description: Returns descriptive information about a managed node group.
+      tags:
+      - Node Groups
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: nodegroupName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-cluster-01
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeNodegroupResponse'
+              examples:
+                DescribeNodegroup200Example:
+                  summary: Default DescribeNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: DeleteNodegroup
+      summary: Amazon EKS Delete a Managed Node Group
+      description: Deletes an Amazon EKS managed node group for a cluster.
+      tags:
+      - Node Groups
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-resource-name
+      - name: nodegroupName
+        in: path
+        required: true
+        schema:
+          type: string
+        example: example-cluster-01
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteNodegroupResponse'
+              examples:
+                DeleteNodegroup200Example:
+                  summary: Default DeleteNodegroup 200 response
+                  x-microcks-default: true
+                  value:
+                    nodegroup: example-cluster-01
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CreateNodegroupRequest:
+      type: object
+      required:
+      - nodegroupName
+      - nodeRole
+      - subnets
+      properties:
+        nodegroupName:
+          type: string
+          example: example-cluster-01
+        nodeRole:
+          type: string
+          example: example-string
+        subnets:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        scalingConfig:
+          $ref: '#/components/schemas/NodegroupScalingConfig'
+        instanceTypes:
+          type: array
+          items:
+            type: string
+          example:
+          - i-0abc123def456789
+        amiType:
+          type: string
+          example: ami-0abc123def456789
+        capacityType:
+          type: string
+          enum:
+          - ON_DEMAND
+          - SPOT
+          example: ON_DEMAND
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    DeleteNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    CreateNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    NodegroupScalingConfig:
+      type: object
+      properties:
+        minSize:
+          type: integer
+          description: The minimum number of nodes.
+          example: 1
+        maxSize:
+          type: integer
+          description: The maximum number of nodes.
+          example: 1
+        desiredSize:
+          type: integer
+          description: The current number of nodes.
+          example: 1
+    ListNodegroupsResponse:
+      type: object
+      properties:
+        nodegroups:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
+    DescribeNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    Nodegroup:
+      type: object
+      properties:
+        nodegroupName:
+          type: string
+          description: The name of the managed node group.
+          example: example-cluster-01
+        nodegroupArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the managed node group.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        clusterName:
+          type: string
+          description: The name of the cluster the node group is associated with.
+          example: example-cluster-01
+        version:
+          type: string
+          description: The Kubernetes version of the managed node group.
+          example: 5.0.0
+        releaseVersion:
+          type: string
+          description: The AMI version of the managed node group.
+          example: 5.0.0
+        status:
+          type: string
+          enum:
+          - CREATING
+          - ACTIVE
+          - UPDATING
+          - DELETING
+          - CREATE_FAILED
+          - DELETE_FAILED
+          - DEGRADED
+          description: The current status of the managed node group.
+          example: CREATING
+        capacityType:
+          type: string
+          enum:
+          - ON_DEMAND
+          - SPOT
+          description: The capacity type of the managed node group.
+          example: ON_DEMAND
+        scalingConfig:
+          $ref: '#/components/schemas/NodegroupScalingConfig'
+        instanceTypes:
+          type: array
+          items:
+            type: string
+          description: The instance types associated with the managed node group.
+          example:
+          - i-0abc123def456789
+        subnets:
+          type: array
+          items:
+            type: string
+          description: The subnets that were specified for the Auto Scaling group.
+          example:
+          - example-string
+        amiType:
+          type: string
+          enum:
+          - AL2_x86_64
+          - AL2_x86_64_GPU
+          - AL2_ARM_64
+          - BOTTLEROCKET_ARM_64
+          - BOTTLEROCKET_x86_64
+          description: The AMI type associated with the managed node group.
+          example: AL2_x86_64
+        nodeRole:
+          type: string
+          description: The IAM role associated with the managed node group.
+          example: example-string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: The Kubernetes labels applied to the nodes in the node group.
+          example: {}
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Metadata that assists with categorization and organization.
+          example: {}
+        createdAt:
+          type: string
+          format: date-time
+          description: The Unix epoch timestamp at object creation.
+          example: '2025-03-15T14:30:00Z'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: The Unix epoch timestamp for the last modification.
+          example: '2025-03-15T14:30:00Z'
