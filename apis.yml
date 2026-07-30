@@ -1,3 +1,16 @@
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-eks.png
 name: Amazon EKS
 description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes
   on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes. Amazon EKS runs upstream
@@ -131,7 +144,39 @@ common:
 maintainer:
   name: Kin Lane
 modified: '2026-05-19'
-apis: []
+apis:
+- aid: amazon-eks:amazon-eks-addons-api
+  name: Amazon EKS Addons API
+  description: Operations for managing EKS add-ons
+  tags:
+  - Addons
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eks-addons-api-openapi.yml
+- aid: amazon-eks:amazon-eks-clusters-api
+  name: Amazon EKS Clusters API
+  description: Operations for managing EKS clusters
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eks-clusters-api-openapi.yml
+- aid: amazon-eks:amazon-eks-fargate-profiles-api
+  name: Amazon EKS Fargate Profiles API
+  description: Operations for managing EKS Fargate profiles
+  tags:
+  - Fargate Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eks-fargate-profiles-api-openapi.yml
+- aid: amazon-eks:amazon-eks-node-groups-api
+  name: Amazon EKS Node Groups API
+  description: Operations for managing EKS managed node groups
+  tags:
+  - Node Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eks-node-groups-api-openapi.yml
 integrations:
 - name: Sign in
 - name: Agent Mode
