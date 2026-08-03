@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-eks",
+  "sources": [
+    "amazon-eks-addons-api-openapi.yml",
+    "amazon-eks-clusters-api-openapi.yml",
+    "amazon-eks-fargate-profiles-api-openapi.yml",
+    "amazon-eks-node-groups-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-eks-addons-api-openapi.yml",
+    "amazon-eks-clusters-api-openapi.yml",
+    "amazon-eks-fargate-profiles-api-openapi.yml",
+    "amazon-eks-node-groups-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
