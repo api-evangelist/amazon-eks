@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EKS Addons Clusters API",
+    "version": "2017-11-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List EKS Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the Amazon EKS clusters in your AWS account in the specified Region."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create a New EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon EKS control plane. The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as etcd and the API server."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe an EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns descriptive information about an Amazon EKS cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete an EKS Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the Amazon EKS cluster control plane. You must delete all node groups and Fargate profiles before deleting a cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EKS Addons API",
+    "version": "2017-11-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Addons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List EKS Add-ons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the available add-ons for an Amazon EKS cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the provisioning and lifecycle management of common operational software for Amazon EKS clusters."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons/:addonName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "addonName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Describes an Amazon EKS add-on."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete an EKS Add-on",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name/addons/:addonName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "addonName",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an Amazon EKS add-on."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

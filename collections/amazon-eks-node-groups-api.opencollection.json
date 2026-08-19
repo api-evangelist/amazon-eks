@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EKS Addons Node Groups API",
+    "version": "2017-11-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Node Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EKS List Managed Node Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "maxResults",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "example-string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the managed node groups associated with the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Create a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Describe a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups/:nodegroupName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "nodegroupName",
+                "value": "example-cluster-01",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns descriptive information about a managed node group."
+        },
+        {
+          "info": {
+            "name": "Amazon EKS Delete a Managed Node Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://eks.amazonaws.com/clusters/:name/node-groups/:nodegroupName",
+            "params": [
+              {
+                "name": "name",
+                "value": "example-resource-name",
+                "type": "path"
+              },
+              {
+                "name": "nodegroupName",
+                "value": "example-cluster-01",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an Amazon EKS managed node group for a cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
