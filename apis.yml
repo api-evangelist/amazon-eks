@@ -158,6 +158,8 @@ apis:
   name: Amazon EKS Clusters API
   description: Operations for managing EKS clusters
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
