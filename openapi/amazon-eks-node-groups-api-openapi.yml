@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon EKS Addons Node Groups API
   description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
@@ -224,6 +224,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DescribeNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    ListNodegroupsResponse:
+      type: object
+      properties:
+        nodegroups:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
+    NodegroupScalingConfig:
+      type: object
+      properties:
+        minSize:
+          type: integer
+          description: The minimum number of nodes.
+          example: 1
+        maxSize:
+          type: integer
+          description: The maximum number of nodes.
+          example: 1
+        desiredSize:
+          type: integer
+          description: The current number of nodes.
+          example: 1
     CreateNodegroupRequest:
       type: object
       required:
@@ -270,48 +302,6 @@ components:
           additionalProperties:
             type: string
           example: {}
-    DeleteNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
-    CreateNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
-    NodegroupScalingConfig:
-      type: object
-      properties:
-        minSize:
-          type: integer
-          description: The minimum number of nodes.
-          example: 1
-        maxSize:
-          type: integer
-          description: The maximum number of nodes.
-          example: 1
-        desiredSize:
-          type: integer
-          description: The current number of nodes.
-          example: 1
-    ListNodegroupsResponse:
-      type: object
-      properties:
-        nodegroups:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        nextToken:
-          type: string
-          example: example-string
-    DescribeNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
     Nodegroup:
       type: object
       properties:
@@ -406,3 +396,13 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
+    CreateNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    DeleteNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
