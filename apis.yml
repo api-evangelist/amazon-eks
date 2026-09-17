@@ -158,14 +158,6 @@ maintainer:
   name: Kin Lane
 modified: '2026-05-19'
 apis:
-- aid: amazon-eks:amazon-eks-addons-api
-  name: Amazon EKS Addons API
-  description: Operations for managing EKS add-ons
-  tags:
-  - Addons
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-eks-addons-api-openapi.yml
 - aid: amazon-eks:amazon-eks-clusters-api
   name: Amazon EKS Clusters API
   description: Operations for managing EKS clusters
@@ -192,6 +184,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-eks-node-groups-api-openapi.yml
+- aid: amazon-eks:amazon-eks-add-ons-api
+  name: Amazon EKS Add Ons API
+  description: Operations for managing EKS add-ons
+  tags:
+  - Add Ons
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-eks-add-ons-api-openapi.yml
 integrations:
 - name: Sign in
 - name: Agent Mode
