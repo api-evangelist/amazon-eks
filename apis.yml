@@ -188,6 +188,8 @@ apis:
   name: Amazon EKS Add Ons API
   description: Operations for managing EKS add-ons
   tags:
+  - Addons
+  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
