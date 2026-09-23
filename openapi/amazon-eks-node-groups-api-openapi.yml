@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EKS Addons Node Groups API
+  title: Amazon EKS Node Groups API
   description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
   version: '2017-11-01'
   contact:
@@ -224,23 +224,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeNodegroupResponse:
+    DeleteNodegroupResponse:
       type: object
       properties:
         nodegroup:
           $ref: '#/components/schemas/Nodegroup'
-    ListNodegroupsResponse:
-      type: object
-      properties:
-        nodegroups:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        nextToken:
-          type: string
-          example: example-string
     NodegroupScalingConfig:
       type: object
       properties:
@@ -256,52 +244,11 @@ components:
           type: integer
           description: The current number of nodes.
           example: 1
-    CreateNodegroupRequest:
+    CreateNodegroupResponse:
       type: object
-      required:
-      - nodegroupName
-      - nodeRole
-      - subnets
       properties:
-        nodegroupName:
-          type: string
-          example: example-cluster-01
-        nodeRole:
-          type: string
-          example: example-string
-        subnets:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        scalingConfig:
-          $ref: '#/components/schemas/NodegroupScalingConfig'
-        instanceTypes:
-          type: array
-          items:
-            type: string
-          example:
-          - i-0abc123def456789
-        amiType:
-          type: string
-          example: ami-0abc123def456789
-        capacityType:
-          type: string
-          enum:
-          - ON_DEMAND
-          - SPOT
-          example: ON_DEMAND
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
     Nodegroup:
       type: object
       properties:
@@ -396,12 +343,65 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
-    CreateNodegroupResponse:
+    CreateNodegroupRequest:
+      type: object
+      required:
+      - nodegroupName
+      - nodeRole
+      - subnets
+      properties:
+        nodegroupName:
+          type: string
+          example: example-cluster-01
+        nodeRole:
+          type: string
+          example: example-string
+        subnets:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        scalingConfig:
+          $ref: '#/components/schemas/NodegroupScalingConfig'
+        instanceTypes:
+          type: array
+          items:
+            type: string
+          example:
+          - i-0abc123def456789
+        amiType:
+          type: string
+          example: ami-0abc123def456789
+        capacityType:
+          type: string
+          enum:
+          - ON_DEMAND
+          - SPOT
+          example: ON_DEMAND
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    ListNodegroupsResponse:
       type: object
       properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
-    DeleteNodegroupResponse:
+        nodegroups:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
+    DescribeNodegroupResponse:
       type: object
       properties:
         nodegroup:

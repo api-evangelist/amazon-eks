@@ -13,7 +13,7 @@ servers:
 - url: https://eks.amazonaws.com
   description: Amazon EKS API
 tags:
-- name: Addons
+- name: Add Ons
   description: Operations for managing EKS add-ons
 paths:
   /clusters/{name}/addons:
@@ -22,7 +22,7 @@ paths:
       summary: Amazon EKS Create an EKS Add-on
       description: Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the provisioning and lifecycle management of common operational software for Amazon EKS clusters.
       tags:
-      - Addons
+      - Add Ons
       parameters:
       - name: name
         in: path
@@ -79,7 +79,7 @@ paths:
       summary: Amazon EKS List EKS Add-ons
       description: Lists the available add-ons for an Amazon EKS cluster.
       tags:
-      - Addons
+      - Add Ons
       parameters:
       - name: name
         in: path
@@ -133,7 +133,7 @@ paths:
       summary: Amazon EKS Describe an EKS Add-on
       description: Describes an Amazon EKS add-on.
       tags:
-      - Addons
+      - Add Ons
       parameters:
       - name: name
         in: path
@@ -178,7 +178,7 @@ paths:
       summary: Amazon EKS Delete an EKS Add-on
       description: Deletes an Amazon EKS add-on.
       tags:
-      - Addons
+      - Add Ons
       parameters:
       - name: name
         in: path
@@ -222,58 +222,11 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeleteAddonResponse:
-      type: object
-      properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    DescribeAddonResponse:
-      type: object
-      properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    CreateAddonRequest:
-      type: object
-      required:
-      - addonName
-      properties:
-        addonName:
-          type: string
-          example: example-resource-name
-        addonVersion:
-          type: string
-          example: 5.0.0
-        serviceAccountRoleArn:
-          type: string
-          example: arn:aws:service:us-east-1:123456789012:resource/example
-        resolveConflicts:
-          type: string
-          enum:
-          - OVERWRITE
-          - NONE
-          example: OVERWRITE
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
     CreateAddonResponse:
       type: object
       properties:
         addon:
           $ref: '#/components/schemas/Addon'
-    ListAddonsResponse:
-      type: object
-      properties:
-        addons:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        nextToken:
-          type: string
-          example: example-string
     Addon:
       type: object
       properties:
@@ -325,3 +278,50 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
+    CreateAddonRequest:
+      type: object
+      required:
+      - addonName
+      properties:
+        addonName:
+          type: string
+          example: example-resource-name
+        addonVersion:
+          type: string
+          example: 5.0.0
+        serviceAccountRoleArn:
+          type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resolveConflicts:
+          type: string
+          enum:
+          - OVERWRITE
+          - NONE
+          example: OVERWRITE
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    DescribeAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
+    DeleteAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
+    ListAddonsResponse:
+      type: object
+      properties:
+        addons:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        nextToken:
+          type: string
+          example: example-string

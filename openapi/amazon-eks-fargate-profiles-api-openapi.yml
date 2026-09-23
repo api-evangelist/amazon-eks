@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EKS Addons Fargate Profiles API
+  title: Amazon EKS Fargate Profiles API
   description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
   version: '2017-11-01'
   contact:
@@ -224,6 +224,29 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
+    FargateProfileSelector:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: The Kubernetes namespace that the selector should match.
+          example: example-resource-name
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: The Kubernetes labels that the selector should match.
+          example: {}
+    DescribeFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
     CreateFargateProfileRequest:
       type: object
       required:
@@ -254,6 +277,18 @@ components:
           additionalProperties:
             type: string
           example: {}
+    ListFargateProfilesResponse:
+      type: object
+      properties:
+        fargateProfileNames:
+          type: array
+          items:
+            type: string
+          example:
+          - example-resource-name
+        nextToken:
+          type: string
+          example: example-string
     FargateProfile:
       type: object
       properties:
@@ -313,38 +348,3 @@ components:
       properties:
         fargateProfile:
           $ref: '#/components/schemas/FargateProfile'
-    ListFargateProfilesResponse:
-      type: object
-      properties:
-        fargateProfileNames:
-          type: array
-          items:
-            type: string
-          example:
-          - example-resource-name
-        nextToken:
-          type: string
-          example: example-string
-    CreateFargateProfileResponse:
-      type: object
-      properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
-    DescribeFargateProfileResponse:
-      type: object
-      properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
-    FargateProfileSelector:
-      type: object
-      properties:
-        namespace:
-          type: string
-          description: The Kubernetes namespace that the selector should match.
-          example: example-resource-name
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-          description: The Kubernetes labels that the selector should match.
-          example: {}

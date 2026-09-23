@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EKS Addons Clusters API
+  title: Amazon EKS Clusters API
   description: Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
   version: '2017-11-01'
   contact:
@@ -200,6 +200,59 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    KubernetesNetworkConfigResponse:
+      type: object
+      properties:
+        serviceIpv4Cidr:
+          type: string
+          example: example-id-1234
+        serviceIpv6Cidr:
+          type: string
+          example: example-id-1234
+        ipFamily:
+          type: string
+          enum:
+          - ipv4
+          - ipv6
+          example: ipv4
+    VpcConfigResponse:
+      type: object
+      properties:
+        subnetIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234
+        securityGroupIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        clusterSecurityGroupId:
+          type: string
+          example: example-cluster-01
+        vpcId:
+          type: string
+          example: example-id-1234
+        endpointPublicAccess:
+          type: boolean
+          example: true
+        endpointPrivateAccess:
+          type: boolean
+          example: true
+        publicAccessCidrs:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
     CreateClusterRequest:
       type: object
       required:
@@ -260,6 +313,30 @@ components:
           additionalProperties:
             type: string
           example: {}
+    Logging:
+      type: object
+      properties:
+        clusterLogging:
+          type: array
+          items:
+            type: object
+            properties:
+              types:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - api
+                  - audit
+                  - authenticator
+                  - controllerManager
+                  - scheduler
+              enabled:
+                type: boolean
+          example:
+          - types:
+            - example
+            enabled: true
     ListClustersResponse:
       type: object
       properties:
@@ -272,59 +349,16 @@ components:
         nextToken:
           type: string
           example: example-string
-    VpcConfigResponse:
-      type: object
-      properties:
-        subnetIds:
-          type: array
-          items:
-            type: string
-          example:
-          - example-id-1234
-        securityGroupIds:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        clusterSecurityGroupId:
-          type: string
-          example: example-cluster-01
-        vpcId:
-          type: string
-          example: example-id-1234
-        endpointPublicAccess:
-          type: boolean
-          example: true
-        endpointPrivateAccess:
-          type: boolean
-          example: true
-        publicAccessCidrs:
-          type: array
-          items:
-            type: string
-          example:
-          - example-id-1234
-    CreateClusterResponse:
+    DeleteClusterResponse:
       type: object
       properties:
         cluster:
           $ref: '#/components/schemas/Cluster'
-    KubernetesNetworkConfigResponse:
+    DescribeClusterResponse:
       type: object
       properties:
-        serviceIpv4Cidr:
-          type: string
-          example: example-id-1234
-        serviceIpv6Cidr:
-          type: string
-          example: example-id-1234
-        ipFamily:
-          type: string
-          enum:
-          - ipv4
-          - ipv6
-          example: ipv4
+        cluster:
+          $ref: '#/components/schemas/Cluster'
     Cluster:
       type: object
       properties:
@@ -388,37 +422,3 @@ components:
             type: string
           description: Metadata that assists with categorization and organization.
           example: {}
-    Logging:
-      type: object
-      properties:
-        clusterLogging:
-          type: array
-          items:
-            type: object
-            properties:
-              types:
-                type: array
-                items:
-                  type: string
-                  enum:
-                  - api
-                  - audit
-                  - authenticator
-                  - controllerManager
-                  - scheduler
-              enabled:
-                type: boolean
-          example:
-          - types:
-            - example
-            enabled: true
-    DeleteClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
-    DescribeClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
