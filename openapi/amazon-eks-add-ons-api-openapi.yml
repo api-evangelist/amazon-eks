@@ -222,7 +222,7 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateAddonResponse:
+    DeleteAddonResponse:
       type: object
       properties:
         addon:
@@ -278,6 +278,28 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
+    CreateAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
+    DescribeAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
+    ListAddonsResponse:
+      type: object
+      properties:
+        addons:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        nextToken:
+          type: string
+          example: example-string
     CreateAddonRequest:
       type: object
       required:
@@ -303,25 +325,3 @@ components:
           additionalProperties:
             type: string
           example: {}
-    DescribeAddonResponse:
-      type: object
-      properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    DeleteAddonResponse:
-      type: object
-      properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    ListAddonsResponse:
-      type: object
-      properties:
-        addons:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        nextToken:
-          type: string
-          example: example-string

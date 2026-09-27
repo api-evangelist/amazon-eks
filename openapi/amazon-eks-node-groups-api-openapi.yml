@@ -224,11 +224,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeleteNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
     NodegroupScalingConfig:
       type: object
       properties:
@@ -244,6 +239,74 @@ components:
           type: integer
           description: The current number of nodes.
           example: 1
+    DeleteNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    DescribeNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    ListNodegroupsResponse:
+      type: object
+      properties:
+        nodegroups:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
+    CreateNodegroupRequest:
+      type: object
+      required:
+      - nodegroupName
+      - nodeRole
+      - subnets
+      properties:
+        nodegroupName:
+          type: string
+          example: example-cluster-01
+        nodeRole:
+          type: string
+          example: example-string
+        subnets:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        scalingConfig:
+          $ref: '#/components/schemas/NodegroupScalingConfig'
+        instanceTypes:
+          type: array
+          items:
+            type: string
+          example:
+          - i-0abc123def456789
+        amiType:
+          type: string
+          example: ami-0abc123def456789
+        capacityType:
+          type: string
+          enum:
+          - ON_DEMAND
+          - SPOT
+          example: ON_DEMAND
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
     CreateNodegroupResponse:
       type: object
       properties:
@@ -343,66 +406,3 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
-    CreateNodegroupRequest:
-      type: object
-      required:
-      - nodegroupName
-      - nodeRole
-      - subnets
-      properties:
-        nodegroupName:
-          type: string
-          example: example-cluster-01
-        nodeRole:
-          type: string
-          example: example-string
-        subnets:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        scalingConfig:
-          $ref: '#/components/schemas/NodegroupScalingConfig'
-        instanceTypes:
-          type: array
-          items:
-            type: string
-          example:
-          - i-0abc123def456789
-        amiType:
-          type: string
-          example: ami-0abc123def456789
-        capacityType:
-          type: string
-          enum:
-          - ON_DEMAND
-          - SPOT
-          example: ON_DEMAND
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
-    ListNodegroupsResponse:
-      type: object
-      properties:
-        nodegroups:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        nextToken:
-          type: string
-          example: example-string
-    DescribeNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'

@@ -188,8 +188,6 @@ apis:
   name: Amazon EKS Add Ons API
   description: Operations for managing EKS add-ons
   tags:
-  - Addons
-  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
@@ -204,5 +202,5 @@ integrations:
 - name: Become a Channel Partner
 - name: Sell in AWS Marketplace
 - name: Manage Your Account
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

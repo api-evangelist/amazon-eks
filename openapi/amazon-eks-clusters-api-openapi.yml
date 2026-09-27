@@ -200,119 +200,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    KubernetesNetworkConfigResponse:
-      type: object
-      properties:
-        serviceIpv4Cidr:
-          type: string
-          example: example-id-1234
-        serviceIpv6Cidr:
-          type: string
-          example: example-id-1234
-        ipFamily:
-          type: string
-          enum:
-          - ipv4
-          - ipv6
-          example: ipv4
-    VpcConfigResponse:
-      type: object
-      properties:
-        subnetIds:
-          type: array
-          items:
-            type: string
-          example:
-          - example-id-1234
-        securityGroupIds:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        clusterSecurityGroupId:
-          type: string
-          example: example-cluster-01
-        vpcId:
-          type: string
-          example: example-id-1234
-        endpointPublicAccess:
-          type: boolean
-          example: true
-        endpointPrivateAccess:
-          type: boolean
-          example: true
-        publicAccessCidrs:
-          type: array
-          items:
-            type: string
-          example:
-          - example-id-1234
-    CreateClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
-    CreateClusterRequest:
-      type: object
-      required:
-      - name
-      - roleArn
-      - resourcesVpcConfig
-      properties:
-        name:
-          type: string
-          description: The unique name to give to your cluster.
-          example: example-resource-name
-        version:
-          type: string
-          description: The desired Kubernetes version for your cluster.
-          example: 5.0.0
-        roleArn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the IAM role.
-          example: arn:aws:service:us-east-1:123456789012:resource/example
-        resourcesVpcConfig:
-          type: object
-          properties:
-            subnetIds:
-              type: array
-              items:
-                type: string
-            securityGroupIds:
-              type: array
-              items:
-                type: string
-            endpointPublicAccess:
-              type: boolean
-            endpointPrivateAccess:
-              type: boolean
-          example:
-            subnetIds:
-            - example-id-1234
-            securityGroupIds:
-            - example-cluster-01
-            endpointPublicAccess: true
-        kubernetesNetworkConfig:
-          type: object
-          properties:
-            serviceIpv4Cidr:
-              type: string
-            ipFamily:
-              type: string
-              enum:
-              - ipv4
-              - ipv6
-          example:
-            serviceIpv4Cidr: example-id-1234
-            ipFamily: ipv4
-        logging:
-          $ref: '#/components/schemas/Logging'
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
     Logging:
       type: object
       properties:
@@ -337,28 +224,6 @@ components:
           - types:
             - example
             enabled: true
-    ListClustersResponse:
-      type: object
-      properties:
-        clusters:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        nextToken:
-          type: string
-          example: example-string
-    DeleteClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
-    DescribeClusterResponse:
-      type: object
-      properties:
-        cluster:
-          $ref: '#/components/schemas/Cluster'
     Cluster:
       type: object
       properties:
@@ -422,3 +287,138 @@ components:
             type: string
           description: Metadata that assists with categorization and organization.
           example: {}
+    CreateClusterRequest:
+      type: object
+      required:
+      - name
+      - roleArn
+      - resourcesVpcConfig
+      properties:
+        name:
+          type: string
+          description: The unique name to give to your cluster.
+          example: example-resource-name
+        version:
+          type: string
+          description: The desired Kubernetes version for your cluster.
+          example: 5.0.0
+        roleArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the IAM role.
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resourcesVpcConfig:
+          type: object
+          properties:
+            subnetIds:
+              type: array
+              items:
+                type: string
+            securityGroupIds:
+              type: array
+              items:
+                type: string
+            endpointPublicAccess:
+              type: boolean
+            endpointPrivateAccess:
+              type: boolean
+          example:
+            subnetIds:
+            - example-id-1234
+            securityGroupIds:
+            - example-cluster-01
+            endpointPublicAccess: true
+        kubernetesNetworkConfig:
+          type: object
+          properties:
+            serviceIpv4Cidr:
+              type: string
+            ipFamily:
+              type: string
+              enum:
+              - ipv4
+              - ipv6
+          example:
+            serviceIpv4Cidr: example-id-1234
+            ipFamily: ipv4
+        logging:
+          $ref: '#/components/schemas/Logging'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    DeleteClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    VpcConfigResponse:
+      type: object
+      properties:
+        subnetIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234
+        securityGroupIds:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        clusterSecurityGroupId:
+          type: string
+          example: example-cluster-01
+        vpcId:
+          type: string
+          example: example-id-1234
+        endpointPublicAccess:
+          type: boolean
+          example: true
+        endpointPrivateAccess:
+          type: boolean
+          example: true
+        publicAccessCidrs:
+          type: array
+          items:
+            type: string
+          example:
+          - example-id-1234
+    CreateClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    KubernetesNetworkConfigResponse:
+      type: object
+      properties:
+        serviceIpv4Cidr:
+          type: string
+          example: example-id-1234
+        serviceIpv6Cidr:
+          type: string
+          example: example-id-1234
+        ipFamily:
+          type: string
+          enum:
+          - ipv4
+          - ipv6
+          example: ipv4
+    DescribeClusterResponse:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/Cluster'
+    ListClustersResponse:
+      type: object
+      properties:
+        clusters:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
