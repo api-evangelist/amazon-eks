@@ -224,6 +224,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ListFargateProfilesResponse:
+      type: object
+      properties:
+        fargateProfileNames:
+          type: array
+          items:
+            type: string
+          example:
+          - example-resource-name
+        nextToken:
+          type: string
+          example: example-string
+    DescribeFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
     FargateProfile:
       type: object
       properties:
@@ -278,11 +295,19 @@ components:
           format: date-time
           description: The Unix epoch timestamp at object creation.
           example: '2025-03-15T14:30:00Z'
-    CreateFargateProfileResponse:
+    FargateProfileSelector:
       type: object
       properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
+        namespace:
+          type: string
+          description: The Kubernetes namespace that the selector should match.
+          example: example-resource-name
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: The Kubernetes labels that the selector should match.
+          example: {}
     CreateFargateProfileRequest:
       type: object
       required:
@@ -318,33 +343,8 @@ components:
       properties:
         fargateProfile:
           $ref: '#/components/schemas/FargateProfile'
-    FargateProfileSelector:
-      type: object
-      properties:
-        namespace:
-          type: string
-          description: The Kubernetes namespace that the selector should match.
-          example: example-resource-name
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-          description: The Kubernetes labels that the selector should match.
-          example: {}
-    DescribeFargateProfileResponse:
+    CreateFargateProfileResponse:
       type: object
       properties:
         fargateProfile:
           $ref: '#/components/schemas/FargateProfile'
-    ListFargateProfilesResponse:
-      type: object
-      properties:
-        fargateProfileNames:
-          type: array
-          items:
-            type: string
-          example:
-          - example-resource-name
-        nextToken:
-          type: string
-          example: example-string

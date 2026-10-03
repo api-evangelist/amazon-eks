@@ -239,12 +239,17 @@ components:
           type: integer
           description: The current number of nodes.
           example: 1
-    DeleteNodegroupResponse:
+    DescribeNodegroupResponse:
       type: object
       properties:
         nodegroup:
           $ref: '#/components/schemas/Nodegroup'
-    DescribeNodegroupResponse:
+    CreateNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    DeleteNodegroupResponse:
       type: object
       properties:
         nodegroup:
@@ -307,11 +312,6 @@ components:
           additionalProperties:
             type: string
           example: {}
-    CreateNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
     Nodegroup:
       type: object
       properties:

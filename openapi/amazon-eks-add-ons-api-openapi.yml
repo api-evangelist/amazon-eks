@@ -222,7 +222,49 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateAddonRequest:
+      type: object
+      required:
+      - addonName
+      properties:
+        addonName:
+          type: string
+          example: example-resource-name
+        addonVersion:
+          type: string
+          example: 5.0.0
+        serviceAccountRoleArn:
+          type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resolveConflicts:
+          type: string
+          enum:
+          - OVERWRITE
+          - NONE
+          example: OVERWRITE
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    ListAddonsResponse:
+      type: object
+      properties:
+        addons:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        nextToken:
+          type: string
+          example: example-string
     DeleteAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
+    DescribeAddonResponse:
       type: object
       properties:
         addon:
@@ -283,45 +325,3 @@ components:
       properties:
         addon:
           $ref: '#/components/schemas/Addon'
-    DescribeAddonResponse:
-      type: object
-      properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    ListAddonsResponse:
-      type: object
-      properties:
-        addons:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        nextToken:
-          type: string
-          example: example-string
-    CreateAddonRequest:
-      type: object
-      required:
-      - addonName
-      properties:
-        addonName:
-          type: string
-          example: example-resource-name
-        addonVersion:
-          type: string
-          example: 5.0.0
-        serviceAccountRoleArn:
-          type: string
-          example: arn:aws:service:us-east-1:123456789012:resource/example
-        resolveConflicts:
-          type: string
-          enum:
-          - OVERWRITE
-          - NONE
-          example: OVERWRITE
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
