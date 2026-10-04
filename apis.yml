@@ -64,6 +64,9 @@ properties:
 - type: Security
   url: https://docs.aws.amazon.com/eks/latest/userguide/security.html
 common:
+- type: CapabilityMap
+  url: capabilities/amazon-eks-capability-edges.yml
+  name: Amazon EKS Business Capability Map
 - type: AgenticAccess
   url: agentic-access/amazon-eks-agentic-access.yml
 - type: TrustCenter
@@ -188,6 +191,8 @@ apis:
   name: Amazon EKS Add Ons API
   description: Operations for managing EKS add-ons
   tags:
+  - Addons
+  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
