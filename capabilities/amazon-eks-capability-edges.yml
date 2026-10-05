@@ -1,0 +1,52 @@
+slug: amazon-eks
+provider: Amazon EKS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Clusters
+  spec_file: amazon-eks-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Amazon EKS Create a New EKS Cluster", schemas VpcConfigResponse, KubernetesNetworkConfigResponse,
+    Cluster'
+  reason: Provisioning and describing managed Kubernetes clusters with VPC/network configuration is cloud
+    compute infrastructure management.
+- tag: Node Groups
+  spec_file: amazon-eks-node-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"Amazon EKS Create a Managed Node Group", schemas Nodegroup, NodegroupScalingConfig'
+  reason: Managed node groups are the compute instances backing a Kubernetes cluster, including scaling
+    configuration — IT infrastructure (compute) management.
+- tag: Fargate Profiles
+  spec_file: amazon-eks-fargate-profiles-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: '"Amazon EKS Create a Fargate Profile", schemas FargateProfile, FargateProfileSelector'
+  reason: Fargate profiles define serverless compute placement for Kubernetes pods — compute infrastructure
+    configuration.
+- tag: Add Ons
+  spec_file: amazon-eks-add-ons-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: '"Amazon EKS Create an EKS Add-on", path /clusters/{name}/addons, schema Addon'
+  reason: Add-ons install operational software components into managed Kubernetes clusters; this is platform/infrastructure
+    component management rather than any business-domain capability.
