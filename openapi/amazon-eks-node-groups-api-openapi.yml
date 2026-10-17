@@ -224,6 +224,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ListNodegroupsResponse:
+      type: object
+      properties:
+        nodegroups:
+          type: array
+          items:
+            type: string
+          example:
+          - example-cluster-01
+        nextToken:
+          type: string
+          example: example-string
     Nodegroup:
       type: object
       properties:
@@ -318,48 +330,11 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
-    NodegroupScalingConfig:
-      type: object
-      properties:
-        minSize:
-          type: integer
-          description: The minimum number of nodes.
-          example: 1
-        maxSize:
-          type: integer
-          description: The maximum number of nodes.
-          example: 1
-        desiredSize:
-          type: integer
-          description: The current number of nodes.
-          example: 1
-    DescribeNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
-    CreateNodegroupResponse:
-      type: object
-      properties:
-        nodegroup:
-          $ref: '#/components/schemas/Nodegroup'
     DeleteNodegroupResponse:
       type: object
       properties:
         nodegroup:
           $ref: '#/components/schemas/Nodegroup'
-    ListNodegroupsResponse:
-      type: object
-      properties:
-        nodegroups:
-          type: array
-          items:
-            type: string
-          example:
-          - example-cluster-01
-        nextToken:
-          type: string
-          example: example-string
     CreateNodegroupRequest:
       type: object
       required:
@@ -406,3 +381,28 @@ components:
           additionalProperties:
             type: string
           example: {}
+    CreateNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    DescribeNodegroupResponse:
+      type: object
+      properties:
+        nodegroup:
+          $ref: '#/components/schemas/Nodegroup'
+    NodegroupScalingConfig:
+      type: object
+      properties:
+        minSize:
+          type: integer
+          description: The minimum number of nodes.
+          example: 1
+        maxSize:
+          type: integer
+          description: The maximum number of nodes.
+          example: 1
+        desiredSize:
+          type: integer
+          description: The current number of nodes.
+          example: 1

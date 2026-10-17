@@ -224,64 +224,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeleteFargateProfileResponse:
-      type: object
-      properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
-    DescribeFargateProfileResponse:
-      type: object
-      properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
-    CreateFargateProfileResponse:
-      type: object
-      properties:
-        fargateProfile:
-          $ref: '#/components/schemas/FargateProfile'
-    FargateProfileSelector:
-      type: object
-      properties:
-        namespace:
-          type: string
-          description: The Kubernetes namespace that the selector should match.
-          example: example-resource-name
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-          description: The Kubernetes labels that the selector should match.
-          example: {}
-    CreateFargateProfileRequest:
-      type: object
-      required:
-      - fargateProfileName
-      - podExecutionRoleArn
-      - selectors
-      properties:
-        fargateProfileName:
-          type: string
-          example: example-resource-name
-        podExecutionRoleArn:
-          type: string
-          example: arn:aws:service:us-east-1:123456789012:resource/example
-        subnets:
-          type: array
-          items:
-            type: string
-          example:
-          - example-string
-        selectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/FargateProfileSelector'
-          example:
-          - example-string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
     FargateProfile:
       type: object
       properties:
@@ -336,6 +278,64 @@ components:
           format: date-time
           description: The Unix epoch timestamp at object creation.
           example: '2025-03-15T14:30:00Z'
+    FargateProfileSelector:
+      type: object
+      properties:
+        namespace:
+          type: string
+          description: The Kubernetes namespace that the selector should match.
+          example: example-resource-name
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: The Kubernetes labels that the selector should match.
+          example: {}
+    CreateFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
+    CreateFargateProfileRequest:
+      type: object
+      required:
+      - fargateProfileName
+      - podExecutionRoleArn
+      - selectors
+      properties:
+        fargateProfileName:
+          type: string
+          example: example-resource-name
+        podExecutionRoleArn:
+          type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        subnets:
+          type: array
+          items:
+            type: string
+          example:
+          - example-string
+        selectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FargateProfileSelector'
+          example:
+          - example-string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    DescribeFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
+    DeleteFargateProfileResponse:
+      type: object
+      properties:
+        fargateProfile:
+          $ref: '#/components/schemas/FargateProfile'
     ListFargateProfilesResponse:
       type: object
       properties:

@@ -222,12 +222,32 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeAddonResponse:
+    CreateAddonRequest:
       type: object
+      required:
+      - addonName
       properties:
-        addon:
-          $ref: '#/components/schemas/Addon'
-    CreateAddonResponse:
+        addonName:
+          type: string
+          example: example-resource-name
+        addonVersion:
+          type: string
+          example: 5.0.0
+        serviceAccountRoleArn:
+          type: string
+          example: arn:aws:service:us-east-1:123456789012:resource/example
+        resolveConflicts:
+          type: string
+          enum:
+          - OVERWRITE
+          - NONE
+          example: OVERWRITE
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example: {}
+    DescribeAddonResponse:
       type: object
       properties:
         addon:
@@ -283,6 +303,11 @@ components:
           format: date-time
           description: The Unix epoch timestamp for the last modification.
           example: '2025-03-15T14:30:00Z'
+    CreateAddonResponse:
+      type: object
+      properties:
+        addon:
+          $ref: '#/components/schemas/Addon'
     ListAddonsResponse:
       type: object
       properties:
@@ -300,28 +325,3 @@ components:
       properties:
         addon:
           $ref: '#/components/schemas/Addon'
-    CreateAddonRequest:
-      type: object
-      required:
-      - addonName
-      properties:
-        addonName:
-          type: string
-          example: example-resource-name
-        addonVersion:
-          type: string
-          example: 5.0.0
-        serviceAccountRoleArn:
-          type: string
-          example: arn:aws:service:us-east-1:123456789012:resource/example
-        resolveConflicts:
-          type: string
-          enum:
-          - OVERWRITE
-          - NONE
-          example: OVERWRITE
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example: {}
