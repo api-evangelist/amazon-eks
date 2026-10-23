@@ -64,6 +64,8 @@ properties:
 - type: Security
   url: https://docs.aws.amazon.com/eks/latest/userguide/security.html
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-eks/overview
 - type: Plans
   url: plans/amazon-eks-plans-pricing.yml
 - type: RateLimits
