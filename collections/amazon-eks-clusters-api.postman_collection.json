@@ -1,32 +1,564 @@
 {
+  "info": {
+    "_postman_id": "45b5bcf9-7019-48fb-8c11-7f1c2342bfea",
+    "name": "Amazon EKS Clusters API",
+    "description": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:01.000Z",
+    "updatedAt": "2026-10-21T20:29:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-45b5bcf9-7019-48fb-8c11-7f1c2342bfea"
+  },
   "item": [
     {
-      "id": "7db5b0a9-ef5e-4f62-b633-44060f2232bc",
-      "name": "Clusters",
-      "description": {
-        "content": "Operations for managing EKS clusters",
-        "type": "text/plain"
-      },
+      "name": "clusters",
       "item": [
         {
-          "id": "d38b3e63-c20d-48be-b49c-625b8c588f4e",
+          "name": "{name}",
+          "item": [
+            {
+              "name": "Amazon EKS Describe an EKS Cluster",
+              "id": "70201600-1fd9-42c0-85d3-2d2568f3c012",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/clusters/:name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters",
+                    ":name"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2bc18701-3254-41fd-8680-08a021c17b65",
+                      "key": "name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns descriptive information about an Amazon EKS cluster."
+              },
+              "response": [
+                {
+                  "id": "69ed1562-4ed6-4a68-a56a-b7612972f25a",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cluster\": {\n    \"name\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"endpoint\": \"<string>\",\n    \"roleArn\": \"<string>\",\n    \"resourcesVpcConfig\": {\n      \"subnetIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"clusterSecurityGroupId\": \"<string>\",\n      \"vpcId\": \"<string>\",\n      \"endpointPublicAccess\": \"<boolean>\",\n      \"endpointPrivateAccess\": \"<boolean>\",\n      \"publicAccessCidrs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"kubernetesNetworkConfig\": {\n      \"serviceIpv4Cidr\": \"<string>\",\n      \"serviceIpv6Cidr\": \"<string>\",\n      \"ipFamily\": \"ipv6\"\n    },\n    \"logging\": {\n      \"clusterLogging\": [\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"authenticator\"\n          ],\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"scheduler\"\n          ],\n          \"enabled\": \"<boolean>\"\n        }\n      ]\n    },\n    \"status\": \"UPDATING\",\n    \"certificateAuthority\": {\n      \"data\": \"<string>\"\n    },\n    \"platformVersion\": \"<string>\",\n    \"tags\": {\n      \"veniam_e8f\": \"<string>\",\n      \"in314\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-69ed1562-4ed6-4a68-a56a-b7612972f25a"
+                },
+                {
+                  "id": "4c70aec9-9037-4697-9021-e67d23db9901",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-4c70aec9-9037-4697-9021-e67d23db9901"
+                },
+                {
+                  "id": "3bf4d022-ed81-4401-ba25-00eb47453a37",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-3bf4d022-ed81-4401-ba25-00eb47453a37"
+                },
+                {
+                  "id": "28c38bea-baa5-45d9-b2e8-56b1fc4c1b02",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-28c38bea-baa5-45d9-b2e8-56b1fc4c1b02"
+                },
+                {
+                  "id": "8d9daee5-7ff0-4c82-9479-93d9cc5730ae",
+                  "name": "Too many requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-8d9daee5-7ff0-4c82-9479-93d9cc5730ae"
+                },
+                {
+                  "id": "78f5c8b7-ec61-49e7-9cfe-4738478902e5",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-78f5c8b7-ec61-49e7-9cfe-4738478902e5"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-70201600-1fd9-42c0-85d3-2d2568f3c012"
+            },
+            {
+              "name": "Amazon EKS Delete an EKS Cluster",
+              "id": "03dbc36a-4dbe-4980-bafa-e0e17b787d81",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/clusters/:name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters",
+                    ":name"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9f8d81d7-3897-4a43-8b47-08ff57ef74ba",
+                      "key": "name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes the Amazon EKS cluster control plane. You must delete all node groups and Fargate profiles before deleting a cluster."
+              },
+              "response": [
+                {
+                  "id": "41f77f2f-13b6-4c41-b335-fa9ea8e1ff70",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cluster\": {\n    \"name\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"endpoint\": \"<string>\",\n    \"roleArn\": \"<string>\",\n    \"resourcesVpcConfig\": {\n      \"subnetIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"clusterSecurityGroupId\": \"<string>\",\n      \"vpcId\": \"<string>\",\n      \"endpointPublicAccess\": \"<boolean>\",\n      \"endpointPrivateAccess\": \"<boolean>\",\n      \"publicAccessCidrs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"kubernetesNetworkConfig\": {\n      \"serviceIpv4Cidr\": \"<string>\",\n      \"serviceIpv6Cidr\": \"<string>\",\n      \"ipFamily\": \"ipv6\"\n    },\n    \"logging\": {\n      \"clusterLogging\": [\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"authenticator\"\n          ],\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"scheduler\"\n          ],\n          \"enabled\": \"<boolean>\"\n        }\n      ]\n    },\n    \"status\": \"UPDATING\",\n    \"certificateAuthority\": {\n      \"data\": \"<string>\"\n    },\n    \"platformVersion\": \"<string>\",\n    \"tags\": {\n      \"veniam_e8f\": \"<string>\",\n      \"in314\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-41f77f2f-13b6-4c41-b335-fa9ea8e1ff70"
+                },
+                {
+                  "id": "ac3174c3-e3ce-4d5c-aa3b-70225c0a35d7",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-ac3174c3-e3ce-4d5c-aa3b-70225c0a35d7"
+                },
+                {
+                  "id": "6ab17d66-e2d4-41b2-b4b6-97940d06e3e5",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-6ab17d66-e2d4-41b2-b4b6-97940d06e3e5"
+                },
+                {
+                  "id": "9f95c962-0059-4df7-ac50-11dc00a585c9",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-9f95c962-0059-4df7-ac50-11dc00a585c9"
+                },
+                {
+                  "id": "21531724-cb93-4f17-bbca-a99ab2b868cd",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-21531724-cb93-4f17-bbca-a99ab2b868cd"
+                },
+                {
+                  "id": "ec9d1a3a-e978-443d-90b3-e578ae0cb347",
+                  "name": "Too many requests",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-ec9d1a3a-e978-443d-90b3-e578ae0cb347"
+                },
+                {
+                  "id": "c3576f78-eb92-4748-b56e-a5585acedba1",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:02.000Z",
+                  "updatedAt": "2026-10-21T20:29:02.000Z",
+                  "uid": "35240-c3576f78-eb92-4748-b56e-a5585acedba1"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-03dbc36a-4dbe-4980-bafa-e0e17b787d81"
+            }
+          ],
+          "id": "4c1080f3-596a-415b-92f7-9aa4e186a463",
+          "createdAt": "2026-10-21T20:29:02.000Z",
+          "updatedAt": "2026-10-21T20:29:02.000Z",
+          "uid": "35240-4c1080f3-596a-415b-92f7-9aa4e186a463"
+        },
+        {
           "name": "Amazon EKS Create a New EKS Cluster",
+          "id": "8390316c-edd0-41b3-941d-2b54e2caf707",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Amazon EKS Create a New EKS Cluster",
-            "description": {
-              "content": "Creates an Amazon EKS control plane. The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as etcd and the API server.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -37,1108 +569,541 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"<string>\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clusters",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clusters"
+              ]
+            },
+            "description": "Creates an Amazon EKS control plane. The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as etcd and the API server."
           },
           "response": [
             {
-              "id": "6c9102b5-4ca5-4248-b48d-066b7f1fecef",
+              "id": "f2bf6b50-64bb-40ce-b3c0-e84ad0a5820b",
               "name": "Successful response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"cluster\": \"example-cluster-01\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"cluster\": {\n    \"name\": \"<string>\",\n    \"arn\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"endpoint\": \"<string>\",\n    \"roleArn\": \"<string>\",\n    \"resourcesVpcConfig\": {\n      \"subnetIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"securityGroupIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"clusterSecurityGroupId\": \"<string>\",\n      \"vpcId\": \"<string>\",\n      \"endpointPublicAccess\": \"<boolean>\",\n      \"endpointPrivateAccess\": \"<boolean>\",\n      \"publicAccessCidrs\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"kubernetesNetworkConfig\": {\n      \"serviceIpv4Cidr\": \"<string>\",\n      \"serviceIpv6Cidr\": \"<string>\",\n      \"ipFamily\": \"ipv6\"\n    },\n    \"logging\": {\n      \"clusterLogging\": [\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"authenticator\"\n          ],\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"types\": [\n            \"controllerManager\",\n            \"scheduler\"\n          ],\n          \"enabled\": \"<boolean>\"\n        }\n      ]\n    },\n    \"status\": \"UPDATING\",\n    \"certificateAuthority\": {\n      \"data\": \"<string>\"\n    },\n    \"platformVersion\": \"<string>\",\n    \"tags\": {\n      \"veniam_e8f\": \"<string>\",\n      \"in314\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-f2bf6b50-64bb-40ce-b3c0-e84ad0a5820b"
             },
             {
-              "id": "b8a8ab81-e91f-474e-b260-2c023270a877",
+              "id": "a7041061-a828-4c00-8d2f-ab729cd0ff0f",
               "name": "Bad request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-a7041061-a828-4c00-8d2f-ab729cd0ff0f"
             },
             {
-              "id": "73d4950c-dff4-457c-992f-b64f4544e607",
+              "id": "8a3264b5-e626-455c-b2b0-52822c3ddb51",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "Forbidden",
               "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-8a3264b5-e626-455c-b2b0-52822c3ddb51"
             },
             {
-              "id": "2e455aaf-047d-41ca-988e-f04a352beafc",
+              "id": "0efec8db-ba43-4181-b322-c749d527687c",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "Conflict",
               "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-0efec8db-ba43-4181-b322-c749d527687c"
             },
             {
-              "id": "fbf0b82f-b838-405c-9937-208f53d9aeb7",
+              "id": "bd35e2cb-7a17-44c5-935e-2a94bc9504fb",
               "name": "Too many requests",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "Too Many Requests",
               "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-bd35e2cb-7a17-44c5-935e-2a94bc9504fb"
             },
             {
-              "id": "29c15537-81e5-4162-b860-00bf99eaacb1",
+              "id": "cff8c70f-6ed3-4a69-a203-95e2e15e4e3e",
               "name": "Internal server error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"example-resource-name\",\n  \"version\": \"5.0.0\",\n  \"roleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"example-id-1234\"\n    ],\n    \"securityGroupIds\": [\n      \"example-cluster-01\"\n    ],\n    \"endpointPublicAccess\": true\n  },\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"example-id-1234\",\n    \"ipFamily\": \"ipv4\"\n  }\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"roleArn\": \"<string>\",\n  \"resourcesVpcConfig\": {\n    \"subnetIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"securityGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"endpointPublicAccess\": \"<boolean>\",\n    \"endpointPrivateAccess\": \"<boolean>\"\n  },\n  \"version\": \"<string>\",\n  \"kubernetesNetworkConfig\": {\n    \"serviceIpv4Cidr\": \"<string>\",\n    \"ipFamily\": \"ipv6\"\n  },\n  \"logging\": {\n    \"clusterLogging\": [\n      {\n        \"types\": [\n          \"scheduler\",\n          \"scheduler\"\n        ],\n        \"enabled\": \"<boolean>\"\n      },\n      {\n        \"types\": [\n          \"api\",\n          \"audit\"\n        ],\n        \"enabled\": \"<boolean>\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"sunt_8\": \"<string>\",\n    \"enim_13\": \"<string>\",\n    \"ex7\": \"<string>\",\n    \"Duis_ab1\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clusters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ]
                 }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-cff8c70f-6ed3-4a69-a203-95e2e15e4e3e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:02.000Z",
+          "updatedAt": "2026-10-21T20:29:02.000Z",
+          "uid": "35240-8390316c-edd0-41b3-941d-2b54e2caf707"
         },
         {
-          "id": "860bd243-5861-4b67-b0c1-6af61fae22c7",
           "name": "Amazon EKS List EKS Clusters",
+          "id": "11519cb3-b257-4a3b-b387-dbe21ba95868",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Amazon EKS List EKS Clusters",
-            "description": {
-              "content": "Lists the Amazon EKS clusters in your AWS account in the specified Region.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "clusters"
-              ],
+              "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
               "host": [
                 "{{baseUrl}}"
               ],
+              "path": [
+                "clusters"
+              ],
               "query": [
                 {
-                  "disabled": false,
                   "key": "maxResults",
                   "value": "<integer>"
                 },
                 {
-                  "disabled": false,
                   "key": "nextToken",
                   "value": "<string>"
                 }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "057ec267-46ef-4e2c-84c9-a4423b873a26",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
-                    },
-                    {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"clusters\": [\n    \"example-cluster-01\"\n  ],\n  \"nextToken\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9bfdd342-d3d9-4881-a939-e87a68221eb5",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
-                    },
-                    {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e4aca3a8-33e4-42df-8804-0261d9267884",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
-                    },
-                    {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d7213a7d-6b2e-4420-b48c-0dae764aded0",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
-                    },
-                    {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d9acea97-42cc-41a9-a6ea-4e05789b2261",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
-                    },
-                    {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0b6acc7b-c04d-434c-86a9-c3a67d6fa35f",
-          "name": "Amazon EKS Describe an EKS Cluster",
-          "request": {
-            "name": "Amazon EKS Describe an EKS Cluster",
-            "description": {
-              "content": "Returns descriptive information about an Amazon EKS cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Lists the Amazon EKS clusters in your AWS account in the specified Region."
           },
           "response": [
             {
-              "id": "fd9a7df8-fa86-4308-9aba-e1d13f641187",
+              "id": "b53e58a5-452d-4013-8b90-dd0a8098e149",
               "name": "Successful response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"cluster\": \"example-cluster-01\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"clusters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-b53e58a5-452d-4013-8b90-dd0a8098e149"
             },
             {
-              "id": "4bcc399f-ffe5-4fb9-a430-812e61ddd2dd",
+              "id": "2b3c1a48-8d4d-4c9b-80b4-3ac2f051b226",
               "name": "Bad request",
               "originalRequest": {
+                "method": "GET",
+                "header": [],
                 "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
+                  "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
+                  "path": [
+                    "clusters"
+                  ],
+                  "query": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
                     }
                   ]
-                },
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-2b3c1a48-8d4d-4c9b-80b4-3ac2f051b226"
             },
             {
-              "id": "19482644-d348-4b30-a9f3-a9009676297b",
+              "id": "031cf605-e113-4f43-8521-d738c4714dea",
               "name": "Forbidden",
               "originalRequest": {
+                "method": "GET",
+                "header": [],
                 "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
+                  "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
+                  "path": [
+                    "clusters"
+                  ],
+                  "query": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
                     }
                   ]
-                },
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Forbidden",
               "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-031cf605-e113-4f43-8521-d738c4714dea"
             },
             {
-              "id": "a458b507-3797-48fa-8a8b-e3ef0d698db7",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f1d41a00-07a5-48b0-bb99-9f92910b96e0",
+              "id": "3fed0f48-2d12-4e14-bcf4-be017f22b80f",
               "name": "Too many requests",
               "originalRequest": {
+                "method": "GET",
+                "header": [],
                 "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
+                  "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
+                  "path": [
+                    "clusters"
+                  ],
+                  "query": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
                     }
                   ]
-                },
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Too Many Requests",
               "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-3fed0f48-2d12-4e14-bcf4-be017f22b80f"
             },
             {
-              "id": "e1f4d2e1-cda3-4eee-b49f-0269ca3fe3d0",
+              "id": "ca7e71c5-3872-4abd-a0c2-9f4d0c8160ec",
               "name": "Internal server error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
                 "method": "GET",
-                "body": {}
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/clusters?maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clusters"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:02.000Z",
+              "updatedAt": "2026-10-21T20:29:02.000Z",
+              "uid": "35240-ca7e71c5-3872-4abd-a0c2-9f4d0c8160ec"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4c3c3cef-0bf7-4ad7-8059-048394915992",
-          "name": "Amazon EKS Delete an EKS Cluster",
-          "request": {
-            "name": "Amazon EKS Delete an EKS Cluster",
-            "description": {
-              "content": "Deletes the Amazon EKS cluster control plane. You must delete all node groups and Fargate profiles before deleting a cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1d7f17c6-96bc-4d0b-ba09-199148e71153",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"cluster\": \"example-cluster-01\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "36b6b064-eb36-40df-bd83-97f95b59b0a9",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "816071b2-98bd-4c8f-9006-6eecd13f517c",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b083063b-6422-4229-b58a-20810e00a81a",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8fe00455-5808-4e21-9547-6900b138f684",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0c498cb0-390a-4da1-ae37-cc4d6d3745a4",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "644bd8ce-5954-4786-b47d-5494c2dddd09",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:02.000Z",
+          "updatedAt": "2026-10-21T20:29:02.000Z",
+          "uid": "35240-11519cb3-b257-4a3b-b387-dbe21ba95868"
         }
       ],
-      "event": []
+      "id": "e39e892e-5390-4205-b998-62d4d8b05703",
+      "createdAt": "2026-10-21T20:29:02.000Z",
+      "updatedAt": "2026-10-21T20:29:02.000Z",
+      "uid": "35240-e39e892e-5390-4205-b998-62d4d8b05703"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://eks.amazonaws.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://eks.amazonaws.com"
     }
-  ],
-  "info": {
-    "_postman_id": "9481bf00-e5b6-4457-ab51-c3b082f692fd",
-    "name": "Amazon EKS Addons Clusters API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,1504 +1,1398 @@
 {
+  "info": {
+    "_postman_id": "3085c627-bad0-4a8a-b6e6-e8fc13c361ae",
+    "name": "Amazon EKS Fargate Profiles API",
+    "description": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:06.000Z",
+    "updatedAt": "2026-10-21T20:29:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3085c627-bad0-4a8a-b6e6-e8fc13c361ae"
+  },
   "item": [
     {
-      "id": "09dad05f-6598-4060-8b3c-bccaf63410ab",
-      "name": "Fargate Profiles",
-      "description": {
-        "content": "Operations for managing EKS Fargate profiles",
-        "type": "text/plain"
-      },
+      "name": "clusters",
       "item": [
         {
-          "id": "9ff98bac-7075-471b-88e5-b9a8a4d7a517",
-          "name": "Amazon EKS Create a Fargate Profile",
-          "request": {
-            "name": "Amazon EKS Create a Fargate Profile",
-            "description": {
-              "content": "Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "fargate-profiles"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{name}",
+          "item": [
             {
-              "id": "b485a00a-5d03-4bcc-8f6d-62bf2df8e3ad",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "fargate-profiles",
+              "item": [
+                {
+                  "name": "{fargateProfileName}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fargateProfile\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ab7ccc84-3b9e-41a7-843c-8ea695008378",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f5902acb-e9c6-4219-b146-414e84799de8",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d87d8005-7d30-43df-8dc7-ff90d74d4795",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d9b4b1e6-f8e6-4b4a-8cec-75c37eb4e60a",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9380cb66-51c4-4bb5-ba79-75a91c0ff3c1",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c938a9e7-3764-4c70-90b6-dd94ab9c9e60",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fargateProfileName\": \"example-resource-name\",\n  \"podExecutionRoleArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"selectors\": [\n    \"example-string\"\n  ],\n  \"tags\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "614fb905-82bd-48c6-add5-5ea04aa6fc90",
-          "name": "Amazon EKS List Fargate Profiles",
-          "request": {
-            "name": "Amazon EKS List Fargate Profiles",
-            "description": {
-              "content": "Lists the AWS Fargate profiles associated with the specified cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "fargate-profiles"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "maxResults",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "nextToken",
-                  "value": "<string>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a7389697-94b1-46b3-93cd-77d6915a0fa3",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "name": "Amazon EKS Describe a Fargate Profile",
+                      "id": "f20f00af-fe5b-4e1d-812e-a0f72c35063d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles",
+                            ":fargateProfileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c3ee8371-1ddb-443b-822c-9e6b974c047d",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "89841cb0-f63e-4007-9125-0607f15e0077",
+                              "key": "fargateProfileName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns descriptive information about an AWS Fargate profile."
+                      },
+                      "response": [
+                        {
+                          "id": "32a97ff7-1024-415e-844c-570f19cceafb",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"fargateProfile\": {\n    \"fargateProfileName\": \"<string>\",\n    \"fargateProfileArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"podExecutionRoleArn\": \"<string>\",\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"selectors\": [\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"consecteturb9\": \"<string>\",\n          \"sed7\": \"<string>\"\n        }\n      },\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"ea13\": \"<string>\",\n          \"sedc12\": \"<string>\"\n        }\n      }\n    ],\n    \"tags\": {\n      \"anim_9c\": \"<string>\",\n      \"culpa8f7\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-32a97ff7-1024-415e-844c-570f19cceafb"
+                        },
+                        {
+                          "id": "b8129a52-9fb5-4982-9e9c-5f9d0d1ac8b7",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-b8129a52-9fb5-4982-9e9c-5f9d0d1ac8b7"
+                        },
+                        {
+                          "id": "76fcc100-3c10-4e72-8d61-0e65f66892d5",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-76fcc100-3c10-4e72-8d61-0e65f66892d5"
+                        },
+                        {
+                          "id": "d0a22022-3668-46de-bada-6d0980292dd4",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-d0a22022-3668-46de-bada-6d0980292dd4"
+                        },
+                        {
+                          "id": "5f566158-05f1-40ec-934e-b5a51897eab0",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-5f566158-05f1-40ec-934e-b5a51897eab0"
+                        },
+                        {
+                          "id": "50795b82-2dba-43bb-91eb-2396f92f4617",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-50795b82-2dba-43bb-91eb-2396f92f4617"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-f20f00af-fe5b-4e1d-812e-a0f72c35063d"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
+                      "name": "Amazon EKS Delete a Fargate Profile",
+                      "id": "dfc8f0ba-2453-47fe-903b-dc15af06d38a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles",
+                            ":fargateProfileName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9f73db44-bf7f-47d8-b47f-d7be6242aeba",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "5f55df66-b4c5-4c64-a38f-da9202c1148c",
+                              "key": "fargateProfileName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Deletes an AWS Fargate profile."
+                      },
+                      "response": [
+                        {
+                          "id": "bcd4ce37-fc12-4d6a-b771-56869dd3f4c3",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"fargateProfile\": {\n    \"fargateProfileName\": \"<string>\",\n    \"fargateProfileArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"podExecutionRoleArn\": \"<string>\",\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"selectors\": [\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"consecteturb9\": \"<string>\",\n          \"sed7\": \"<string>\"\n        }\n      },\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"ea13\": \"<string>\",\n          \"sedc12\": \"<string>\"\n        }\n      }\n    ],\n    \"tags\": {\n      \"anim_9c\": \"<string>\",\n      \"culpa8f7\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-bcd4ce37-fc12-4d6a-b771-56869dd3f4c3"
+                        },
+                        {
+                          "id": "1af20407-7c81-4819-a23e-696682c8fd40",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-1af20407-7c81-4819-a23e-696682c8fd40"
+                        },
+                        {
+                          "id": "5a236465-8a8b-43c6-9631-ec175a7c7f14",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-5a236465-8a8b-43c6-9631-ec175a7c7f14"
+                        },
+                        {
+                          "id": "737056aa-2465-4761-ade3-8f83ea63bb8e",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-737056aa-2465-4761-ade3-8f83ea63bb8e"
+                        },
+                        {
+                          "id": "fdaa5c3c-1c81-470a-95d1-e7029256ca87",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-fdaa5c3c-1c81-470a-95d1-e7029256ca87"
+                        },
+                        {
+                          "id": "219574a8-ed1f-4f10-81c6-0e64ad24b89d",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-219574a8-ed1f-4f10-81c6-0e64ad24b89d"
+                        },
+                        {
+                          "id": "c3fc5274-247c-4772-91f3-707138ba65a5",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/fargate-profiles/:fargateProfileName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "fargate-profiles",
+                                ":fargateProfileName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "fargateProfileName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:06.000Z",
+                          "updatedAt": "2026-10-21T20:29:06.000Z",
+                          "uid": "35240-c3fc5274-247c-4772-91f3-707138ba65a5"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-dfc8f0ba-2453-47fe-903b-dc15af06d38a"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
+                  "id": "fb724179-9fa5-4462-9ae7-25e92fb14c06",
+                  "createdAt": "2026-10-21T20:29:06.000Z",
+                  "updatedAt": "2026-10-21T20:29:06.000Z",
+                  "uid": "35240-fb724179-9fa5-4462-9ae7-25e92fb14c06"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fargateProfileNames\": [\n    \"example-resource-name\"\n  ],\n  \"nextToken\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ee5658f0-e437-4d4e-ba14-df098af7b410",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "Amazon EKS Create a Fargate Profile",
+                  "id": "1e4cfa59-b2c3-42bf-8323-22ebb5ebf815",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "fargate-profiles"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c4bf658c-656b-4a07-8792-31bbd90e6864",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate."
+                  },
+                  "response": [
                     {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "51976cbb-785a-447c-9c4c-eb319a80b627",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"fargateProfile\": {\n    \"fargateProfileName\": \"<string>\",\n    \"fargateProfileArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"podExecutionRoleArn\": \"<string>\",\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"selectors\": [\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"consecteturb9\": \"<string>\",\n          \"sed7\": \"<string>\"\n        }\n      },\n      {\n        \"namespace\": \"<string>\",\n        \"labels\": {\n          \"ea13\": \"<string>\",\n          \"sedc12\": \"<string>\"\n        }\n      }\n    ],\n    \"tags\": {\n      \"anim_9c\": \"<string>\",\n      \"culpa8f7\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-51976cbb-785a-447c-9c4c-eb319a80b627"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a6b6499c-3b9e-421a-a8fc-7171ba5dceda",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "3ea62473-3f1a-4745-a629-117677c8ca04",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-3ea62473-3f1a-4745-a629-117677c8ca04"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "37761a7e-ff4b-47ab-9ec1-242a8e5a8823",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "6001edc6-49cd-4189-8dcd-ed10c4af23e9",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-6001edc6-49cd-4189-8dcd-ed10c4af23e9"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "20325e1c-00d8-4547-9b44-d9d34bcd59bb",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "fba14658-0e41-4338-9fb0-3c923e1f5fa9",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-fba14658-0e41-4338-9fb0-3c923e1f5fa9"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a10ad647-ec86-4212-9a26-cfbe6407f74e",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "243c4bd7-9d4d-47d4-8148-35bd7de865f3",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-243c4bd7-9d4d-47d4-8148-35bd7de865f3"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "13f56fec-a632-41b7-8500-073f7490b595",
-          "name": "Amazon EKS Describe a Fargate Profile",
-          "request": {
-            "name": "Amazon EKS Describe a Fargate Profile",
-            "description": {
-              "content": "Returns descriptive information about an AWS Fargate profile.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "fargate-profiles",
-                ":fargateProfileName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "fargateProfileName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "cfe196e6-08a2-4fde-83cc-74451399c26a",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "f877fa7a-bbf8-41b0-a10b-48564569644e",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-f877fa7a-bbf8-41b0-a10b-48564569644e"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
+                      "id": "cfa7a95b-0ab1-4f27-bf4d-11cc2134f52b",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fargateProfileName\": \"<string>\",\n  \"podExecutionRoleArn\": \"<string>\",\n  \"selectors\": [\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"cupidatat_41\": \"<string>\",\n        \"elit5b0\": \"<string>\"\n      }\n    },\n    {\n      \"namespace\": \"<string>\",\n      \"labels\": {\n        \"laboris_8e\": \"<string>\",\n        \"minim_96\": \"<string>\"\n      }\n    }\n  ],\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": {\n    \"dolore_726\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-cfa7a95b-0ab1-4f27-bf4d-11cc2134f52b"
                     }
-                  ]
+                  ],
+                  "createdAt": "2026-10-21T20:29:06.000Z",
+                  "updatedAt": "2026-10-21T20:29:06.000Z",
+                  "uid": "35240-1e4cfa59-b2c3-42bf-8323-22ebb5ebf815"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fargateProfile\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "09713b57-3012-45db-bc8a-1c4fedfe1651",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "Amazon EKS List Fargate Profiles",
+                  "id": "a60cf269-e2f7-4930-acc6-0128acafb42e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "fargate-profiles"
+                      ],
+                      "query": [
+                        {
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "afd93198-c4d0-4e69-9fa5-559010f82fda",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Lists the AWS Fargate profiles associated with the specified cluster."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "63e81eb1-830e-47e6-b536-5787185d856f",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"fargateProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-63e81eb1-830e-47e6-b536-5787185d856f"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a0a4e74c-d333-4cb8-b2e1-cd1823e6f6e7",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "70cbcecb-963c-40dd-a741-b618bc564fe4",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-70cbcecb-963c-40dd-a741-b618bc564fe4"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6f6d2192-8d78-4339-b40e-d4dbf00c7a32",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "2907f1f4-56ae-4028-8e8a-1fe94f829234",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-2907f1f4-56ae-4028-8e8a-1fe94f829234"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6d700765-430e-47f5-baf4-d95c0c760948",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "e5c35dbc-3d0a-48c5-a2cd-e0f45fb569b0",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-e5c35dbc-3d0a-48c5-a2cd-e0f45fb569b0"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2853d051-9f77-4c88-93ee-ccd02d014ed2",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "df90916f-c081-46fe-95bf-63c76b5f54d0",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-df90916f-c081-46fe-95bf-63c76b5f54d0"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
+                      "id": "29803e91-dd20-4deb-989d-58c4202f1c55",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/fargate-profiles?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "fargate-profiles"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:06.000Z",
+                      "updatedAt": "2026-10-21T20:29:06.000Z",
+                      "uid": "35240-29803e91-dd20-4deb-989d-58c4202f1c55"
                     }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-21T20:29:06.000Z",
+                  "updatedAt": "2026-10-21T20:29:06.000Z",
+                  "uid": "35240-a60cf269-e2f7-4930-acc6-0128acafb42e"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0dd4e96f-bc7c-4f0c-a043-fd7afc4735da",
-          "name": "Amazon EKS Delete a Fargate Profile",
-          "request": {
-            "name": "Amazon EKS Delete a Fargate Profile",
-            "description": {
-              "content": "Deletes an AWS Fargate profile.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "fargate-profiles",
-                ":fargateProfileName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "fargateProfileName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d5abec9e-49e5-4183-871b-d7350999fcd0",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"fargateProfile\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "41da2039-cb2b-4706-aab0-b5c3a6784a01",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ef8c6f04-2dc6-4178-aa07-f1f9de92e9d1",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c8202173-5c80-4bc0-bb9e-b68392aa1022",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4ca71398-6721-4265-bd57-6ed66e7b162b",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a2d09a41-4748-48cd-866c-342bbcc9502d",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3d238eb7-7585-467c-b426-540edf37f295",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "fargate-profiles",
-                    ":fargateProfileName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fargateProfileName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "527ee3e7-321f-4a9d-9820-04cb444c1b79",
+              "createdAt": "2026-10-21T20:29:06.000Z",
+              "updatedAt": "2026-10-21T20:29:06.000Z",
+              "uid": "35240-527ee3e7-321f-4a9d-9820-04cb444c1b79"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "73f92198-26b8-4750-a80c-db3a41c7f258",
+          "createdAt": "2026-10-21T20:29:06.000Z",
+          "updatedAt": "2026-10-21T20:29:06.000Z",
+          "uid": "35240-73f92198-26b8-4750-a80c-db3a41c7f258"
         }
       ],
-      "event": []
+      "id": "275b84d5-f58d-430f-82c9-4bc6ae9d11b2",
+      "createdAt": "2026-10-21T20:29:06.000Z",
+      "updatedAt": "2026-10-21T20:29:06.000Z",
+      "uid": "35240-275b84d5-f58d-430f-82c9-4bc6ae9d11b2"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://eks.amazonaws.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://eks.amazonaws.com"
     }
-  ],
-  "info": {
-    "_postman_id": "1a548898-2b8c-4576-a8a2-766df7b11e30",
-    "name": "Amazon EKS Addons Fargate Profiles API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

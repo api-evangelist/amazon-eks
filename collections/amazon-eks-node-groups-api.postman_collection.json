@@ -1,1504 +1,1398 @@
 {
+  "info": {
+    "_postman_id": "e4980e85-cd32-4ac1-9730-54c8ac1da354",
+    "name": "Amazon EKS Node Groups API",
+    "description": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:12.000Z",
+    "updatedAt": "2026-10-21T20:29:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e4980e85-cd32-4ac1-9730-54c8ac1da354"
+  },
   "item": [
     {
-      "id": "318875d4-0b4b-4faa-ac85-ee5f45f35c7e",
-      "name": "Node Groups",
-      "description": {
-        "content": "Operations for managing EKS managed node groups",
-        "type": "text/plain"
-      },
+      "name": "clusters",
       "item": [
         {
-          "id": "5cc06e5f-9d05-4a16-bb4d-bd4891875d43",
-          "name": "Amazon EKS Create a Managed Node Group",
-          "request": {
-            "name": "Amazon EKS Create a Managed Node Group",
-            "description": {
-              "content": "Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "node-groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{name}",
+          "item": [
             {
-              "id": "0ff94087-2617-47b7-bb90-f64a0e31b12e",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "node-groups",
+              "item": [
+                {
+                  "name": "{nodegroupName}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nodegroup\": \"example-cluster-01\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9a7b450f-f67c-40b7-afa6-73dab9448c97",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f298759b-6b3a-4bbe-8fad-9e5459627808",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1d9974ec-e0e5-4f13-bb42-c4ddd69e4234",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f5048982-59be-44cd-b303-f89eb6453152",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9aa15de0-1e1d-4216-8e8b-46739b8a8772",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "83bb1773-2ac0-479a-a1d3-9c05f7ed1999",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nodegroupName\": \"example-cluster-01\",\n  \"nodeRole\": \"example-string\",\n  \"subnets\": [\n    \"example-string\"\n  ],\n  \"scalingConfig\": \"example-string\",\n  \"instanceTypes\": [\n    \"i-0abc123def456789\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "43615867-e169-4d03-97c7-44410993ef52",
-          "name": "Amazon EKS List Managed Node Groups",
-          "request": {
-            "name": "Amazon EKS List Managed Node Groups",
-            "description": {
-              "content": "Lists the managed node groups associated with the specified cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "node-groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "maxResults",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "nextToken",
-                  "value": "<string>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0ab15a27-5e43-4578-aefe-c4b330dd3c39",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "name": "Amazon EKS Describe a Managed Node Group",
+                      "id": "0d7d50cd-0f0e-4f5f-bf4d-bdb84316ea31",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups",
+                            ":nodegroupName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "856d431c-bd72-41f3-a09a-9e97c156fbea",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "72e4f452-8a15-4edc-a778-73ad2ddea34b",
+                              "key": "nodegroupName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns descriptive information about a managed node group."
+                      },
+                      "response": [
+                        {
+                          "id": "22793679-1fb2-4e31-aab6-7bf523671544",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nodegroup\": {\n    \"nodegroupName\": \"<string>\",\n    \"nodegroupArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"version\": \"<string>\",\n    \"releaseVersion\": \"<string>\",\n    \"status\": \"DEGRADED\",\n    \"capacityType\": \"ON_DEMAND\",\n    \"scalingConfig\": {\n      \"minSize\": \"<integer>\",\n      \"maxSize\": \"<integer>\",\n      \"desiredSize\": \"<integer>\"\n    },\n    \"instanceTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"amiType\": \"AL2_x86_64\",\n    \"nodeRole\": \"<string>\",\n    \"labels\": {\n      \"mollit_7a\": \"<string>\",\n      \"consectetur_cb\": \"<string>\",\n      \"deserunt_4\": \"<string>\"\n    },\n    \"tags\": {\n      \"Duis3f0\": \"<string>\",\n      \"quiad\": \"<string>\",\n      \"ipsum_352\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-22793679-1fb2-4e31-aab6-7bf523671544"
+                        },
+                        {
+                          "id": "7706d740-59a4-41ea-a323-17aec7e63a4d",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-7706d740-59a4-41ea-a323-17aec7e63a4d"
+                        },
+                        {
+                          "id": "f40e2e35-6d90-4a17-b20d-456bb5927787",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-f40e2e35-6d90-4a17-b20d-456bb5927787"
+                        },
+                        {
+                          "id": "917a2dad-6763-4f81-a59e-680bbf728a88",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-917a2dad-6763-4f81-a59e-680bbf728a88"
+                        },
+                        {
+                          "id": "26912772-8a5e-46ab-9557-3e5238a46f94",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-26912772-8a5e-46ab-9557-3e5238a46f94"
+                        },
+                        {
+                          "id": "48ee0bf9-558a-4727-bfd9-f3be5fe0035e",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-48ee0bf9-558a-4727-bfd9-f3be5fe0035e"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-0d7d50cd-0f0e-4f5f-bf4d-bdb84316ea31"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
+                      "name": "Amazon EKS Delete a Managed Node Group",
+                      "id": "7564e54e-fbd7-4b17-9edf-d00db33b8605",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups",
+                            ":nodegroupName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8e880ad9-568e-4470-910e-61e64477485f",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "174efaac-5cbd-4d14-8514-a53a8558fdf2",
+                              "key": "nodegroupName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Deletes an Amazon EKS managed node group for a cluster."
+                      },
+                      "response": [
+                        {
+                          "id": "52abdec2-ed22-408f-b5ad-f9206fd99ef1",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nodegroup\": {\n    \"nodegroupName\": \"<string>\",\n    \"nodegroupArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"version\": \"<string>\",\n    \"releaseVersion\": \"<string>\",\n    \"status\": \"DEGRADED\",\n    \"capacityType\": \"ON_DEMAND\",\n    \"scalingConfig\": {\n      \"minSize\": \"<integer>\",\n      \"maxSize\": \"<integer>\",\n      \"desiredSize\": \"<integer>\"\n    },\n    \"instanceTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"amiType\": \"AL2_x86_64\",\n    \"nodeRole\": \"<string>\",\n    \"labels\": {\n      \"mollit_7a\": \"<string>\",\n      \"consectetur_cb\": \"<string>\",\n      \"deserunt_4\": \"<string>\"\n    },\n    \"tags\": {\n      \"Duis3f0\": \"<string>\",\n      \"quiad\": \"<string>\",\n      \"ipsum_352\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-52abdec2-ed22-408f-b5ad-f9206fd99ef1"
+                        },
+                        {
+                          "id": "25a2ec61-51cb-45fa-9445-f1c06e7ecb50",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-25a2ec61-51cb-45fa-9445-f1c06e7ecb50"
+                        },
+                        {
+                          "id": "0b43b626-699e-4419-98fd-9581ade90502",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-0b43b626-699e-4419-98fd-9581ade90502"
+                        },
+                        {
+                          "id": "a638af28-76d5-4033-84cb-82f2f1142c61",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-a638af28-76d5-4033-84cb-82f2f1142c61"
+                        },
+                        {
+                          "id": "b9684a57-13eb-4e3a-8f04-cdab84acf06f",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-b9684a57-13eb-4e3a-8f04-cdab84acf06f"
+                        },
+                        {
+                          "id": "15042c1e-50f7-488f-9455-88451f4eedca",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-15042c1e-50f7-488f-9455-88451f4eedca"
+                        },
+                        {
+                          "id": "6fd38ce2-86fa-4792-9bea-53b03726ec46",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/node-groups/:nodegroupName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "node-groups",
+                                ":nodegroupName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "nodegroupName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:13.000Z",
+                          "updatedAt": "2026-10-21T20:29:13.000Z",
+                          "uid": "35240-6fd38ce2-86fa-4792-9bea-53b03726ec46"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-7564e54e-fbd7-4b17-9edf-d00db33b8605"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
+                  "id": "fa3c0f9a-adc1-4401-a661-c90ef53d51fa",
+                  "createdAt": "2026-10-21T20:29:13.000Z",
+                  "updatedAt": "2026-10-21T20:29:13.000Z",
+                  "uid": "35240-fa3c0f9a-adc1-4401-a661-c90ef53d51fa"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nodegroups\": [\n    \"example-cluster-01\"\n  ],\n  \"nextToken\": \"example-string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fd44668a-ada2-4e93-9c4d-42d446e895a9",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "Amazon EKS Create a Managed Node Group",
+                  "id": "efc256e2-778a-4e55-bf7a-cfdba381d642",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "node-groups"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b498bc65-84e7-414f-8ebd-e73578a56722",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster."
+                  },
+                  "response": [
                     {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "b0f2477b-8055-4b5c-8821-c8ddc14cb0e3",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nodegroup\": {\n    \"nodegroupName\": \"<string>\",\n    \"nodegroupArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"version\": \"<string>\",\n    \"releaseVersion\": \"<string>\",\n    \"status\": \"DEGRADED\",\n    \"capacityType\": \"ON_DEMAND\",\n    \"scalingConfig\": {\n      \"minSize\": \"<integer>\",\n      \"maxSize\": \"<integer>\",\n      \"desiredSize\": \"<integer>\"\n    },\n    \"instanceTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"amiType\": \"AL2_x86_64\",\n    \"nodeRole\": \"<string>\",\n    \"labels\": {\n      \"mollit_7a\": \"<string>\",\n      \"consectetur_cb\": \"<string>\",\n      \"deserunt_4\": \"<string>\"\n    },\n    \"tags\": {\n      \"Duis3f0\": \"<string>\",\n      \"quiad\": \"<string>\",\n      \"ipsum_352\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-b0f2477b-8055-4b5c-8821-c8ddc14cb0e3"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3d4fe5b1-69de-4acf-ba73-fbd35d6f6d2c",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "33877f23-9f43-409f-8cea-2f2b8c6b709d",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-33877f23-9f43-409f-8cea-2f2b8c6b709d"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7a66243d-7ebb-438e-a561-ddaa963b1879",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "df096dc7-d917-48e3-956a-63594bb7cdd5",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-df096dc7-d917-48e3-956a-63594bb7cdd5"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5e1addba-246c-4978-9031-5b3fc0cb57c3",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "9fba479e-7238-4414-8ae0-2c8ef37d894f",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-9fba479e-7238-4414-8ae0-2c8ef37d894f"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "82b4acec-16c7-4d80-99f6-1f895d759f9f",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "maxResults",
-                      "value": "1"
+                      "id": "f4bbb150-449b-46b2-b64f-793e63b25fc4",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-f4bbb150-449b-46b2-b64f-793e63b25fc4"
                     },
                     {
-                      "key": "nextToken",
-                      "value": "example-string"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "21ca63e7-c627-402d-9373-c8d0348e39a2",
-          "name": "Amazon EKS Describe a Managed Node Group",
-          "request": {
-            "name": "Amazon EKS Describe a Managed Node Group",
-            "description": {
-              "content": "Returns descriptive information about a managed node group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "node-groups",
-                ":nodegroupName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "nodegroupName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a214ecbd-fc44-4ecf-8d33-f557b28386f9",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "2aa61032-9f54-46e5-9651-41d9ab039b1c",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-2aa61032-9f54-46e5-9651-41d9ab039b1c"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
+                      "id": "e65c68d3-9b84-4b7b-b4e2-893f26deb8a1",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nodegroupName\": \"<string>\",\n  \"nodeRole\": \"<string>\",\n  \"subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scalingConfig\": {\n    \"minSize\": \"<integer>\",\n    \"maxSize\": \"<integer>\",\n    \"desiredSize\": \"<integer>\"\n  },\n  \"instanceTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"amiType\": \"<string>\",\n  \"capacityType\": \"ON_DEMAND\",\n  \"labels\": {\n    \"cupidatat_3ab\": \"<string>\",\n    \"deserunt6\": \"<string>\",\n    \"et28\": \"<string>\",\n    \"ullamco_f63\": \"<string>\"\n  },\n  \"tags\": {\n    \"mollit34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-e65c68d3-9b84-4b7b-b4e2-893f26deb8a1"
                     }
-                  ]
+                  ],
+                  "createdAt": "2026-10-21T20:29:13.000Z",
+                  "updatedAt": "2026-10-21T20:29:13.000Z",
+                  "uid": "35240-efc256e2-778a-4e55-bf7a-cfdba381d642"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nodegroup\": \"example-cluster-01\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cfd915bd-39f5-4e22-a3bd-5c2d44788771",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "Amazon EKS List Managed Node Groups",
+                  "id": "f44855b7-3677-41e4-9620-2561f19ab749",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "node-groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ff4cfba5-8fe2-4415-b1a2-4ee2fbb8540f",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Lists the managed node groups associated with the specified cluster."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "3ed0c744-3b68-4e69-80c0-abcc03ebc01b",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nodegroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-3ed0c744-3b68-4e69-80c0-abcc03ebc01b"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0c0ac766-69b7-49de-8967-39ffce9325e9",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "3e5b0c54-0fad-482a-a721-59b59dae8146",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-3e5b0c54-0fad-482a-a721-59b59dae8146"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f7441dfd-179d-494a-81bd-8e9b4ccbd861",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "98e6238d-dac4-4980-9390-dcc519cb0f62",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-98e6238d-dac4-4980-9390-dcc519cb0f62"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ea760b52-6723-4c22-b4aa-2657fa4d507d",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "4560f007-91d4-4dd3-8587-fb316a042dc1",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-4560f007-91d4-4dd3-8587-fb316a042dc1"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7a9a4b4d-ed0b-4d6f-820e-7818c95d0285",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                      "id": "ca7d0c71-02af-4962-9362-62e03a9b6671",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-ca7d0c71-02af-4962-9362-62e03a9b6671"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
+                      "id": "d6b31060-89f0-43a4-8077-6a41c3fa7735",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/node-groups?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "node-groups"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:13.000Z",
+                      "updatedAt": "2026-10-21T20:29:13.000Z",
+                      "uid": "35240-d6b31060-89f0-43a4-8077-6a41c3fa7735"
                     }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-21T20:29:13.000Z",
+                  "updatedAt": "2026-10-21T20:29:13.000Z",
+                  "uid": "35240-f44855b7-3677-41e4-9620-2561f19ab749"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "65a87e96-79e6-4a5a-b899-e7150cfa9e8d",
-          "name": "Amazon EKS Delete a Managed Node Group",
-          "request": {
-            "name": "Amazon EKS Delete a Managed Node Group",
-            "description": {
-              "content": "Deletes an Amazon EKS managed node group for a cluster.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "clusters",
-                ":name",
-                "node-groups",
-                ":nodegroupName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "nodegroupName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d1558a33-adb3-49b3-968e-7134e82dc89a",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nodegroup\": \"example-cluster-01\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b014d69b-a73d-425a-b2ff-2bb7504d9a2b",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b59f7718-4f11-4c2f-a4ca-bab900e983e4",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7ca865f6-670f-4342-a7da-1eb5cc592af1",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bb55bd13-d1d1-456b-b02b-ac1fc9681bd2",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c013ec32-3f77-4a77-8f42-bcb52f2e4e3f",
-              "name": "Too many requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8480ffa9-5c6a-4c6b-9a77-f796d9853336",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "clusters",
-                    ":name",
-                    "node-groups",
-                    ":nodegroupName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodegroupName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "8c4927c5-8705-4bc6-a6ac-552d6fced558",
+              "createdAt": "2026-10-21T20:29:13.000Z",
+              "updatedAt": "2026-10-21T20:29:13.000Z",
+              "uid": "35240-8c4927c5-8705-4bc6-a6ac-552d6fced558"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c514af0f-9f3c-4fef-8731-cf4bd09a2f69",
+          "createdAt": "2026-10-21T20:29:13.000Z",
+          "updatedAt": "2026-10-21T20:29:13.000Z",
+          "uid": "35240-c514af0f-9f3c-4fef-8731-cf4bd09a2f69"
         }
       ],
-      "event": []
+      "id": "e0b1b421-3623-4bd1-9aeb-0296e164ae8a",
+      "createdAt": "2026-10-21T20:29:13.000Z",
+      "updatedAt": "2026-10-21T20:29:13.000Z",
+      "uid": "35240-e0b1b421-3623-4bd1-9aeb-0296e164ae8a"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://eks.amazonaws.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://eks.amazonaws.com"
     }
-  ],
-  "info": {
-    "_postman_id": "97ee958b-0b0e-4393-89f5-9932b09af525",
-    "name": "Amazon EKS Addons Node Groups API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

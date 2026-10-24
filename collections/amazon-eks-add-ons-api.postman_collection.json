@@ -1,0 +1,1398 @@
+{
+  "info": {
+    "_postman_id": "1095dd37-7f31-42b7-9f7b-8ab22e22da85",
+    "name": "Amazon EKS Addons API",
+    "description": "Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:18.000Z",
+    "updatedAt": "2026-10-21T20:29:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1095dd37-7f31-42b7-9f7b-8ab22e22da85"
+  },
+  "item": [
+    {
+      "name": "clusters",
+      "item": [
+        {
+          "name": "{name}",
+          "item": [
+            {
+              "name": "addons",
+              "item": [
+                {
+                  "name": "{addonName}",
+                  "item": [
+                    {
+                      "name": "Amazon EKS Describe an EKS Add-on",
+                      "id": "bb35793e-8475-484c-b702-48515acdafb6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons",
+                            ":addonName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6f046fce-9986-4a34-90ee-ce97c268c265",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "1e5314d3-b5df-45ab-a7d5-fb0a39e48af2",
+                              "key": "addonName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Describes an Amazon EKS add-on."
+                      },
+                      "response": [
+                        {
+                          "id": "936f0892-4762-48d2-9be6-506990b913c1",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"addon\": {\n    \"addonName\": \"<string>\",\n    \"addonVersion\": \"<string>\",\n    \"addonArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"serviceAccountRoleArn\": \"<string>\",\n    \"tags\": {\n      \"aliqua_ca4\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-936f0892-4762-48d2-9be6-506990b913c1"
+                        },
+                        {
+                          "id": "8d5bb2e1-91e0-43a4-8dcf-01dc57cbf575",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-8d5bb2e1-91e0-43a4-8dcf-01dc57cbf575"
+                        },
+                        {
+                          "id": "039bc6b8-8628-43c2-9e99-228e2f3ec3dc",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-039bc6b8-8628-43c2-9e99-228e2f3ec3dc"
+                        },
+                        {
+                          "id": "e374967a-6cee-4222-a3a6-ce2c3f73093b",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-e374967a-6cee-4222-a3a6-ce2c3f73093b"
+                        },
+                        {
+                          "id": "365e42cd-ac45-4159-9dc4-090770e289ce",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-365e42cd-ac45-4159-9dc4-090770e289ce"
+                        },
+                        {
+                          "id": "3e4523a0-53fb-4df6-9233-e03915ac2cb1",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-3e4523a0-53fb-4df6-9233-e03915ac2cb1"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-bb35793e-8475-484c-b702-48515acdafb6"
+                    },
+                    {
+                      "name": "Amazon EKS Delete an EKS Add-on",
+                      "id": "79da5f7b-7c6d-4c8e-96dc-a321acaf5845",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons",
+                            ":addonName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a7b0937e-68a2-4cfd-a941-846027b04eb7",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "af103f18-6f80-4717-8153-b9512d31eaa9",
+                              "key": "addonName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Deletes an Amazon EKS add-on."
+                      },
+                      "response": [
+                        {
+                          "id": "34634d56-8f71-46b5-8e14-7fa056401221",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"addon\": {\n    \"addonName\": \"<string>\",\n    \"addonVersion\": \"<string>\",\n    \"addonArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"serviceAccountRoleArn\": \"<string>\",\n    \"tags\": {\n      \"aliqua_ca4\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-34634d56-8f71-46b5-8e14-7fa056401221"
+                        },
+                        {
+                          "id": "d9f14cd7-9c71-461c-a150-8a4ef3584c0e",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-d9f14cd7-9c71-461c-a150-8a4ef3584c0e"
+                        },
+                        {
+                          "id": "2391a066-1fb7-4cd2-8329-635f33f68a51",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-2391a066-1fb7-4cd2-8329-635f33f68a51"
+                        },
+                        {
+                          "id": "0716e490-a24f-4e8d-bba4-53eeb84eca80",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-0716e490-a24f-4e8d-bba4-53eeb84eca80"
+                        },
+                        {
+                          "id": "a4025500-bb8b-4971-a4d9-90f0d218af7a",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-a4025500-bb8b-4971-a4d9-90f0d218af7a"
+                        },
+                        {
+                          "id": "95f2dde9-247a-4320-89d1-64ac7ed62a29",
+                          "name": "Too many requests",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-95f2dde9-247a-4320-89d1-64ac7ed62a29"
+                        },
+                        {
+                          "id": "3feed3ac-ea62-4157-a71f-e5d11f98b4a2",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/clusters/:name/addons/:addonName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "clusters",
+                                ":name",
+                                "addons",
+                                ":addonName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                },
+                                {
+                                  "key": "addonName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:19.000Z",
+                          "updatedAt": "2026-10-21T20:29:19.000Z",
+                          "uid": "35240-3feed3ac-ea62-4157-a71f-e5d11f98b4a2"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-79da5f7b-7c6d-4c8e-96dc-a321acaf5845"
+                    }
+                  ],
+                  "id": "cdf319d4-a79c-49a9-9364-22268a6934dc",
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-cdf319d4-a79c-49a9-9364-22268a6934dc"
+                },
+                {
+                  "name": "Amazon EKS Create an EKS Add-on",
+                  "id": "0e790a67-1050-4749-afd4-372db9dc2375",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/addons",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "addons"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f975236d-8573-4f0f-a1be-60a6d000128b",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the provisioning and lifecycle management of common operational software for Amazon EKS clusters."
+                  },
+                  "response": [
+                    {
+                      "id": "0ed74b0e-72aa-429e-8bc8-25674bfa73cc",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"addon\": {\n    \"addonName\": \"<string>\",\n    \"addonVersion\": \"<string>\",\n    \"addonArn\": \"<string>\",\n    \"clusterName\": \"<string>\",\n    \"status\": \"ACTIVE\",\n    \"serviceAccountRoleArn\": \"<string>\",\n    \"tags\": {\n      \"aliqua_ca4\": \"<string>\"\n    },\n    \"createdAt\": \"<dateTime>\",\n    \"modifiedAt\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-0ed74b0e-72aa-429e-8bc8-25674bfa73cc"
+                    },
+                    {
+                      "id": "e85a9499-9c79-4418-a848-80b7504dbd86",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-e85a9499-9c79-4418-a848-80b7504dbd86"
+                    },
+                    {
+                      "id": "207df6a0-be51-484f-a8db-4bdcaf7c35c0",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-207df6a0-be51-484f-a8db-4bdcaf7c35c0"
+                    },
+                    {
+                      "id": "30d69d4f-9a89-49b9-917f-aaa725ffc681",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-30d69d4f-9a89-49b9-917f-aaa725ffc681"
+                    },
+                    {
+                      "id": "c131e360-c252-4952-bd38-75c732de38d9",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-c131e360-c252-4952-bd38-75c732de38d9"
+                    },
+                    {
+                      "id": "cb36fc5d-6c91-46f4-bffa-45a7724f42ba",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-cb36fc5d-6c91-46f4-bffa-45a7724f42ba"
+                    },
+                    {
+                      "id": "2a3ac587-b44b-4b01-9de1-63452a21dafd",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addonName\": \"<string>\",\n  \"addonVersion\": \"<string>\",\n  \"serviceAccountRoleArn\": \"<string>\",\n  \"resolveConflicts\": \"OVERWRITE\",\n  \"tags\": {\n    \"ex_9\": \"<string>\",\n    \"labore_f81\": \"<string>\",\n    \"Excepteura\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-2a3ac587-b44b-4b01-9de1-63452a21dafd"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-0e790a67-1050-4749-afd4-372db9dc2375"
+                },
+                {
+                  "name": "Amazon EKS List EKS Add-ons",
+                  "id": "d4052f97-f35a-4927-985a-05332b936bc9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clusters",
+                        ":name",
+                        "addons"
+                      ],
+                      "query": [
+                        {
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2a43974e-c7f9-49ca-8830-75b8256e9742",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Lists the available add-ons for an Amazon EKS cluster."
+                  },
+                  "response": [
+                    {
+                      "id": "0b0906af-0285-4542-85a6-b06695069457",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"addons\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-0b0906af-0285-4542-85a6-b06695069457"
+                    },
+                    {
+                      "id": "71f80699-9e40-457f-a16a-aaac0d4d11e0",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-71f80699-9e40-457f-a16a-aaac0d4d11e0"
+                    },
+                    {
+                      "id": "fca475e8-39e3-4c9e-b336-c4fc74d417ec",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-fca475e8-39e3-4c9e-b336-c4fc74d417ec"
+                    },
+                    {
+                      "id": "fc68bfcf-dd1b-42d0-9eff-21e46f5bb5d1",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-fc68bfcf-dd1b-42d0-9eff-21e46f5bb5d1"
+                    },
+                    {
+                      "id": "3edf3cc4-9487-4c6d-9934-9b1c54e0e5a5",
+                      "name": "Too many requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-3edf3cc4-9487-4c6d-9934-9b1c54e0e5a5"
+                    },
+                    {
+                      "id": "c864e201-5793-444c-aeff-6a8045cfa280",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/clusters/:name/addons?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clusters",
+                            ":name",
+                            "addons"
+                          ],
+                          "query": [
+                            {
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:19.000Z",
+                      "updatedAt": "2026-10-21T20:29:19.000Z",
+                      "uid": "35240-c864e201-5793-444c-aeff-6a8045cfa280"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-d4052f97-f35a-4927-985a-05332b936bc9"
+                }
+              ],
+              "id": "73079f51-ad2a-4449-beb9-9c1db233712c",
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-73079f51-ad2a-4449-beb9-9c1db233712c"
+            }
+          ],
+          "id": "d5a1df36-0561-43c7-9798-d5cfdb851382",
+          "createdAt": "2026-10-21T20:29:19.000Z",
+          "updatedAt": "2026-10-21T20:29:19.000Z",
+          "uid": "35240-d5a1df36-0561-43c7-9798-d5cfdb851382"
+        }
+      ],
+      "id": "df5cab4d-5ac9-4444-bbdc-bca588de2572",
+      "createdAt": "2026-10-21T20:29:19.000Z",
+      "updatedAt": "2026-10-21T20:29:19.000Z",
+      "uid": "35240-df5cab4d-5ac9-4444-bbdc-bca588de2572"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://eks.amazonaws.com"
+    }
+  ]
+}
