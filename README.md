@@ -1,4 +1,4 @@
-# Amazon EKS (amazon-eks)
+# Amazon EKS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,43 +66,212 @@
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed Kubernetes service that makes it easy to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes. Amazon EKS runs upstream Kubernetes and is certified Kubernetes conformant, so you can use existing tools and plugins from partners and the Kubernetes community.
 
-**APIs.json:** [https://aws.amazon.com/eks/](https://aws.amazon.com/eks/)
+**Areas:** AWS · Container Orchestration · Containers · EKS · Kubernetes
 
-## Tags
+## Amazon EKS on APIs.io
 
-- AWS
-- Container Orchestration
-- Containers
-- EKS
-- Kubernetes
+Everything profiled for Amazon EKS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-eks/](https://apis.io/providers/amazon-eks/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (14)
 
-- **Modified:** 2026-05-19
+- [Amazon EKS Clusters API](https://apis.io/apis/amazon-eks/amazon-eks-clusters-api/) — Operations for managing EKS clusters
+- [Amazon EKS Fargate Profiles API](https://apis.io/apis/amazon-eks/amazon-eks-fargate-profiles-api/) — Operations for managing EKS Fargate profiles
+- [Amazon EKS Node Groups API](https://apis.io/apis/amazon-eks/amazon-eks-node-groups-api/) — Operations for managing EKS managed node groups
+- [Amazon EKS Add Ons API](https://apis.io/apis/amazon-eks/amazon-eks-add-ons-api/) — Operations for managing EKS add-ons
+- [Amazon EKS Eks Access Entries API](https://apis.io/apis/amazon-eks/amazon-eks-access-entries-api/) — The Eks Access Entries API from Amazon EKS — 2 operation(s) for eks access entries.
+- [Amazon EKS Eks Access Policies API](https://apis.io/apis/amazon-eks/amazon-eks-access-policies-api/) — The Eks Access Policies API from Amazon EKS — 3 operation(s) for eks access policies.
+- [Amazon EKS Eks Capabilities API](https://apis.io/apis/amazon-eks/amazon-eks-capabilities-api/) — The Eks Capabilities API from Amazon EKS — 2 operation(s) for eks capabilities.
+- [Amazon EKS Eks Certificate Authorities API](https://apis.io/apis/amazon-eks/amazon-eks-certificate-authorities-api/) — The Eks Certificate Authorities API from Amazon EKS — 2 operation(s) for eks certificate authorities.
+- [Amazon EKS Eks Eks Anywhere Subscriptions API](https://apis.io/apis/amazon-eks/amazon-eks-eks-anywhere-subscriptions-api/) — The Eks Eks Anywhere Subscriptions API from Amazon EKS — 2 operation(s) for eks eks anywhere subscriptions.
+- [Amazon EKS Eks Identity Provider Configs API](https://apis.io/apis/amazon-eks/amazon-eks-identity-provider-configs-api/) — The Eks Identity Provider Configs API from Amazon EKS — 4 operation(s) for eks identity provider configs.
+- [Amazon EKS Eks Operations API](https://apis.io/apis/amazon-eks/amazon-eks-operations-api/) — The Eks Operations API from Amazon EKS — 13 operation(s) for eks operations.
+- [Amazon EKS Eks Pod Identity Associations API](https://apis.io/apis/amazon-eks/amazon-eks-pod-identity-associations-api/) — The Eks Pod Identity Associations API from Amazon EKS — 2 operation(s) for eks pod identity associations.
+- [Amazon EKS Eks Tags API](https://apis.io/apis/amazon-eks/amazon-eks-tags-api/) — The Eks Tags API from Amazon EKS — 1 operation(s) for eks tags.
+- [Amazon EKS Eks Updates API](https://apis.io/apis/amazon-eks/amazon-eks-updates-api/) — The Eks Updates API from Amazon EKS — 2 operation(s) for eks updates.
 
-## Common Properties
+### Published properties
 
-- [Portal](https://aws.amazon.com/)
-- [Developer Portal](https://aws.amazon.com/eks/)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Eks Agentic Access](https://apis.io/agentic-access/amazon-eks/amazon-eks-agentic-access/)
+
+#### JSON Schema (30)
+
+The data models the API reads and writes.
+
+- [Amazon EKS Cluster](https://apis.io/schemas/amazon-eks/amazon-eks-cluster/)
+- [Addon](https://apis.io/schemas/amazon-eks/eks-openapi-addon/)
+- [Cluster](https://apis.io/schemas/amazon-eks/eks-openapi-cluster/)
+- [CreateAddonRequest](https://apis.io/schemas/amazon-eks/eks-openapi-create-addon-request/)
+- [CreateAddonResponse](https://apis.io/schemas/amazon-eks/eks-openapi-create-addon-response/)
+- [CreateClusterRequest](https://apis.io/schemas/amazon-eks/eks-openapi-create-cluster-request/)
+- [CreateClusterResponse](https://apis.io/schemas/amazon-eks/eks-openapi-create-cluster-response/)
+- [CreateFargateProfileRequest](https://apis.io/schemas/amazon-eks/eks-openapi-create-fargate-profile-request/)
+- [CreateFargateProfileResponse](https://apis.io/schemas/amazon-eks/eks-openapi-create-fargate-profile-response/)
+- [CreateNodegroupRequest](https://apis.io/schemas/amazon-eks/eks-openapi-create-nodegroup-request/)
+- [CreateNodegroupResponse](https://apis.io/schemas/amazon-eks/eks-openapi-create-nodegroup-response/)
+- [DeleteAddonResponse](https://apis.io/schemas/amazon-eks/eks-openapi-delete-addon-response/)
+- [DeleteClusterResponse](https://apis.io/schemas/amazon-eks/eks-openapi-delete-cluster-response/)
+- [DeleteFargateProfileResponse](https://apis.io/schemas/amazon-eks/eks-openapi-delete-fargate-profile-response/)
+- [DeleteNodegroupResponse](https://apis.io/schemas/amazon-eks/eks-openapi-delete-nodegroup-response/)
+- [DescribeAddonResponse](https://apis.io/schemas/amazon-eks/eks-openapi-describe-addon-response/)
+- [DescribeClusterResponse](https://apis.io/schemas/amazon-eks/eks-openapi-describe-cluster-response/)
+- [DescribeFargateProfileResponse](https://apis.io/schemas/amazon-eks/eks-openapi-describe-fargate-profile-response/)
+- [DescribeNodegroupResponse](https://apis.io/schemas/amazon-eks/eks-openapi-describe-nodegroup-response/)
+- [FargateProfile](https://apis.io/schemas/amazon-eks/eks-openapi-fargate-profile/)
+- [FargateProfileSelector](https://apis.io/schemas/amazon-eks/eks-openapi-fargate-profile-selector/)
+- [KubernetesNetworkConfigResponse](https://apis.io/schemas/amazon-eks/eks-openapi-kubernetes-network-config-response/)
+- [ListAddonsResponse](https://apis.io/schemas/amazon-eks/eks-openapi-list-addons-response/)
+- [ListClustersResponse](https://apis.io/schemas/amazon-eks/eks-openapi-list-clusters-response/)
+- [ListFargateProfilesResponse](https://apis.io/schemas/amazon-eks/eks-openapi-list-fargate-profiles-response/)
+- …and 5 more published on APIs.io
+
+#### JSON Structure (30)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Eks Cluster Structure](https://apis.io/json-structure/amazon-eks/amazon-eks-cluster-structure/)
+- [Eks Openapi Addon Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-addon-structure/)
+- [Eks Openapi Cluster Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-cluster-structure/)
+- [Eks Openapi Create Addon Request Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-addon-request-structure/)
+- [Eks Openapi Create Addon Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-addon-response-structure/)
+- [Eks Openapi Create Cluster Request Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-cluster-request-structure/)
+- [Eks Openapi Create Cluster Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-cluster-response-structure/)
+- [Eks Openapi Create Fargate Profile Request Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-fargate-profile-request-structure/)
+- [Eks Openapi Create Fargate Profile Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-fargate-profile-response-structure/)
+- [Eks Openapi Create Nodegroup Request Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-nodegroup-request-structure/)
+- [Eks Openapi Create Nodegroup Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-create-nodegroup-response-structure/)
+- [Eks Openapi Delete Addon Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-delete-addon-response-structure/)
+- [Eks Openapi Delete Cluster Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-delete-cluster-response-structure/)
+- [Eks Openapi Delete Fargate Profile Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-delete-fargate-profile-response-structure/)
+- [Eks Openapi Delete Nodegroup Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-delete-nodegroup-response-structure/)
+- [Eks Openapi Describe Addon Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-describe-addon-response-structure/)
+- [Eks Openapi Describe Cluster Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-describe-cluster-response-structure/)
+- [Eks Openapi Describe Fargate Profile Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-describe-fargate-profile-response-structure/)
+- [Eks Openapi Describe Nodegroup Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-describe-nodegroup-response-structure/)
+- [Eks Openapi Fargate Profile Selector Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-fargate-profile-selector-structure/)
+- [Eks Openapi Fargate Profile Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-fargate-profile-structure/)
+- [Eks Openapi Kubernetes Network Config Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-kubernetes-network-config-response-structure/)
+- [Eks Openapi List Addons Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-list-addons-response-structure/)
+- [Eks Openapi List Clusters Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-list-clusters-response-structure/)
+- [Eks Openapi List Fargate Profiles Response Structure](https://apis.io/json-structure/amazon-eks/eks-openapi-list-fargate-profiles-response-structure/)
+- …and 5 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Eks Context](https://apis.io/jsonld/amazon-eks/amazon-eks-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Eks Vocabulary](https://apis.io/vocabularies/amazon-eks/amazon-eks-vocabulary/)
+
+#### Examples (30)
+
+Example requests and responses.
+
+- [Amazon Eks Cluster Example](https://apis.io/examples/amazon-eks/amazon-eks-cluster-example/)
+- [Eks Openapi Addon Example](https://apis.io/examples/amazon-eks/eks-openapi-addon-example/)
+- [Eks Openapi Cluster Example](https://apis.io/examples/amazon-eks/eks-openapi-cluster-example/)
+- [Eks Openapi Create Addon Request Example](https://apis.io/examples/amazon-eks/eks-openapi-create-addon-request-example/)
+- [Eks Openapi Create Addon Response Example](https://apis.io/examples/amazon-eks/eks-openapi-create-addon-response-example/)
+- [Eks Openapi Create Cluster Request Example](https://apis.io/examples/amazon-eks/eks-openapi-create-cluster-request-example/)
+- [Eks Openapi Create Cluster Response Example](https://apis.io/examples/amazon-eks/eks-openapi-create-cluster-response-example/)
+- [Eks Openapi Create Fargate Profile Request Example](https://apis.io/examples/amazon-eks/eks-openapi-create-fargate-profile-request-example/)
+- [Eks Openapi Create Fargate Profile Response Example](https://apis.io/examples/amazon-eks/eks-openapi-create-fargate-profile-response-example/)
+- [Eks Openapi Create Nodegroup Request Example](https://apis.io/examples/amazon-eks/eks-openapi-create-nodegroup-request-example/)
+- [Eks Openapi Create Nodegroup Response Example](https://apis.io/examples/amazon-eks/eks-openapi-create-nodegroup-response-example/)
+- [Eks Openapi Delete Addon Response Example](https://apis.io/examples/amazon-eks/eks-openapi-delete-addon-response-example/)
+- [Eks Openapi Delete Cluster Response Example](https://apis.io/examples/amazon-eks/eks-openapi-delete-cluster-response-example/)
+- [Eks Openapi Delete Fargate Profile Response Example](https://apis.io/examples/amazon-eks/eks-openapi-delete-fargate-profile-response-example/)
+- [Eks Openapi Delete Nodegroup Response Example](https://apis.io/examples/amazon-eks/eks-openapi-delete-nodegroup-response-example/)
+- [Eks Openapi Describe Addon Response Example](https://apis.io/examples/amazon-eks/eks-openapi-describe-addon-response-example/)
+- [Eks Openapi Describe Cluster Response Example](https://apis.io/examples/amazon-eks/eks-openapi-describe-cluster-response-example/)
+- [Eks Openapi Describe Fargate Profile Response Example](https://apis.io/examples/amazon-eks/eks-openapi-describe-fargate-profile-response-example/)
+- [Eks Openapi Describe Nodegroup Response Example](https://apis.io/examples/amazon-eks/eks-openapi-describe-nodegroup-response-example/)
+- [Eks Openapi Fargate Profile Example](https://apis.io/examples/amazon-eks/eks-openapi-fargate-profile-example/)
+- [Eks Openapi Fargate Profile Selector Example](https://apis.io/examples/amazon-eks/eks-openapi-fargate-profile-selector-example/)
+- [Eks Openapi Kubernetes Network Config Response Example](https://apis.io/examples/amazon-eks/eks-openapi-kubernetes-network-config-response-example/)
+- [Eks Openapi List Addons Response Example](https://apis.io/examples/amazon-eks/eks-openapi-list-addons-response-example/)
+- [Eks Openapi List Clusters Response Example](https://apis.io/examples/amazon-eks/eks-openapi-list-clusters-response-example/)
+- [Eks Openapi List Fargate Profiles Response Example](https://apis.io/examples/amazon-eks/eks-openapi-list-fargate-profiles-response-example/)
+- …and 5 more published on APIs.io
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Amazon EKS API](https://apis.io/collections/amazon-eks/open-amazon-eks/)
+- [Amazon EKS Addons API](https://apis.io/collections/amazon-eks/open-amazon-eks-addons-api/)
+- [Amazon EKS Addons Clusters API](https://apis.io/collections/amazon-eks/open-amazon-eks-clusters-api/)
+- [Amazon EKS Addons Fargate Profiles API](https://apis.io/collections/amazon-eks/open-amazon-eks-fargate-profiles-api/)
+- [Amazon EKS Addons Node Groups API](https://apis.io/collections/amazon-eks/open-amazon-eks-node-groups-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon EKS — jsonschema rules](https://apis.io/rules/amazon-eks/amazon-eks-jsonschema-spectral-rules/)
+- [Amazon EKS API Rules](https://apis.io/rules/amazon-eks/amazon-eks-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Eks Domain Security](https://apis.io/security/amazon-eks/amazon-eks-domain-security/)
+- [Amazon Eks Trust Center](https://apis.io/security/amazon-eks/amazon-eks-trust-center/)
+- [Amazon Eks Vulnerability Disclosure](https://apis.io/security/amazon-eks/amazon-eks-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Eks Plans Pricing](https://apis.io/plans/amazon-eks/amazon-eks-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Eks Rate Limits](https://apis.io/rate-limits/amazon-eks/amazon-eks-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Eks Finops](https://apis.io/finops/amazon-eks/amazon-eks-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Documentation](https://docs.aws.amazon.com/)
-- [Terms](https://aws.amazon.com/service-terms/)
-- [Privacy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/support/)
 - [Blog](https://aws.amazon.com/blogs/containers/)
-- [Git Hub](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/eks/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [Knowledge Center](https://repost.aws/knowledge-center)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/amazon-eks)
-- [Contact](https://aws.amazon.com/contact-us/)
 - [Security](https://aws.amazon.com/security/)
 - [Compliance](https://aws.amazon.com/compliance/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Spectral Rules](rules/amazon-eks-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-eks-vocabulary.yaml)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Status](https://health.aws.amazon.com/health/status)
+
+## API Evangelist rating
+
+**Unrated** — no public website could be reached for this company, so there was almost nothing to measure and nothing a reader could check.
+
+This is not a score of zero. No rating is published for this company. If that is wrong because something public exists that we missed, say so on this repository or email [info@apievangelist.com](mailto:info@apievangelist.com) and it will be re-run — free, and no justification needed.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon EKS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-eks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
